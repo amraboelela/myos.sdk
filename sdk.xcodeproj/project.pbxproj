@@ -9,8 +9,8 @@
 /* Begin PBXFileReference section */
 		C57AEBBC19C7E04D00072531 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		C57AEBBE19C7E04D00072531 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		C57AEBBF19C7E04D00072531 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
+		F5EE5A861A71BA0600EDA5E5 /* makefiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = makefiles; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -18,8 +18,8 @@
 			isa = PBXGroup;
 			children = (
 				C57AEBBC19C7E04D00072531 /* include */,
+				F5EE5A861A71BA0600EDA5E5 /* makefiles */,
 				C57AEBBD19C7E04D00072531 /* README.md */,
-				C57AEBBE19C7E04D00072531 /* resources */,
 				C57AEBBF19C7E04D00072531 /* scripts */,
 			);
 			sourceTree = "<group>";

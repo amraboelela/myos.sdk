@@ -15,18 +15,15 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-PARAM=x$1
-DEVICE=avd1
-if [ ${PARAM} = "xrestart" ] ; then
-echo "===== Restarting adb server ==========================="
-    adb kill-server
-    adb start-server
-    adb devices
-    exit
-#elif [ ${PARAM} != "x" ] ; then
+source ${MYOS_PATH}/sdk/scripts/config.sh
 
-DEVICE=$1
-#fi
+echo ${BASE_OS}
 
-emulator -avd ${DEVICE} &
-disown
+TARGET=ChildApp
+
+APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+source ${MYOS_PATH}/sdk/scripts/libs-build.sh
+
+echo "============================== Building ${APPLICATION_DIRECTORY} =============================="
+cd ${MYOS_PATH}/applications/${APPLICATION_DIRECTORY}
+make || exit
