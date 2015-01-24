@@ -20,6 +20,11 @@ CC=$(STANDALONE_PATH)/bin/clang
 CXX=$(STANDALONE_PATH)/bin/clang++
 SYSROOT=$(STANDALONE_PATH)/sysroot
 CFLAGS+=-DANDROID -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
+
+if [ ${DEBUG_MODE} = "YES" ]; then
+    CFLAGS+=-DDEBUG
+fi
+
 LD=$(STANDALONE_PATH)/bin/clang++
 
 LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs -no-canonical-prefixes
