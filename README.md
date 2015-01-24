@@ -1,14 +1,11 @@
 ##myos.sdk
 
-* Depends on:
-  * [Android SDK](http://developer.android.com/sdk/index.html)
+* Used by:
   * [myos.libraries](https://github.com/amraboelela/myos.libraries)
   * [myos.frameworks](https://github.com/amraboelela/myos.frameworks)
-
-* Clone or fork myos.ubuntu.sdk repo into path myos/ubuntu/sdk
-* Add MYOS_PATH line to ~/.bash_profile, example:
-
-        export MYOS_PATH=~/myos
+  * [myos.examples](https://github.com/amraboelela/myos.examples)
+  * [myos.myapps](https://github.com/amraboelela/myos.myapps)
+  * [myos.applications](https://github.com/amraboelela/myos.applications)
 
 * For more info:
-[myos.sdk.wiki](https://github.com/amraboelela/myos.sdk/wiki)
+[myos.frameworks.wiki](https://github.com/amraboelela/myos.frameworks/wiki)

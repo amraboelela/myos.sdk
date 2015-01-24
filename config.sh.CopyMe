@@ -15,7 +15,12 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-# Note: Copy this file to config.sh then update it with the right values
+# Note: Copy this file to config.sh then update it with the right values, by commenting / uncommenting lines
 
-#BASE_OS=android
-BASE_OS=ubuntu
+#export BASE_OS=android
+export BASE_OS=ubuntu
+
+export DEBUG_MODE=YES
+
+#export USE_SURFACE_FLINGER=YES
+

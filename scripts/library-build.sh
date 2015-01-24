@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/scripts/config.sh
+source ${MYOS_PATH}/sdk/config.sh
 
 echo ${BASE_OS}
 
