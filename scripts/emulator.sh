@@ -26,7 +26,7 @@ echo "===== Restarting adb server ==========================="
 #elif [ ${PARAM} != "x" ] ; then
 
 DEVICE=$1
-#fi
+fi
 
 emulator -avd ${DEVICE} &
 disown

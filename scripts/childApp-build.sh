@@ -15,10 +15,6 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/config.sh
-
-echo ${BASE_OS}
-
 TARGET=ChildApp
 
 APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')

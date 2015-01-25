@@ -15,10 +15,14 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-if [ ${BASE_OS} = "android" ]; then
-    cd ${MYOS_PATH}/libraries
-    source build.sh
-fi
+source ${MYOS_PATH}/sdk/config.sh
+
+echo ${BASE_OS}
+
+#if [ ${BASE_OS} = "android" ]; then
+cd ${MYOS_PATH}/libraries
+source build.sh
+#fi
 
 cd ${MYOS_PATH}/frameworks
 source build.sh
