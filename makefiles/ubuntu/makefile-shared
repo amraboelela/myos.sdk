@@ -21,6 +21,10 @@ CXX=clang
 CFLAGS+=-I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include 
 LD=ld
 
+if [ ${DEBUG_MODE} = "YES" ]; then
+    CFLAGS+=-DDEBUG
+fi
+
 LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs -no-canonical-prefixes
 LDLIBS+=-lgcc -lc -lm
 
