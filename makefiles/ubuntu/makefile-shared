@@ -16,11 +16,10 @@
 #
 
 OUTPUT=lib$(LIB_NAME).so
-CC=$(STANDALONE_PATH)/bin/clang
-CXX=$(STANDALONE_PATH)/bin/clang++
-SYSROOT=$(STANDALONE_PATH)/sysroot
-CFLAGS+=-march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
-LD=$(STANDALONE_PATH)/bin/clang++
+CC=clang
+CXX=clang
+CFLAGS+=-I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include 
+LD=ld
 
 if [ ${DEBUG_MODE} = "YES" ]; then
     CFLAGS+=-DDEBUG
