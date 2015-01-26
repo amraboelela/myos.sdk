@@ -16,18 +16,16 @@
 #
 
 OUTPUT=$(APP_NAME)
-CC=$(STANDALONE_PATH)/bin/clang
-CXX=$(STANDALONE_PATH)/bin/clang++
-SYSROOT=$(STANDALONE_PATH)/sysroot
-CFLAGS+=-march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
-LD=$(STANDALONE_PATH)/bin/clang++
+CC=clang
+CXX=clang
+#SYSROOT=$(STANDALONE_PATH)/sysroot
+CFLAGS+= -I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include
+LD=ld
 
-LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs -no-canonical-prefixes
+LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs
 LDLIBS+=-lgcc -lc -lm
 
-#LDFLAGS+=-L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs -no-canonical-prefixes -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now
-
-STRIP=$(STANDALONE_PATH)/bin/arm-linux-androideabi-strip
+STRIP=strip
 
 
 all: $(OUTPUT)
