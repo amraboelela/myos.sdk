@@ -16,11 +16,11 @@
 #
 
 OUTPUT=lib$(LIB_NAME).a
-CC=$(STANDALONE_PATH)/bin/clang
-CXX=$(STANDALONE_PATH)/bin/clang++
-AR=$(STANDALONE_PATH)/bin/arm-linux-androideabi-ar
+CC=clang
+CXX=clang
+AR=ar
 SYSROOT=$(STANDALONE_PATH)/sysroot
-CFLAGS+= -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
+CFLAGS+= -I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include
 ARFLAGS=crs
 
 all: $(OUTPUT)

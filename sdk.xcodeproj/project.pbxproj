@@ -11,6 +11,7 @@
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C57AEBBF19C7E04D00072531 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		F5702A4E1A744B74008D3491 /* config.sh.CopyMe */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.CopyMe; sourceTree = "<group>"; };
+		F5702A4F1A75E793008D3491 /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
 		F5EE5A861A71BA0600EDA5E5 /* makefiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = makefiles; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -18,6 +19,7 @@
 		C57AEBB519C7DF6400072531 = {
 			isa = PBXGroup;
 			children = (
+				F5702A4F1A75E793008D3491 /* config.sh */,
 				F5702A4E1A744B74008D3491 /* config.sh.CopyMe */,
 				C57AEBBC19C7E04D00072531 /* include */,
 				F5EE5A861A71BA0600EDA5E5 /* makefiles */,

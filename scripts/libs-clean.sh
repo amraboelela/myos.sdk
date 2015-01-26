@@ -15,6 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
+source ${MYOS_PATH}/sdk/config.sh
+
 cd ${MYOS_PATH}/libraries
 source clean.sh
 
