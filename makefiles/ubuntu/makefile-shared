@@ -18,12 +18,12 @@
 OUTPUT=lib$(LIB_NAME).so
 CC=clang
 CXX=clang
-CFLAGS+=-I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include 
+CFLAGS+=-fPIC -I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include 
 LD=ld
 
-if [ ${DEBUG_MODE} = "YES" ]; then
+ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
-fi
+endif
 
 LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs -no-canonical-prefixes
 LDLIBS+=-lgcc -lc -lm
