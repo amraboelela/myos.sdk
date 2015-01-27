@@ -17,11 +17,11 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-echo ${BASE_OS}
+#echo ${BASE_OS}
 
 NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 NATIVE_APP_PATH=$(pwd)
-source ${MYOS_PATH}/sdk/scripts/libs-clean.sh
+source ${MYOS_PATH}/sdk/libs-clean.sh
 cd ${NATIVE_APP_PATH}
 make clean
 

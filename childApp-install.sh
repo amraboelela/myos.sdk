@@ -17,12 +17,12 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-echo ${BASE_OS}
+#echo ${BASE_OS}
 
 TARGET=ChildApp
 APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 APPLICATION_PATH=$(pwd)
-source ${MYOS_PATH}/sdk/scripts/childApp-build.sh
+source ${MYOS_PATH}/sdk/childApp-build.sh
 
 cd ${APPLICATION_PATH}
 echo "============================== Building ${APPLICATION_DIRECTORY} =============================="

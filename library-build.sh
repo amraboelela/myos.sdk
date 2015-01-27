@@ -17,16 +17,13 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-#echo BASE_OS: ${BASE_OS}
-#echo DEBUG_MODE: ${DEBUG_MODE}
-
 if [ ${TARGET} = "All" ]; then
     export TARGET=NativeApp
-    source ${MYOS_PATH}/sdk/scripts/library-make.sh
+    source ${MYOS_PATH}/sdk/library-make.sh
     export TARGET=ChildApp
-    source ${MYOS_PATH}/sdk/scripts/library-make.sh
+    source ${MYOS_PATH}/sdk/library-make.sh
     TARGET=All
 else
     export TARGET=${TARGET}
-    source ${MYOS_PATH}/sdk/scripts/library-make.sh
+    source ${MYOS_PATH}/sdk/library-make.sh
 fi

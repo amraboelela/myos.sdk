@@ -17,11 +17,11 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-echo ${BASE_OS}
+#echo ${BASE_OS}
 
 APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 
-source ${MYOS_PATH}/sdk/scripts/libs-clean.sh
+source ${MYOS_PATH}/sdk/libs-clean.sh
 cd ${MYOS_PATH}/applications/${APPLICATION_DIRECTORY}
 echo "===== Cleaning ${APPLICATION_DIRECTORY} ================================="
 make clean

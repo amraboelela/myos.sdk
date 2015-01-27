@@ -17,9 +17,9 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-echo ${BASE_OS}
+#echo ${BASE_OS}
 
-source ${MYOS_PATH}/sdk/scripts/nativeApp-build.sh
+source ${MYOS_PATH}/sdk/nativeApp-build.sh
 PARAM=x$1
 
 if [ ${PARAM} = "xuninstall" ] ; then

@@ -19,7 +19,7 @@ TARGET=NativeApp
 
 NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 NATIVE_APP_PATH=$(pwd)
-source ${MYOS_PATH}/sdk/scripts/libs-build.sh
+source ${MYOS_PATH}/sdk/libs-build.sh
 
 echo "============================== Building ${NATIVE_APP_DIRECTORY} =============================="
 cd ${NATIVE_APP_PATH}
