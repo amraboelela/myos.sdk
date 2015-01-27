@@ -18,7 +18,7 @@
 OUTPUT=lib$(LIB_NAME).so
 CC=clang
 CXX=clang
-CFLAGS+=-MMD -MP -Wall -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I${MYOS_PATH}/frameworks
+CFLAGS+=-MMD -MP -Wall -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks
 
 
 #-MMD -MP -Wall -Wdeclaration-after-statement -DNO_GNUSTEP=1 -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -fno-strict-aliasing -fexceptions -fobjc-exceptions -D_NATIVE_OBJC_EXCEPTIONS -pthread -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -fconstant-string-class=NSConstantString
