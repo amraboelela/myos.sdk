@@ -18,15 +18,25 @@
 OUTPUT=lib$(LIB_NAME).so
 CC=clang
 CXX=clang
-CFLAGS+=-fPIC -I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include 
-LD=ld
+CFLAGS+=-MMD -MP -Wall -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include
+
+
+#-MMD -MP -Wall -Wdeclaration-after-statement -DNO_GNUSTEP=1 -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -fno-strict-aliasing -fexceptions -fobjc-exceptions -D_NATIVE_OBJC_EXCEPTIONS -pthread -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -fconstant-string-class=NSConstantString
+
+#-MMD -MP -DGNUSTEP_BASE_INTERNAL=1 -Wall -Wdeclaration-after-statement -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -pthread -pthread -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2
+
+LD=clang
+
+# -shared -Wl  -rdynamic -pthread -fexceptions -o ./obj/libgnustep-base.so.1.24.7  -L./obj    -L/home/amr/GNUstep/Library/Libraries -L/usr/local/lib   -L/usr/local/lib -L/usr/local/lib -L/usr/local/lib -L/usr/local/lib/gnu-gnu-gnu -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu
+
+#-lobjc  -lxml2 -lffi   -lrt -ldl  -lpthread -lz -licui18n -licuuc -licudata  -lm
 
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
 endif
 
-LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs
-LDLIBS+=-lgcc -lc -lm
+LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/frameworks/libs
+LDLIBS+=-lgcc -lc -lm -lrt -ldl
 
 _SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
@@ -48,6 +58,7 @@ $(ODIR)/%.o: ${MYOS_PATH}/sdk/include/%.c
 $(ODIR)/%.o: %.m
 	$(CC) $(CFLAGS) -c $< -o $@
 
+
 $(ODIR)/%.o: %.mm
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -60,7 +71,7 @@ $(ODIR)/%.o: %.cpp
 $(_SLIBS):
 
 $(OUTPUT): $(OBJ) $(_SLIBS)
-	$(LD) -shared --sysroot $(SYSROOT) $^ $(LDFLAGS) $(LDLIBS) -o $@
+	$(LD) -shared $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
 	@echo

@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-#source ${MYOS_PATH}/sdk/config.sh
+source ${MYOS_PATH}/sdk/config.sh
 
 #echo BASE_OS: ${BASE_OS}
 #echo DEBUG_MODE: ${DEBUG_MODE}
