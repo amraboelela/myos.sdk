@@ -1,6 +1,6 @@
 ##myos.sdk
 
-* Used by:
+* Needed by:
   * [myos.libraries](https://github.com/amraboelela/myos.libraries)
   * [myos.frameworks](https://github.com/amraboelela/myos.frameworks)
   * [myos.examples](https://github.com/amraboelela/myos.examples)

@@ -7,22 +7,44 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C57AEBBC19C7E04D00072531 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		C57AEBBF19C7E04D00072531 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		F5702A4E1A744B74008D3491 /* config.sh.CopyMe */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.CopyMe; sourceTree = "<group>"; };
-		F5EE5A861A71BA0600EDA5E5 /* makefiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = makefiles; sourceTree = "<group>"; };
+		F5E864761A783DB60058E642 /* android */ = {isa = PBXFileReference; lastKnownFileType = folder; path = android; sourceTree = "<group>"; };
+		F5E864771A783DB60058E642 /* ubuntu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ubuntu; sourceTree = "<group>"; };
+		F5E864781A783DB60058E642 /* childApp-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-build.sh"; sourceTree = "<group>"; };
+		F5E864791A783DB60058E642 /* childApp-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-clean.sh"; sourceTree = "<group>"; };
+		F5E8647A1A783DB60058E642 /* childApp-install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-install.sh"; sourceTree = "<group>"; };
+		F5E8647B1A783DB60058E642 /* library-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "library-build.sh"; sourceTree = "<group>"; };
+		F5E8647C1A783DB60058E642 /* libs-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "libs-build.sh"; sourceTree = "<group>"; };
+		F5E8647D1A783DB60058E642 /* libs-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "libs-clean.sh"; sourceTree = "<group>"; };
+		F5E8647E1A783DB60058E642 /* nativeApp-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-build.sh"; sourceTree = "<group>"; };
+		F5E8647F1A783DB60058E642 /* nativeApp-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-clean.sh"; sourceTree = "<group>"; };
+		F5E864801A783DB60058E642 /* nativeApp-run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-run.sh"; sourceTree = "<group>"; };
+		F5E864811A783DB60058E642 /* library-make.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "library-make.sh"; sourceTree = "<group>"; };
+		F5E864821A783DB60058E642 /* emulator.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = emulator.sh; sourceTree = "<group>"; };
+		F5E864831A783DB60058E642 /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		C57AEBB519C7DF6400072531 = {
 			isa = PBXGroup;
 			children = (
+				F5E864761A783DB60058E642 /* android */,
+				F5E864771A783DB60058E642 /* ubuntu */,
+				F5E864781A783DB60058E642 /* childApp-build.sh */,
+				F5E864791A783DB60058E642 /* childApp-clean.sh */,
+				F5E8647A1A783DB60058E642 /* childApp-install.sh */,
+				F5E8647B1A783DB60058E642 /* library-build.sh */,
+				F5E8647C1A783DB60058E642 /* libs-build.sh */,
+				F5E8647D1A783DB60058E642 /* libs-clean.sh */,
+				F5E8647E1A783DB60058E642 /* nativeApp-build.sh */,
+				F5E8647F1A783DB60058E642 /* nativeApp-clean.sh */,
+				F5E864801A783DB60058E642 /* nativeApp-run.sh */,
+				F5E864811A783DB60058E642 /* library-make.sh */,
+				F5E864821A783DB60058E642 /* emulator.sh */,
+				F5E864831A783DB60058E642 /* config.sh */,
 				F5702A4E1A744B74008D3491 /* config.sh.CopyMe */,
-				C57AEBBC19C7E04D00072531 /* include */,
-				F5EE5A861A71BA0600EDA5E5 /* makefiles */,
 				C57AEBBD19C7E04D00072531 /* README.md */,
-				C57AEBBF19C7E04D00072531 /* scripts */,
 			);
 			sourceTree = "<group>";
 		};

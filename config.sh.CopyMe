@@ -15,8 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-# Note: Copy this file to config.sh then update it with the right values, by commenting / uncommenting lines
-
+# Copy this file to config.sh then update it with the right values, by commenting / uncommenting lines
+ 
 #export BASE_OS=android
 export BASE_OS=ubuntu
 
