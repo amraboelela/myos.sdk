@@ -16,16 +16,20 @@
 #
 
 source ${MYOS_PATH}/sdk/nativeApp-build.sh
-PARAM=x$1
 
-if [ ${PARAM} = "xuninstall" ] ; then
-    echo "============================== uninstall ================================="
-    ant uninstall
+if [ ${BASE_OS} = "android" ]; then
+    PARAM=x$1
+    if [ ${PARAM} = "xuninstall" ] ; then
+        echo "============================== uninstall ================================="
+        ant uninstall
+    fi
+
+    echo "============================ Native app run ================================="
+    adb shell input keyevent 3
+    android update project -p . -s --target 1;
+    ant debug install
+    ant run
 fi
 
-echo "============================ Native app run ================================="
 
-adb shell input keyevent 3
-android update project -p . -s --target 1;
-ant debug install
-ant run
+
