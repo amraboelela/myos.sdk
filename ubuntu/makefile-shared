@@ -19,7 +19,10 @@ OUTPUT=lib$(LIB_NAME).so
 CC=clang
 CXX=clang
 LD=clang
-CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I/usr/include/cairo -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries
+CFLAGS+=-fPIC -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks 
+
+#CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I/usr/include/cairo -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks 
+#-I${MYOS_PATH}/libraries
 
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
@@ -41,7 +44,7 @@ else
     ODIR=obj
 endif
 
-OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS).o)
+OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS))
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
