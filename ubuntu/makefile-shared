@@ -41,7 +41,7 @@ else
     ODIR=obj
 endif
 
-OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS))
+OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS).o)
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
