@@ -52,6 +52,7 @@ $(OUTPUT): $(OBJ)
 
 clean:
 	-rm $(ODIR)/*.o
+	-rm $(ODIR)/*.d
 	-rm $(OUTPUT)
 
 copy:

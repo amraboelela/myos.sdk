@@ -71,7 +71,9 @@ clean:
 	@echo
 	@echo "=== Cleaning $(LIB_NAME) ==="
 	-rm obj/*.o
+	-rm obj/*.d
 	-rm NAObj/*.o
+	-rm NAObj/*.d
 	-rm $(OUTPUT)
 
 copy:
