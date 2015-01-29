@@ -29,7 +29,7 @@ LDLIBS+=-lobjc
 
 all: $(OUTPUT)
 ODIR=obj
-OBJ = $(patsubst %,$(ODIR)/%,$(OBJECTS).o)
+OBJ = $(patsubst %,$(ODIR)/%.o,$(OBJECTS))
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
