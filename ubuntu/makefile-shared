@@ -35,7 +35,7 @@ endif
 LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ -L${MYOS_PATH}/frameworks/libs
 LDLIBS+=-lgcc -lc -lm -lrt -ldl
 
-_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
+#_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
 ifeq ($(TARGET),NativeApp)
@@ -65,9 +65,10 @@ $(ODIR)/%.o: %.S
 $(ODIR)/%.o: %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
-$(_SLIBS):
+#$(_SLIBS):
+#$(_SLIBS)
 
-$(OUTPUT): $(OBJ) $(_SLIBS)
+$(OUTPUT): $(OBJ)
 	$(LD) -shared $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
