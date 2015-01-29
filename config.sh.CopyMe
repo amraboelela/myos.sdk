@@ -22,5 +22,5 @@ export BASE_OS=ubuntu
 
 export DEBUG_MODE=YES
 
-#export USE_SURFACE_FLINGER=YES
+export GUEST_MODE=YES
 

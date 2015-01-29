@@ -17,8 +17,6 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-#echo ${BASE_OS}
-
 APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 
 source ${MYOS_PATH}/sdk/libs-clean.sh

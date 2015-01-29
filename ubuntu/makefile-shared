@@ -25,12 +25,12 @@ CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-al
 
 LD=clang
 
-# -shared -Wl  -rdynamic -pthread -fexceptions -o ./obj/libgnustep-base.so.1.24.7  -L./obj    -L/home/amr/GNUstep/Library/Libraries -L/usr/local/lib   -L/usr/local/lib -L/usr/local/lib -L/usr/local/lib -L/usr/local/lib/gnu-gnu-gnu -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu
-
-#-lobjc  -lxml2 -lffi   -lrt -ldl  -lpthread -lz -licui18n -licuuc -licudata  -lm
-
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
+endif
+
+ifeq ($(TARGET),NativeApp)
+    CFLAGS+=-DNATIVE_APP
 endif
 
 LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ -L${MYOS_PATH}/frameworks/libs

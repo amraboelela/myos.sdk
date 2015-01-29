@@ -15,10 +15,6 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/config.sh
-
-#echo ${BASE_OS}
-
 source ${MYOS_PATH}/sdk/nativeApp-build.sh
 PARAM=x$1
 

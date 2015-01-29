@@ -15,6 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
+source ${MYOS_PATH}/sdk/config.sh
+
 TARGET=NativeApp
 
 NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
@@ -24,5 +26,8 @@ source ${MYOS_PATH}/sdk/libs-build.sh
 echo "============================== Building ${NATIVE_APP_DIRECTORY} =============================="
 cd ${NATIVE_APP_PATH}
 make || exit
+
+if [ ${BASE_OS} = "android" ]; then
 echo "============================== NDK build ${NATIVE_APP_DIRECTORY} =============================="
 ndk-build || exit
+fi

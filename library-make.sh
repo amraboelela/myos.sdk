@@ -15,6 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
+source ${MYOS_PATH}/sdk/config.sh
+
 LIBRARY_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 
 if [ ${TARGET} = "NativeApp" ]; then

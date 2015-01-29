@@ -17,8 +17,6 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-#echo ${BASE_OS}
-
 TARGET=ChildApp
 APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 APPLICATION_PATH=$(pwd)

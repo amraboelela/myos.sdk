@@ -26,6 +26,10 @@ ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
 endif
 
+ifeq ($(TARGET),NativeApp)
+    CFLAGS+=-DNATIVE_APP
+endif
+
 LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/libraries/libs/android -L${MYOS_PATH}/frameworks/libs -L${MYOS_PATH}/frameworks/libs/android -no-canonical-prefixes
 LDLIBS+=-lgcc -lc -lm -llog -landroid
 
