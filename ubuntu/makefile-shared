@@ -19,7 +19,7 @@ OUTPUT=lib$(LIB_NAME).so
 CC=clang
 CXX=clang
 LD=clang
-CFLAGS+=-fPIC -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks 
+CFLAGS+=-fPIC -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
 
 #CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I/usr/include/cairo -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks 
 #-I${MYOS_PATH}/libraries
@@ -35,7 +35,7 @@ endif
 LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ -L${MYOS_PATH}/frameworks/libs
 LDLIBS+=-lgcc -lc -lm -lrt -ldl
 
-_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
+#_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
 ifeq ($(TARGET),NativeApp)
@@ -65,9 +65,10 @@ $(ODIR)/%.o: %.S
 $(ODIR)/%.o: %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
-$(_SLIBS):
+#$(_SLIBS):
+#$(_SLIBS)
 
-$(OUTPUT): $(OBJ) $(_SLIBS)
+$(OUTPUT): $(OBJ)
 	$(LD) -shared $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
