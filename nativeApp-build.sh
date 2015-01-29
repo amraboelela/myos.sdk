@@ -19,7 +19,7 @@ source ${MYOS_PATH}/sdk/config.sh
 
 TARGET=NativeApp
 
-NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+export NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 NATIVE_APP_PATH=$(pwd)
 source ${MYOS_PATH}/sdk/libs-build.sh
 

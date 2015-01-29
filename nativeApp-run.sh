@@ -29,7 +29,6 @@ if [ ${BASE_OS} = "android" ]; then
     android update project -p . -s --target 1;
     ant debug install
     ant run
+else
+    ./${NATIVE_APP_DIRECTORY}
 fi
-
-
-
