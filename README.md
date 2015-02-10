@@ -8,7 +8,8 @@
   * [myos.applications](https://github.com/amraboelela/myos.applications)
 
 * Generate config.sh file:
-  * Copy config.sh.CopyMe file:
+
+  * Copy config.sh.CopyMe file
 
         `~/myos/sdk$ cp config.sh.CopyMe config.sh`
 
