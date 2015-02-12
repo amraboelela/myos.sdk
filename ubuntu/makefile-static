@@ -53,5 +53,7 @@ clean:
 	-rm $(OUTPUT)
 
 copy:
-	cp *.a ${MYOS_PATH}/libraries/libs/
+	sudo cp *.a /usr/local/lib/
+
+#	cp *.a ${MYOS_PATH}/libraries/libs/
     

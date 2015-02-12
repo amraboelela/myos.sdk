@@ -32,7 +32,7 @@ ifeq ($(TARGET),NativeApp)
     CFLAGS+=-DNATIVE_APP
 endif
 
-LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ -L${MYOS_PATH}/frameworks/libs
+LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ 
 LDLIBS+=-lgcc -lc -lm -lrt -ldl
 
 #_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
@@ -81,4 +81,6 @@ clean:
 	-rm $(OUTPUT)
 
 copy:
-	cp *.so ${MYOS_PATH}/frameworks/libs/
+	sudo cp *.so /usr/local/lib/
+
+#	cp *.so ${MYOS_PATH}/frameworks/libs/
