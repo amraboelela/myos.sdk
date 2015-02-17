@@ -19,7 +19,7 @@ OUTPUT=lib$(LIB_NAME).a
 CC=clang
 CXX=clang
 AR=clang
-CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I/usr/include/cairo -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries
+CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I/usr/include/cairo -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries
 ARFLAGS=-shared
 
 
