@@ -17,10 +17,10 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-if [ ${BASE_OS} = "android" ]; then
-    cd ${MYOS_PATH}/libraries
-    source build.sh
-fi
+#if [ ${BASE_OS} = "android" ]; then
+cd ${MYOS_PATH}/libraries
+source build.sh
+#fi
 
 cd ${MYOS_PATH}/frameworks
 source build.sh
