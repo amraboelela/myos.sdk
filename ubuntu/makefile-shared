@@ -19,7 +19,7 @@ OUTPUT=lib$(LIB_NAME).so
 CC=clang
 CXX=clang
 LD=clang
-CFLAGS+=-fPIC -D__GNUSTEP_RUNTIME__ -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I${MYOS_PATH}/libraries -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
+CFLAGS+=-fPIC -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I${MYOS_PATH}/libraries -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
 
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
