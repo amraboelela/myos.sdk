@@ -24,12 +24,12 @@ if [ ${BASE_OS} = "android" ]; then
         ant uninstall
     fi
 
-    echo "============================ Running ${NATIVE_APP_DIRECTORY} ================================="
+    echo "============================ Running ${APPLICATION_DIRECTORY} ================================="
     adb shell input keyevent 3
     android update project -p . -s --target 1;
     ant debug install
     ant run
 else
-    echo "============================ Running ${NATIVE_APP_DIRECTORY} ================================="
-    ./${NATIVE_APP_DIRECTORY}
+    echo "============================ Running ${APPLICATION_DIRECTORY} ================================="
+    ./${APPLICATION_DIRECTORY}
 fi
