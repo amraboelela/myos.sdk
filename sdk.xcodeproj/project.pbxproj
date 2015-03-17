@@ -15,8 +15,6 @@
 		F5E864791A783DB60058E642 /* childApp-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-clean.sh"; sourceTree = "<group>"; };
 		F5E8647A1A783DB60058E642 /* childApp-install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-install.sh"; sourceTree = "<group>"; };
 		F5E8647B1A783DB60058E642 /* library-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "library-build.sh"; sourceTree = "<group>"; };
-		F5E8647C1A783DB60058E642 /* libs-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "libs-build.sh"; sourceTree = "<group>"; };
-		F5E8647D1A783DB60058E642 /* libs-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "libs-clean.sh"; sourceTree = "<group>"; };
 		F5E8647E1A783DB60058E642 /* nativeApp-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-build.sh"; sourceTree = "<group>"; };
 		F5E8647F1A783DB60058E642 /* nativeApp-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-clean.sh"; sourceTree = "<group>"; };
 		F5E864801A783DB60058E642 /* nativeApp-run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-run.sh"; sourceTree = "<group>"; };
@@ -35,8 +33,6 @@
 				F5E8647A1A783DB60058E642 /* childApp-install.sh */,
 				F5E8647B1A783DB60058E642 /* library-build.sh */,
 				F5E864811A783DB60058E642 /* library-make.sh */,
-				F5E8647C1A783DB60058E642 /* libs-build.sh */,
-				F5E8647D1A783DB60058E642 /* libs-clean.sh */,
 				F5E8647E1A783DB60058E642 /* nativeApp-build.sh */,
 				F5E8647F1A783DB60058E642 /* nativeApp-clean.sh */,
 				F5E864801A783DB60058E642 /* nativeApp-run.sh */,

@@ -17,17 +17,17 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-TARGET=NativeApp
+#TARGET=NativeApp
+APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+#export NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+#NATIVE_APP_PATH=$(pwd)
+#source ${MYOS_PATH}/sdk/libs-build.sh
 
-export NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-NATIVE_APP_PATH=$(pwd)
-source ${MYOS_PATH}/sdk/libs-build.sh
-
-echo "============================== Building ${NATIVE_APP_DIRECTORY} =============================="
-cd ${NATIVE_APP_PATH}
+echo "============================== Building ${APPLICATION_DIRECTORY} =============================="
+#cd ${NATIVE_APP_PATH}
 make || exit
 
 if [ ${BASE_OS} = "android" ]; then
-echo "============================== NDK build ${NATIVE_APP_DIRECTORY} =============================="
+echo "============================== NDK building ${APPLICATION_DIRECTORY} =============================="
 ndk-build || exit
 fi

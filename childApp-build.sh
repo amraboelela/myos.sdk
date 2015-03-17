@@ -15,13 +15,13 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/config.sh
+#source ${MYOS_PATH}/sdk/config.sh
 
-TARGET=ChildApp
+#TARGET=ChildApp
 
 APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-source ${MYOS_PATH}/sdk/libs-build.sh
+#source ${MYOS_PATH}/sdk/libs-build.sh
 
 echo "============================== Building ${APPLICATION_DIRECTORY} =============================="
-cd ${MYOS_PATH}/applications/${APPLICATION_DIRECTORY}
+#cd ${MYOS_PATH}/applications/${APPLICATION_DIRECTORY}
 make || exit
