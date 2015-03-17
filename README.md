@@ -18,4 +18,4 @@
          `~/myos/sdk$ vim config.sh`
  
 * For more info:
-[myos.frameworks.wiki](https://github.com/amraboelela/myos.frameworks/wiki)
+[myos.wiki](https://github.com/amraboelela/myos/wiki)
