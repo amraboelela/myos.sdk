@@ -17,7 +17,7 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 #NATIVE_APP_PATH=$(pwd)
 #source ${MYOS_PATH}/sdk/libs-clean.sh
 #cd ${NATIVE_APP_PATH}
@@ -26,7 +26,7 @@ echo "===== Cleaning ${APPLICATION_DIRECTORY} ================================="
 make clean
 
 if [ ${BASE_OS} = "android" ]; then
-echo "===== Native app clean ================================="
+#echo "===== Native app clean ================================="
 ndk-build clean
 ant clean
 fi
