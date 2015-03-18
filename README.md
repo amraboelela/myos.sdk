@@ -1,13 +1,6 @@
 ##myos.sdk
 
-* Needed by:
-  * [myos.libraries](https://github.com/amraboelela/myos.libraries)
-  * [myos.frameworks](https://github.com/amraboelela/myos.frameworks)
-  * [myos.examples](https://github.com/amraboelela/myos.examples)
-  * [myos.myapps](https://github.com/amraboelela/myos.myapps)
-  * [myos.applications](https://github.com/amraboelela/myos.applications)
-
-* Generate config.sh file:
+* You need to generate config.sh file as following:
 
   * Copy config.sh.CopyMe file
 
@@ -16,6 +9,13 @@
   * Edit config.sh file and choose the right values for your environment by commenting and uncommenting lines, then save
 
          `~/myos/sdk$ vim config.sh`
+         
+* myos.sdk needed by the following repositories:
+  * [myos.frameworks](https://github.com/amraboelela/myos.frameworks)
+  * [myos.libraries](https://github.com/amraboelela/myos.libraries)
+  * [myos.examples](https://github.com/amraboelela/myos.examples)
+  * [myos.myapps](https://github.com/amraboelela/myos.myapps)
+  * [myos.applications](https://github.com/amraboelela/myos.applications)
  
 * For more info:
 [myos.wiki](https://github.com/amraboelela/myos/wiki)
