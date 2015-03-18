@@ -19,7 +19,7 @@ OUTPUT=$(APP_NAME)
 CC=clang
 CXX=clang
 LD=clang
-CFLAGS+=-MMD -MP -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -pthread -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2 -I${MYOS_PATH}/frameworks
+CFLAGS+=-MMD -MP -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -pthread -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2 -I/usr/local/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
 
 LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib 
 LDLIBS+=-lobjc -lm -llcms -lX11 -lGL 
