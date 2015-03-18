@@ -62,9 +62,6 @@ $(ODIR)/%.o: %.S
 $(ODIR)/%.o: %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
-#$(_SLIBS):
-#$(_SLIBS)
-
 $(OUTPUT): $(OBJ)
 	$(LD) -shared $^ $(LDFLAGS) $(LDLIBS) -o $@
 
@@ -76,6 +73,7 @@ clean:
 	-rm NAObj/*.o
 	-rm NAObj/*.d
 	-rm $(OUTPUT)
+    -rm NA$(OUTPUT)
 
 copy:
 	sudo cp *.so /usr/local/lib/
