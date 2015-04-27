@@ -22,5 +22,8 @@ export BASE_OS=ubuntu
 
 export DEBUG_MODE=YES
 
-export GUEST_MODE=YES
+#in case you are in BASE_OS=android :
+#GUEST_MODE=YES means you are using the surface flinger of the Android system
+#otherwise if this line is commented, it means you are using your own surface management system
+#export GUEST_MODE=YES
 
