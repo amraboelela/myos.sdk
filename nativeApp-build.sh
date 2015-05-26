@@ -17,14 +17,9 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-#TARGET=NativeApp
 APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-#export NATIVE_APP_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-#NATIVE_APP_PATH=$(pwd)
-#source ${MYOS_PATH}/sdk/libs-build.sh
 
 echo "============================== Building ${APPLICATION_DIRECTORY} =============================="
-#cd ${NATIVE_APP_PATH}
 make || exit
 
 if [ ${BASE_OS} = "android" ]; then
