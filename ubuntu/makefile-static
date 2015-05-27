@@ -46,8 +46,6 @@ $(OUTPUT): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $^
 
 clean:
-	@echo
-	@echo "=== Cleaning $(LIB_NAME) ==="
 	-rm $(ODIR)/*.o
 	-rm $(ODIR)/*.d
 	-rm $(OUTPUT)

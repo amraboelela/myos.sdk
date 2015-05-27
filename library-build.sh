@@ -15,11 +15,6 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-export LIBRARY_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-
-LIBRARY_PATH=$(pwd)
-source ${LIBRARY_PATH}/config.sh
-
 if [ ${TARGET} = "All" ]; then
     export TARGET=NativeApp
     source ${MYOS_PATH}/sdk/library-make.sh

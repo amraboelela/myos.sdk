@@ -17,17 +17,15 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-APPLICATION_NAME=$(pwd | awk -F'/' '{print $NF}')
+export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 
-APPLICATION_PATH=$(pwd)
-source ${APPLICATION_PATH}/config.sh
+export SOURCE_CODE_PATH=$(pwd)
+source ${SOURCE_CODE_PATH}/config.sh
 
-echo "===== Cleaning ${APPLICATION_NAME} ================================="
+echo "===== Cleaning ${SOURCE_CODE_DIRECTORY} ================================="
 make clean
 
-if [ ${TARGET} = "NativeApp" ]; then
-if [ ${BASE_OS} = "android" ]; then
-ndk-build clean
-ant clean
-fi
+if  [ ${BASE_OS} = "android" ] && [ ! ${BUILD_TYPE} = "Library" ] && [ ${TARGET} = "NativeApp" ] ; then
+    ndk-build clean
+    ant clean
 fi
