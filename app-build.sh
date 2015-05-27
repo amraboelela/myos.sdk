@@ -15,10 +15,14 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/config.sh
+export APPLICATION_NAME=$(pwd | awk -F'/' '{print $NF}')
 
-if [ ${BUILD_TYPE} = "Library" ]; then
-    source ${MYOS_PATH}/sdk/library-build.sh
-else
-    source ${MYOS_PATH}/sdk/app-build.sh
+APPLICATION_PATH=$(pwd)
+source ${APPLICATION_PATH}/config.sh
+
+echo "============================== Building ${APPLICATION_NAME} =============================="
+make || exit
+if [ ${BASE_OS} = "android" ] && [ ${TARGET} = "NativeApp" ] ; then
+    echo "============================== NDK building ${APPLICATION_NAME} =============================="
+    ndk-build || exit
 fi
