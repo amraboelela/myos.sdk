@@ -489,11 +489,11 @@ private:
      * copy hash table (of type fIntervalPatterns).
      *
      * @param source   the source to copy from
-     * @param APP_TYPE   the APP_TYPE to copy to
+     * @param target   the target to copy to
      * @param status   output param set to success/failure code on exit
      * @internal ICU 4.0
      */
-    void copyHash(const Hashtable* source, Hashtable* APP_TYPE, UErrorCode& status);
+    void copyHash(const Hashtable* source, Hashtable* target, UErrorCode& status);
 
 
     // data members

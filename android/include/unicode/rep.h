@@ -109,17 +109,17 @@ public:
 
     /**
      * Copies characters in the range [<tt>start</tt>, <tt>limit</tt>) 
-     * into the UnicodeString <tt>APP_TYPE</tt>.
+     * into the UnicodeString <tt>target</tt>.
      * @param start offset of first character which will be copied
      * @param limit offset immediately following the last character to
      * be copied
-     * @param APP_TYPE UnicodeString into which to copy characters.
-     * @return A reference to <TT>APP_TYPE</TT>
+     * @param target UnicodeString into which to copy characters.
+     * @return A reference to <TT>target</TT>
      * @stable ICU 2.1
      */
     virtual void extractBetween(int32_t start,
                                 int32_t limit,
-                                UnicodeString& APP_TYPE) const = 0;
+                                UnicodeString& target) const = 0;
 
     /**
      * Replaces a substring of this object with the given text.  If the

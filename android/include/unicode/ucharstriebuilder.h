@@ -162,7 +162,7 @@ private:
     virtual int32_t writeElementUnits(int32_t i, int32_t unitIndex, int32_t length);
     virtual int32_t writeValueAndFinal(int32_t i, UBool isFinal);
     virtual int32_t writeValueAndType(UBool hasValue, int32_t value, int32_t node);
-    virtual int32_t writeDeltaTo(int32_t jumpAPP_TYPE);
+    virtual int32_t writeDeltaTo(int32_t jumpTarget);
 
     UnicodeString strings;
     UCharsTrieElement *elements;

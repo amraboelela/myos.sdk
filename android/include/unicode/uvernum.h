@@ -29,7 +29,7 @@
   *                    renaming macro, and copyright
   *
   * The following files need to be updated as well, which can be done
-  *  by running the UNIX makefile APP_TYPE 'update-windows-makefiles' in icu/source.
+  *  by running the UNIX makefile target 'update-windows-makefiles' in icu/source.
   *
   *
   * source/common/common.vcproj - update 'Output file name' on the link tab so

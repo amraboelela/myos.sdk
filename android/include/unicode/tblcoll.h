@@ -263,32 +263,32 @@ public:
     * different strings. Returns information about whether a string is less 
     * than, greater than or equal to another string.
     * @param source the source string to be compared with.
-    * @param APP_TYPE the string that is to be compared with the source string.
+    * @param target the string that is to be compared with the source string.
     * @param status possible error code
     * @return Returns an enum value. UCOL_GREATER if source is greater
-    * than APP_TYPE; UCOL_EQUAL if source is equal to APP_TYPE; UCOL_LESS if source is less
-    * than APP_TYPE
+    * than target; UCOL_EQUAL if source is equal to target; UCOL_LESS if source is less
+    * than target
     * @stable ICU 2.6
     **/
     virtual UCollationResult compare(const UnicodeString& source,
-                                      const UnicodeString& APP_TYPE,
+                                      const UnicodeString& target,
                                       UErrorCode &status) const;
 
     /**
     * Does the same thing as compare but limits the comparison to a specified 
     * length
     * @param source the source string to be compared with.
-    * @param APP_TYPE the string that is to be compared with the source string.
+    * @param target the string that is to be compared with the source string.
     * @param length the length the comparison is limited to
     * @param status possible error code
     * @return Returns an enum value. UCOL_GREATER if source (up to the specified 
-    *         length) is greater than APP_TYPE; UCOL_EQUAL if source (up to specified 
-    *         length) is equal to APP_TYPE; UCOL_LESS if source (up to the specified 
-    *         length) is less  than APP_TYPE.
+    *         length) is greater than target; UCOL_EQUAL if source (up to specified 
+    *         length) is equal to target; UCOL_LESS if source (up to the specified 
+    *         length) is less  than target.
     * @stable ICU 2.6
     */
     virtual UCollationResult compare(const UnicodeString& source,
-                                      const UnicodeString& APP_TYPE,
+                                      const UnicodeString& target,
                                       int32_t length,
                                       UErrorCode &status) const;
 
@@ -299,17 +299,17 @@ public:
     * @param source the source string array to be compared with.
     * @param sourceLength the length of the source string array.  If this value
     *        is equal to -1, the string array is null-terminated.
-    * @param APP_TYPE the string that is to be compared with the source string.
-    * @param APP_TYPELength the length of the APP_TYPE string array.  If this value
+    * @param target the string that is to be compared with the source string.
+    * @param targetLength the length of the target string array.  If this value
     *        is equal to -1, the string array is null-terminated.
     * @param status possible error code
     * @return Returns an enum value. UCOL_GREATER if source is greater
-    * than APP_TYPE; UCOL_EQUAL if source is equal to APP_TYPE; UCOL_LESS if source is less
-    * than APP_TYPE
+    * than target; UCOL_EQUAL if source is equal to target; UCOL_LESS if source is less
+    * than target
     * @stable ICU 2.6
     */
     virtual UCollationResult compare(const UChar* source, int32_t sourceLength,
-                                      const UChar* APP_TYPE, int32_t APP_TYPELength,
+                                      const UChar* target, int32_t targetLength,
                                       UErrorCode &status) const;
 
     /**
@@ -318,7 +318,7 @@ public:
      * the second one.
      * This version takes UCharIterator input.
      * @param sIter the first ("source") string iterator
-     * @param tIter the second ("APP_TYPE") string iterator
+     * @param tIter the second ("target") string iterator
      * @param status ICU status
      * @return UCOL_LESS, UCOL_EQUAL or UCOL_GREATER
      * @stable ICU 4.2

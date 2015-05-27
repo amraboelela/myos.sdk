@@ -26,7 +26,7 @@ if [ ${BASE_OS} = "android" ]; then
 
     echo "============================ Running ${APPLICATION_NAME} ================================="
     adb shell input keyevent 3
-    android update project -p . -s --APP_TYPE 1;
+    android update project -p . -s --target 1;
     ant debug install
     ant run
 else

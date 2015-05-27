@@ -677,7 +677,7 @@ private:
     Locale fLocale;
 
     /* Stores the region (could be implicit default) */ 
-    char fAPP_TYPERegion[ULOC_COUNTRY_CAPACITY];
+    char fTargetRegion[ULOC_COUNTRY_CAPACITY];
 
     /* TimeZoneNames object used by this formatter */
     TimeZoneNames* fTimeZoneNames;
@@ -850,7 +850,7 @@ private:
     /**
      * Appends localized digits to the buffer.
      * This code assumes that the input number is 0 - 59
-     * @param buf the APP_TYPE buffer
+     * @param buf the target buffer
      * @param n the integer number
      * @param minDigits the minimum digits width
      */

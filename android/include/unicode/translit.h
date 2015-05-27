@@ -337,7 +337,7 @@ protected:
 
     /**
      * Create a transliterator from a basic ID.  This is an ID
-     * containing only the forward direction source, APP_TYPE, and
+     * containing only the forward direction source, target, and
      * variant.
      * @param id a basic ID of the form S-T or S-T/V.
      * @param canon canonical ID to assign to the object, or
@@ -923,7 +923,7 @@ public:
      * use by tests, tools, or utilities.
      * @param result receives result set; previous contents lost
      * @return a reference to result
-     * @see #getAPP_TYPESet
+     * @see #getTargetSet
      * @see #handleGetSourceSet
      * @stable ICU 2.4
      */
@@ -940,7 +940,7 @@ public:
      * newly-created object.
      * @param result receives result set; previous contents lost
      * @see #getSourceSet
-     * @see #getAPP_TYPESet
+     * @see #getTargetSet
      * @stable ICU 2.4
      */
     virtual void handleGetSourceSet(UnicodeSet& result) const;
@@ -955,10 +955,10 @@ public:
      * meta-information.
      * @param result receives result set; previous contents lost
      * @return a reference to result
-     * @see #getAPP_TYPESet
+     * @see #getTargetSet
      * @stable ICU 2.4
      */
-    virtual UnicodeSet& getAPP_TYPESet(UnicodeSet& result) const;
+    virtual UnicodeSet& getTargetSet(UnicodeSet& result) const;
 
 public:
 
@@ -1040,7 +1040,7 @@ protected:
     static void _registerAlias(const UnicodeString& aliasID, const UnicodeString& realID);
 
     /**
-     * Register two APP_TYPEs as being inverses of one another.  For
+     * Register two targets as being inverses of one another.  For
      * example, calling registerSpecialInverse("NFC", "NFD", true) causes
      * Transliterator to form the following inverse relationships:
      *
@@ -1059,21 +1059,21 @@ protected:
      * <p>The relevant IDs must still be registered separately as
      * factories or classes.
      *
-     * <p>Only the APP_TYPEs are specified.  Special inverses always
-     * have the form Any-APP_TYPE1 <=> Any-APP_TYPE2.  The APP_TYPE should
+     * <p>Only the targets are specified.  Special inverses always
+     * have the form Any-Target1 <=> Any-Target2.  The target should
      * have canonical casing (the casing desired to be produced when
      * an inverse is formed) and should contain no whitespace or other
      * extraneous characters.
      *
-     * @param APP_TYPE the APP_TYPE against which to register the inverse
-     * @param inverseAPP_TYPE the inverse of APP_TYPE, that is
-     * Any-APP_TYPE.getInverse() => Any-inverseAPP_TYPE
+     * @param target the target against which to register the inverse
+     * @param inverseTarget the inverse of target, that is
+     * Any-target.getInverse() => Any-inverseTarget
      * @param bidirectional if true, register the reverse relation
-     * as well, that is, Any-inverseAPP_TYPE.getInverse() => Any-APP_TYPE
+     * as well, that is, Any-inverseTarget.getInverse() => Any-target
      * @internal
      */
-    static void _registerSpecialInverse(const UnicodeString& APP_TYPE,
-                                        const UnicodeString& inverseAPP_TYPE,
+    static void _registerSpecialInverse(const UnicodeString& target,
+                                        const UnicodeString& inverseTarget,
                                         UBool bidirectional);
 #endif  /* U_HIDE_INTERNAL_API */
 
@@ -1127,56 +1127,56 @@ public:
                                              UnicodeString& result);
 
     /**
-     * Return the number of registered APP_TYPE specifiers for a given
+     * Return the number of registered target specifiers for a given
      * source specifier.
      * @param source the given source specifier.
-     * @return the number of registered APP_TYPE specifiers for a given
+     * @return the number of registered target specifiers for a given
      *         source specifier.
      * @stable ICU 2.0
      */
-    static int32_t U_EXPORT2 countAvailableAPP_TYPEs(const UnicodeString& source);
+    static int32_t U_EXPORT2 countAvailableTargets(const UnicodeString& source);
 
     /**
-     * Return a registered APP_TYPE specifier for a given source.
+     * Return a registered target specifier for a given source.
      * @param index which specifier to return, from 0 to n-1, where
-     * n = countAvailableAPP_TYPEs(source)
+     * n = countAvailableTargets(source)
      * @param source the source specifier
-     * @param result fill-in paramter to receive the APP_TYPE specifier.
+     * @param result fill-in paramter to receive the target specifier.
      * If source is invalid or if index is out of range, result will
      * be empty.
      * @return reference to result
      * @stable ICU 2.0
      */
-    static UnicodeString& U_EXPORT2 getAvailableAPP_TYPE(int32_t index,
+    static UnicodeString& U_EXPORT2 getAvailableTarget(int32_t index,
                                              const UnicodeString& source,
                                              UnicodeString& result);
 
     /**
      * Return the number of registered variant specifiers for a given
-     * source-APP_TYPE pair.
+     * source-target pair.
      * @param source    the source specifiers.
-     * @param APP_TYPE    the APP_TYPE specifiers.
+     * @param target    the target specifiers.
      * @stable ICU 2.0
      */
     static int32_t U_EXPORT2 countAvailableVariants(const UnicodeString& source,
-                                          const UnicodeString& APP_TYPE);
+                                          const UnicodeString& target);
 
     /**
-     * Return a registered variant specifier for a given source-APP_TYPE
+     * Return a registered variant specifier for a given source-target
      * pair.
      * @param index which specifier to return, from 0 to n-1, where
-     * n = countAvailableVariants(source, APP_TYPE)
+     * n = countAvailableVariants(source, target)
      * @param source the source specifier
-     * @param APP_TYPE the APP_TYPE specifier
+     * @param target the target specifier
      * @param result fill-in paramter to receive the variant
-     * specifier.  If source is invalid or if APP_TYPE is invalid or if
+     * specifier.  If source is invalid or if target is invalid or if
      * index is out of range, result will be empty.
      * @return reference to result
      * @stable ICU 2.0
      */
     static UnicodeString& U_EXPORT2 getAvailableVariant(int32_t index,
                                               const UnicodeString& source,
-                                              const UnicodeString& APP_TYPE,
+                                              const UnicodeString& target,
                                               UnicodeString& result);
 
 protected:
@@ -1199,13 +1199,13 @@ protected:
      * Non-mutexed internal method
      * @internal
      */
-    static int32_t _countAvailableAPP_TYPEs(const UnicodeString& source);
+    static int32_t _countAvailableTargets(const UnicodeString& source);
 
     /**
      * Non-mutexed internal method
      * @internal
      */
-    static UnicodeString& _getAvailableAPP_TYPE(int32_t index,
+    static UnicodeString& _getAvailableTarget(int32_t index,
                                               const UnicodeString& source,
                                               UnicodeString& result);
 
@@ -1214,7 +1214,7 @@ protected:
      * @internal
      */
     static int32_t _countAvailableVariants(const UnicodeString& source,
-                                           const UnicodeString& APP_TYPE);
+                                           const UnicodeString& target);
 
     /**
      * Non-mutexed internal method
@@ -1222,7 +1222,7 @@ protected:
      */
     static UnicodeString& _getAvailableVariant(int32_t index,
                                                const UnicodeString& source,
-                                               const UnicodeString& APP_TYPE,
+                                               const UnicodeString& target,
                                                UnicodeString& result);
 #endif  /* U_HIDE_INTERNAL_API */
 

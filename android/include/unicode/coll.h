@@ -214,12 +214,12 @@ public:
     };
 
     /**
-     * LESS is returned if source string is compared to be less than APP_TYPE
+     * LESS is returned if source string is compared to be less than target
      * string in the compare() method.
-     * EQUAL is returned if source string is compared to be equal to APP_TYPE
+     * EQUAL is returned if source string is compared to be equal to target
      * string in the compare() method.
      * GREATER is returned if source string is compared to be greater than
-     * APP_TYPE string in the compare() method.
+     * target string in the compare() method.
      * @see Collator#compare
      * @deprecated ICU 2.6. Use C enum UCollationResult defined in ucol.h
      */
@@ -354,62 +354,62 @@ public:
      * different strings. Returns information about whether a string is less
      * than, greater than or equal to another string.
      * @param source the source string to be compared with.
-     * @param APP_TYPE the string that is to be compared with the source string.
+     * @param target the string that is to be compared with the source string.
      * @return Returns a byte value. GREATER if source is greater
-     * than APP_TYPE; EQUAL if source is equal to APP_TYPE; LESS if source is less
-     * than APP_TYPE
+     * than target; EQUAL if source is equal to target; LESS if source is less
+     * than target
      * @deprecated ICU 2.6 use the overload with UErrorCode &
      */
     virtual EComparisonResult compare(const UnicodeString& source,
-                                      const UnicodeString& APP_TYPE) const;
+                                      const UnicodeString& target) const;
 
     /**
      * The comparison function compares the character data stored in two
      * different strings. Returns information about whether a string is less
      * than, greater than or equal to another string.
      * @param source the source string to be compared with.
-     * @param APP_TYPE the string that is to be compared with the source string.
+     * @param target the string that is to be compared with the source string.
      * @param status possible error code
      * @return Returns an enum value. UCOL_GREATER if source is greater
-     * than APP_TYPE; UCOL_EQUAL if source is equal to APP_TYPE; UCOL_LESS if source is less
-     * than APP_TYPE
+     * than target; UCOL_EQUAL if source is equal to target; UCOL_LESS if source is less
+     * than target
      * @stable ICU 2.6
      */
     virtual UCollationResult compare(const UnicodeString& source,
-                                      const UnicodeString& APP_TYPE,
+                                      const UnicodeString& target,
                                       UErrorCode &status) const = 0;
 
     /**
      * Does the same thing as compare but limits the comparison to a specified
      * length
      * @param source the source string to be compared with.
-     * @param APP_TYPE the string that is to be compared with the source string.
+     * @param target the string that is to be compared with the source string.
      * @param length the length the comparison is limited to
      * @return Returns a byte value. GREATER if source (up to the specified
-     *         length) is greater than APP_TYPE; EQUAL if source (up to specified
-     *         length) is equal to APP_TYPE; LESS if source (up to the specified
-     *         length) is less  than APP_TYPE.
+     *         length) is greater than target; EQUAL if source (up to specified
+     *         length) is equal to target; LESS if source (up to the specified
+     *         length) is less  than target.
      * @deprecated ICU 2.6 use the overload with UErrorCode &
      */
     virtual EComparisonResult compare(const UnicodeString& source,
-                                      const UnicodeString& APP_TYPE,
+                                      const UnicodeString& target,
                                       int32_t length) const;
 
     /**
      * Does the same thing as compare but limits the comparison to a specified
      * length
      * @param source the source string to be compared with.
-     * @param APP_TYPE the string that is to be compared with the source string.
+     * @param target the string that is to be compared with the source string.
      * @param length the length the comparison is limited to
      * @param status possible error code
      * @return Returns an enum value. UCOL_GREATER if source (up to the specified
-     *         length) is greater than APP_TYPE; UCOL_EQUAL if source (up to specified
-     *         length) is equal to APP_TYPE; UCOL_LESS if source (up to the specified
-     *         length) is less  than APP_TYPE.
+     *         length) is greater than target; UCOL_EQUAL if source (up to specified
+     *         length) is equal to target; UCOL_LESS if source (up to the specified
+     *         length) is less  than target.
      * @stable ICU 2.6
      */
     virtual UCollationResult compare(const UnicodeString& source,
-                                      const UnicodeString& APP_TYPE,
+                                      const UnicodeString& target,
                                       int32_t length,
                                       UErrorCode &status) const = 0;
 
@@ -438,16 +438,16 @@ public:
      * @param source the source string array to be compared with.
      * @param sourceLength the length of the source string array.  If this value
      *        is equal to -1, the string array is null-terminated.
-     * @param APP_TYPE the string that is to be compared with the source string.
-     * @param APP_TYPELength the length of the APP_TYPE string array.  If this value
+     * @param target the string that is to be compared with the source string.
+     * @param targetLength the length of the target string array.  If this value
      *        is equal to -1, the string array is null-terminated.
-     * @return Returns a byte value. GREATER if source is greater than APP_TYPE;
-     *         EQUAL if source is equal to APP_TYPE; LESS if source is less than
-     *         APP_TYPE
+     * @return Returns a byte value. GREATER if source is greater than target;
+     *         EQUAL if source is equal to target; LESS if source is less than
+     *         target
      * @deprecated ICU 2.6 use the overload with UErrorCode &
      */
     virtual EComparisonResult compare(const UChar* source, int32_t sourceLength,
-                                      const UChar* APP_TYPE, int32_t APP_TYPELength)
+                                      const UChar* target, int32_t targetLength)
                                       const;
 
     /**
@@ -457,17 +457,17 @@ public:
      * @param source the source string array to be compared with.
      * @param sourceLength the length of the source string array.  If this value
      *        is equal to -1, the string array is null-terminated.
-     * @param APP_TYPE the string that is to be compared with the source string.
-     * @param APP_TYPELength the length of the APP_TYPE string array.  If this value
+     * @param target the string that is to be compared with the source string.
+     * @param targetLength the length of the target string array.  If this value
      *        is equal to -1, the string array is null-terminated.
      * @param status possible error code
      * @return Returns an enum value. UCOL_GREATER if source is greater
-     * than APP_TYPE; UCOL_EQUAL if source is equal to APP_TYPE; UCOL_LESS if source is less
-     * than APP_TYPE
+     * than target; UCOL_EQUAL if source is equal to target; UCOL_LESS if source is less
+     * than target
      * @stable ICU 2.6
      */
     virtual UCollationResult compare(const UChar* source, int32_t sourceLength,
-                                      const UChar* APP_TYPE, int32_t APP_TYPELength,
+                                      const UChar* target, int32_t targetLength,
                                       UErrorCode &status) const = 0;
 
     /**
@@ -476,7 +476,7 @@ public:
      * the second one.
      * This version takes UCharIterator input.
      * @param sIter the first ("source") string iterator
-     * @param tIter the second ("APP_TYPE") string iterator
+     * @param tIter the second ("target") string iterator
      * @param status ICU status
      * @return UCOL_LESS, UCOL_EQUAL or UCOL_GREATER
      * @stable ICU 4.2
@@ -493,13 +493,13 @@ public:
      * Note that a StringPiece can be implicitly constructed
      * from a std::string or a NUL-terminated const char * string.
      * @param source the first UTF-8 string
-     * @param APP_TYPE the second UTF-8 string
+     * @param target the second UTF-8 string
      * @param status ICU status
      * @return UCOL_LESS, UCOL_EQUAL or UCOL_GREATER
      * @stable ICU 4.2
      */
     virtual UCollationResult compareUTF8(const StringPiece &source,
-                                         const StringPiece &APP_TYPE,
+                                         const StringPiece &target,
                                          UErrorCode &status) const;
 
     /**
@@ -564,37 +564,37 @@ public:
     /**
      * Convenience method for comparing two strings based on the collation rules.
      * @param source the source string to be compared with.
-     * @param APP_TYPE the APP_TYPE string to be compared with.
+     * @param target the target string to be compared with.
      * @return true if the first string is greater than the second one,
      *         according to the collation rules. false, otherwise.
      * @see Collator#compare
      * @stable ICU 2.0
      */
-    UBool greater(const UnicodeString& source, const UnicodeString& APP_TYPE)
+    UBool greater(const UnicodeString& source, const UnicodeString& target)
                   const;
 
     /**
      * Convenience method for comparing two strings based on the collation rules.
      * @param source the source string to be compared with.
-     * @param APP_TYPE the APP_TYPE string to be compared with.
+     * @param target the target string to be compared with.
      * @return true if the first string is greater than or equal to the second
      *         one, according to the collation rules. false, otherwise.
      * @see Collator#compare
      * @stable ICU 2.0
      */
     UBool greaterOrEqual(const UnicodeString& source,
-                         const UnicodeString& APP_TYPE) const;
+                         const UnicodeString& target) const;
 
     /**
      * Convenience method for comparing two strings based on the collation rules.
      * @param source the source string to be compared with.
-     * @param APP_TYPE the APP_TYPE string to be compared with.
+     * @param target the target string to be compared with.
      * @return true if the strings are equal according to the collation rules.
      *         false, otherwise.
      * @see Collator#compare
      * @stable ICU 2.0
      */
-    UBool equals(const UnicodeString& source, const UnicodeString& APP_TYPE) const;
+    UBool equals(const UnicodeString& source, const UnicodeString& target) const;
 
     /**
      * Determines the minimum strength that will be used in comparison or

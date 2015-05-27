@@ -218,10 +218,10 @@ private:
      * copy hash table
      *
      * @param source   the source to copy from
-     * @param APP_TYPE   the APP_TYPE to copy to
+     * @param target   the target to copy to
      * @param status   error code
      */
-    void copyHash(const Hashtable* source, Hashtable* APP_TYPE, UErrorCode& status);
+    void copyHash(const Hashtable* source, Hashtable* target, UErrorCode& status);
 
     //-------------------- private data member ---------------------
     // map from plural count to currency plural pattern, for example

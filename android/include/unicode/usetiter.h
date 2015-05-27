@@ -109,7 +109,7 @@ class U_COMMON_API UnicodeSetIterator : public UObject {
     /**
      * Create an iterator over nothing.  <tt>next()</tt> and
      * <tt>nextRange()</tt> return false. This is a convenience
-     * constructor allowing the APP_TYPE to be set later.
+     * constructor allowing the target to be set later.
      * @stable ICU 2.4
      */
     UnicodeSetIterator();

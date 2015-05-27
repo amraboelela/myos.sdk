@@ -77,16 +77,16 @@ typedef void* UTransliterator;
 typedef enum UTransDirection {
     
     /**
-     * UTRANS_FORWARD means from &lt;source&gt; to &lt;APP_TYPE&gt; for a
-     * transliterator with ID &lt;source&gt;-&lt;APP_TYPE&gt;.  For a transliterator
+     * UTRANS_FORWARD means from &lt;source&gt; to &lt;target&gt; for a
+     * transliterator with ID &lt;source&gt;-&lt;target&gt;.  For a transliterator
      * opened using a rule, it means forward direction rules, e.g.,
      * "A > B".
      */
     UTRANS_FORWARD,
 
     /**
-     * UTRANS_REVERSE means from &lt;APP_TYPE&gt; to &lt;source&gt; for a
-     * transliterator with ID &lt;source&gt;-&lt;APP_TYPE&gt;.  For a transliterator
+     * UTRANS_REVERSE means from &lt;target&gt; to &lt;source&gt; for a
+     * transliterator with ID &lt;source&gt;-&lt;target&gt;.  For a transliterator
      * opened using a rule, it means reverse direction rules, e.g.,
      * "A < B".
      */

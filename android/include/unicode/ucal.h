@@ -1415,13 +1415,13 @@ U_STABLE UBool U_EXPORT2
 ucal_isWeekend(const UCalendar *cal, UDate date, UErrorCode *status);
 
 /**
- * Return the difference between the APP_TYPE time and the time this calendar object is currently set to.
- * If the APP_TYPE time is after the current calendar setting, the the returned value will be positive.
+ * Return the difference between the target time and the time this calendar object is currently set to.
+ * If the target time is after the current calendar setting, the the returned value will be positive.
  * The field parameter specifies the units of the return value. For example, if field is UCAL_MONTH
- * and ucal_getFieldDifference returns 3, then the APP_TYPE time is 3 to less than 4 months after the
+ * and ucal_getFieldDifference returns 3, then the target time is 3 to less than 4 months after the
  * current calendar setting.
  *
- * As a side effect of this call, this calendar is advanced toward APP_TYPE by the given amount. That is,
+ * As a side effect of this call, this calendar is advanced toward target by the given amount. That is,
  * calling this function has the side effect of calling ucal_add on this calendar with the specified
  * field and an amount equal to the return value from this function.
  *
@@ -1429,7 +1429,7 @@ ucal_isWeekend(const UCalendar *cal, UDate date, UErrorCode *status);
  * with progressively smaller fields.
  * 
  * @param cal The UCalendar to compare and update.
- * @param APP_TYPE The APP_TYPE date to compare to the current calendar setting.
+ * @param target The target date to compare to the current calendar setting.
  * @param field The field to compare; one of UCAL_ERA, UCAL_YEAR, UCAL_MONTH,
  * UCAL_WEEK_OF_YEAR, UCAL_WEEK_OF_MONTH, UCAL_DATE, UCAL_DAY_OF_YEAR, UCAL_DAY_OF_WEEK,
  * UCAL_DAY_OF_WEEK_IN_MONTH, UCAL_AM_PM, UCAL_HOUR, UCAL_HOUR_OF_DAY, UCAL_MINUTE, UCAL_SECOND,
@@ -1440,7 +1440,7 @@ ucal_isWeekend(const UCalendar *cal, UDate date, UErrorCode *status);
  */
 U_STABLE int32_t U_EXPORT2 
 ucal_getFieldDifference(UCalendar* cal,
-                        UDate APP_TYPE,
+                        UDate target,
                         UCalendarDateFields field,
                         UErrorCode* status);
 

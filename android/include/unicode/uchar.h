@@ -293,7 +293,7 @@ typedef enum UProperty {
         closure under normalization forms NFKC and NFKD. @stable ICU 2.1 */
     UCHAR_XID_START=33,
     /** Binary property Case_Sensitive. Either the source of a case
-        mapping or _in_ the APP_TYPE of a case mapping. Not the same as
+        mapping or _in_ the target of a case mapping. Not the same as
         the general category Cased_Letter. @stable ICU 2.6 */
    UCHAR_CASE_SENSITIVE=34,
     /** Binary property STerm (new in Unicode 4.0.1).

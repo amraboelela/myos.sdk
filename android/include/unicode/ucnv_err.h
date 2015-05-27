@@ -195,8 +195,8 @@ typedef struct {
     UConverter *converter;      /**< Pointer to the converter that is opened and to which this struct is passed as an argument. @stable ICU 2.0  */
     const UChar *source;        /**< Pointer to the source source buffer. @stable ICU 2.0    */
     const UChar *sourceLimit;   /**< Pointer to the limit (end + 1) of source buffer. @stable ICU 2.0    */
-    char *APP_TYPE;               /**< Pointer to the APP_TYPE buffer. @stable ICU 2.0    */
-    const char *APP_TYPELimit;    /**< Pointer to the limit (end + 1) of APP_TYPE buffer. @stable ICU 2.0     */
+    char *target;               /**< Pointer to the target buffer. @stable ICU 2.0    */
+    const char *targetLimit;    /**< Pointer to the limit (end + 1) of target buffer. @stable ICU 2.0     */
     int32_t *offsets;           /**< Pointer to the buffer that recieves the offsets. *offset = blah ; offset++;. @stable ICU 2.0  */
 } UConverterFromUnicodeArgs;
 
@@ -211,8 +211,8 @@ typedef struct {
     UConverter *converter;      /**< Pointer to the converter that is opened and to which this struct is passed as an argument. @stable ICU 2.0 */
     const char *source;         /**< Pointer to the source source buffer. @stable ICU 2.0    */
     const char *sourceLimit;    /**< Pointer to the limit (end + 1) of source buffer. @stable ICU 2.0    */
-    UChar *APP_TYPE;              /**< Pointer to the APP_TYPE buffer. @stable ICU 2.0    */
-    const UChar *APP_TYPELimit;   /**< Pointer to the limit (end + 1) of APP_TYPE buffer. @stable ICU 2.0     */
+    UChar *target;              /**< Pointer to the target buffer. @stable ICU 2.0    */
+    const UChar *targetLimit;   /**< Pointer to the limit (end + 1) of target buffer. @stable ICU 2.0     */
     int32_t *offsets;           /**< Pointer to the buffer that recieves the offsets. *offset = blah ; offset++;. @stable ICU 2.0  */
 } UConverterToUnicodeArgs;
 

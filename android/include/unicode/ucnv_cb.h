@@ -32,7 +32,7 @@
  * 
  * For example, if you call ucnv_cbfromUWriteBytes to write data out 
  * to the output codepage, it may return U_BUFFER_OVERFLOW_ERROR if 
- * the data did not fit in the APP_TYPE. But this isn't a failing error, 
+ * the data did not fit in the target. But this isn't a failing error, 
  * in fact, ucnv_cbfromUWriteBytes may be called AGAIN with the error
  * status still U_BUFFER_OVERFLOW_ERROR to attempt to write further bytes,
  * which will also go into the internal overflow buffers.
@@ -43,13 +43,13 @@
  * 'A' will be written out correctly, but
  * The FromU Callback will be called on an unassigned character for 'B'.
  * At this point, this is the state of the world:
- *    APP_TYPE:    A [..]     [points after A]
+ *    Target:    A [..]     [points after A]
  *    Source:  A B [C] D    [points to C - B has been consumed]
  *             0 1  2  3 
  *    codePoint = "B"       [the unassigned codepoint] 
  * 
  * Now, suppose a callback wants to write the substitution character '?' to
- * the APP_TYPE. It calls ucnv_cbFromUWriteBytes() to write the ?. 
+ * the target. It calls ucnv_cbFromUWriteBytes() to write the ?. 
  * It should pass ZERO as the offset, because the offset as far as the 
  * callback is concerned is relative to the SOURCE pointer [which points 
  * before 'C'.]  If the callback goes into the args and consumes 'C' also,
@@ -70,14 +70,14 @@
 
 /**
  * ONLY used by FromU callback functions.
- * Writes out the specified byte output bytes to the APP_TYPE byte buffer or to converter internal buffers.
+ * Writes out the specified byte output bytes to the target byte buffer or to converter internal buffers.
  *
  * @param args callback fromUnicode arguments
  * @param source source bytes to write
  * @param length length of bytes to write
  * @param offsetIndex the relative offset index from callback.
  * @param err error status. If <TT>U_BUFFER_OVERFLOW</TT> is returned, then U_BUFFER_OVERFLOW <STRONG>must</STRONG> 
- * be returned to the user, because it means that not all data could be written into the APP_TYPE buffer, and some is 
+ * be returned to the user, because it means that not all data could be written into the target buffer, and some is 
  * in the converter error buffer.
  * @see ucnv_cbFromUWriteSub
  * @stable ICU 2.0
@@ -92,12 +92,12 @@ ucnv_cbFromUWriteBytes (UConverterFromUnicodeArgs *args,
 /**
  * ONLY used by FromU callback functions.  
  * This function will write out the correct substitution character sequence 
- * to the APP_TYPE.
+ * to the target.
  *
  * @param args callback fromUnicode arguments
  * @param offsetIndex the relative offset index from the current source pointer to be used
  * @param err error status. If <TT>U_BUFFER_OVERFLOW</TT> is returned, then U_BUFFER_OVERFLOW <STRONG>must</STRONG> 
- * be returned to the user, because it means that not all data could be written into the APP_TYPE buffer, and some is 
+ * be returned to the user, because it means that not all data could be written into the target buffer, and some is 
  * in the converter error buffer.
  * @see ucnv_cbFromUWriteBytes
  * @stable ICU 2.0
@@ -109,7 +109,7 @@ ucnv_cbFromUWriteSub (UConverterFromUnicodeArgs *args,
 
 /**
  * ONLY used by fromU callback functions.  
- * This function will write out the error character(s) to the APP_TYPE UChar buffer.
+ * This function will write out the error character(s) to the target UChar buffer.
  *
  * @param args callback fromUnicode arguments
  * @param source pointer to pointer to first UChar to write [on exit: 1 after last UChar processed]
@@ -127,7 +127,7 @@ U_STABLE void U_EXPORT2 ucnv_cbFromUWriteUChars(UConverterFromUnicodeArgs *args,
 
 /**
  * ONLY used by ToU callback functions.
- *  This function will write out the specified characters to the APP_TYPE 
+ *  This function will write out the specified characters to the target 
  * UChar buffer.
  *
  * @param args callback toUnicode arguments
