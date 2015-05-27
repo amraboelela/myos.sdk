@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myosbuild.sh
+source ${MYOS_PATH}/sdk/myosbuild
 
 if [ ${BASE_OS} = "android" ]; then
     PARAM=x$1

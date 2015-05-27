@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myosbuild.sh
+source ${MYOS_PATH}/sdk/myosbuild
 
 echo "============================== Building ${APPLICATION_NAME} =============================="
 make || exit
