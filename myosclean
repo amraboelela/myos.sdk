@@ -17,12 +17,17 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+APPLICATION_NAME=$(pwd | awk -F'/' '{print $NF}')
 
-echo "============================== Building ${APPLICATION_DIRECTORY} =============================="
-make || exit
+APPLICATION_PATH=$(pwd)
+source ${APPLICATION_PATH}/config.sh
 
+echo "===== Cleaning ${APPLICATION_NAME} ================================="
+make clean
+
+if [ ${TARGET} = "NativeApp" ]; then
 if [ ${BASE_OS} = "android" ]; then
-echo "============================== NDK building ${APPLICATION_DIRECTORY} =============================="
-ndk-build || exit
+ndk-build clean
+ant clean
+fi
 fi

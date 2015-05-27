@@ -15,11 +15,13 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/config.sh
+# Copy this file to config.sh When you are in DEBUG mode
+ 
+export BASE_OS=android
+#export BASE_OS=ubuntu
 
-APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+#in case you are in BASE_OS=android :
+#GUEST_MODE=YES means you are using the surface flinger of the Android system
+#otherwise if this line is commented, it means you are using your own surface management system
+#export GUEST_MODE=YES
 
-#source ${MYOS_PATH}/sdk/libs-clean.sh
-#cd ${MYOS_PATH}/applications/${APPLICATION_DIRECTORY}
-echo "===== Cleaning ${APPLICATION_DIRECTORY} ================================="
-make clean

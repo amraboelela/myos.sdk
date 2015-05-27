@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/nativeApp-build.sh
+source ${MYOS_PATH}/sdk/myosbuild.sh
 
 if [ ${BASE_OS} = "android" ]; then
     PARAM=x$1
@@ -24,12 +24,12 @@ if [ ${BASE_OS} = "android" ]; then
         ant uninstall
     fi
 
-    echo "============================ Running ${APPLICATION_DIRECTORY} ================================="
+    echo "============================ Running ${APPLICATION_NAME} ================================="
     adb shell input keyevent 3
     android update project -p . -s --target 1;
     ant debug install
     ant run
 else
-    echo "============================ Running ${APPLICATION_DIRECTORY} ================================="
-    ./${APPLICATION_DIRECTORY}
+    echo "============================ Running ${APPLICATION_NAME} ================================="
+    ./${APPLICATION_NAME}
 fi

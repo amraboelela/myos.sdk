@@ -15,13 +15,19 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-#source ${MYOS_PATH}/sdk/config.sh
+source ${MYOS_PATH}/sdk/config.sh
 
-#TARGET=ChildApp
+export APPLICATION_NAME=$(pwd | awk -F'/' '{print $NF}')
 
-APPLICATION_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-#source ${MYOS_PATH}/sdk/libs-build.sh
+APPLICATION_PATH=$(pwd)
+source ${APPLICATION_PATH}/config.sh
 
-echo "============================== Building ${APPLICATION_DIRECTORY} =============================="
-#cd ${MYOS_PATH}/applications/${APPLICATION_DIRECTORY}
+echo "============================== Building ${APPLICATION_NAME} =============================="
 make || exit
+
+if [ ${TARGET} = "NativeApp" ]; then
+    if [ ${BASE_OS} = "android" ]; then
+        echo "============================== NDK building ${APPLICATION_NAME} =============================="
+        ndk-build || exit
+    fi
+fi

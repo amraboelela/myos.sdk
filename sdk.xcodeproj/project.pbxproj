@@ -8,16 +8,16 @@
 
 /* Begin PBXFileReference section */
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		F5702A4E1A744B74008D3491 /* config.sh.CopyMe */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.CopyMe; sourceTree = "<group>"; };
+		F51FCC6F1B153A3200C182B0 /* myosbuild */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosbuild; sourceTree = "<group>"; };
+		F51FCC701B153A3200C182B0 /* myosrun */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosrun; sourceTree = "<group>"; };
+		F51FCC711B153A3200C182B0 /* myosclean */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosclean; sourceTree = "<group>"; };
+		F51FCC721B153A3200C182B0 /* myosinstall */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosinstall; sourceTree = "<group>"; };
+		F51FCC741B155A4C00C182B0 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		F51FCC751B1564A200C182B0 /* config.sh.android */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.android; sourceTree = "<group>"; };
+		F51FCC761B1564A200C182B0 /* config.sh.ubuntu */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.ubuntu; sourceTree = "<group>"; };
 		F5E864761A783DB60058E642 /* android */ = {isa = PBXFileReference; lastKnownFileType = folder; path = android; sourceTree = "<group>"; };
 		F5E864771A783DB60058E642 /* ubuntu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ubuntu; sourceTree = "<group>"; };
-		F5E864781A783DB60058E642 /* childApp-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-build.sh"; sourceTree = "<group>"; };
-		F5E864791A783DB60058E642 /* childApp-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-clean.sh"; sourceTree = "<group>"; };
-		F5E8647A1A783DB60058E642 /* childApp-install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "childApp-install.sh"; sourceTree = "<group>"; };
 		F5E8647B1A783DB60058E642 /* library-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "library-build.sh"; sourceTree = "<group>"; };
-		F5E8647E1A783DB60058E642 /* nativeApp-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-build.sh"; sourceTree = "<group>"; };
-		F5E8647F1A783DB60058E642 /* nativeApp-clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-clean.sh"; sourceTree = "<group>"; };
-		F5E864801A783DB60058E642 /* nativeApp-run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "nativeApp-run.sh"; sourceTree = "<group>"; };
 		F5E864811A783DB60058E642 /* library-make.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "library-make.sh"; sourceTree = "<group>"; };
 		F5E864831A783DB60058E642 /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -28,16 +28,16 @@
 			children = (
 				F5E864761A783DB60058E642 /* android */,
 				F5E864771A783DB60058E642 /* ubuntu */,
-				F5E864781A783DB60058E642 /* childApp-build.sh */,
-				F5E864791A783DB60058E642 /* childApp-clean.sh */,
-				F5E8647A1A783DB60058E642 /* childApp-install.sh */,
 				F5E8647B1A783DB60058E642 /* library-build.sh */,
-				F5E864811A783DB60058E642 /* library-make.sh */,
-				F5E8647E1A783DB60058E642 /* nativeApp-build.sh */,
-				F5E8647F1A783DB60058E642 /* nativeApp-clean.sh */,
-				F5E864801A783DB60058E642 /* nativeApp-run.sh */,
 				F5E864831A783DB60058E642 /* config.sh */,
-				F5702A4E1A744B74008D3491 /* config.sh.CopyMe */,
+				F51FCC751B1564A200C182B0 /* config.sh.android */,
+				F51FCC761B1564A200C182B0 /* config.sh.ubuntu */,
+				F5E864811A783DB60058E642 /* library-make.sh */,
+				F51FCC741B155A4C00C182B0 /* Makefile */,
+				F51FCC6F1B153A3200C182B0 /* myosbuild */,
+				F51FCC711B153A3200C182B0 /* myosclean */,
+				F51FCC721B153A3200C182B0 /* myosinstall */,
+				F51FCC701B153A3200C182B0 /* myosrun */,
 				C57AEBBD19C7E04D00072531 /* README.md */,
 			);
 			sourceTree = "<group>";

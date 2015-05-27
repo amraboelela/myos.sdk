@@ -15,15 +15,9 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-# Copy this file to config.sh when you are in release mode
- 
-#export BASE_OS=android
-export BASE_OS=ubuntu
+source ${MYOS_PATH}/sdk/myosbuild.sh
 
-#export DEBUG_MODE=YES
-
-#in case you are in BASE_OS=android :
-#GUEST_MODE=YES means you are using the surface flinger of the Android system
-#otherwise if this line is commented, it means you are using your own surface management system
-#export GUEST_MODE=YES
-
+echo "============================== Building ${APPLICATION_NAME} =============================="
+make || exit
+echo "============================== installing ${APPLICATION_NAME} =============================="
+make copy
