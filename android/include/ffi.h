@@ -64,7 +64,7 @@ extern "C" {
 
 /* ---- System configuration information --------------------------------- */
 
-#include <ffitarget.h>
+#include <ffiAPP_TYPE.h>
 
 #ifndef LIBFFI_ASM
 
@@ -440,7 +440,7 @@ void ffi_call(ffi_cif *cif,
 
 #endif
 
-/* If these change, update src/mips/ffitarget.h. */
+/* If these change, update src/mips/ffiAPP_TYPE.h. */
 #define FFI_TYPE_VOID       0    
 #define FFI_TYPE_INT        1
 #define FFI_TYPE_FLOAT      2    

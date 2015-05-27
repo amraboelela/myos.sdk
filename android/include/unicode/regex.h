@@ -31,7 +31,7 @@
  *  and can be used to create <code>RegexMatcher</code> objects for the pattern.</p>
  *
  * <p>Class <code>RegexMatcher</code> bundles together a regular expression
- *  pattern and a target string to which the search pattern will be applied.
+ *  pattern and a APP_TYPE string to which the search pattern will be applied.
  *  <code>RegexMatcher</code> includes API for doing plain find or search
  *  operations, for search and replace operations, and for obtaining detailed
  *  information about bounds of a match. </p>

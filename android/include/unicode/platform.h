@@ -163,8 +163,8 @@
 #elif defined(sgi) || defined(__sgi)
 #   define U_PLATFORM U_PF_IRIX
 #elif defined(__APPLE__) && defined(__MACH__)
-#   include <TargetConditionals.h>
-#   if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE  /* variant of TARGET_OS_MAC */
+#   include <APP_TYPEConditionals.h>
+#   if defined(APP_TYPE_OS_IPHONE) && APP_TYPE_OS_IPHONE  /* variant of APP_TYPE_OS_MAC */
 #       define U_PLATFORM U_PF_IPHONE
 #   else
 #       define U_PLATFORM U_PF_DARWIN

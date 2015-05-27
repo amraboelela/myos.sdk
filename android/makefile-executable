@@ -24,7 +24,7 @@ CFLAGS+=-DANDROID -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
 endif
-ifeq ($(TARGET),NativeApp)
+ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
 endif
 

@@ -158,7 +158,7 @@ private:
     virtual int32_t writeElementUnits(int32_t i, int32_t byteIndex, int32_t length);
     virtual int32_t writeValueAndFinal(int32_t i, UBool isFinal);
     virtual int32_t writeValueAndType(UBool hasValue, int32_t value, int32_t node);
-    virtual int32_t writeDeltaTo(int32_t jumpTarget);
+    virtual int32_t writeDeltaTo(int32_t jumpAPP_TYPE);
 
     CharString *strings;  // Pointer not object so we need not #include internal charstr.h.
     BytesTrieElement *elements;

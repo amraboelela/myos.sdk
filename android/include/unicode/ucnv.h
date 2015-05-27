@@ -736,7 +736,7 @@ ucnv_resetFromUnicode(UConverter *converter);
  * Returns the maximum number of bytes that are output per UChar in conversion
  * from Unicode using this converter.
  * The returned number can be used with UCNV_GET_MAX_BYTES_FOR_STRING
- * to calculate the size of a target buffer for conversion from Unicode.
+ * to calculate the size of a APP_TYPE buffer for conversion from Unicode.
  *
  * Note: Before ICU 2.8, this function did not return reliable numbers for
  * some stateful converters (EBCDIC_STATEFUL, ISO-2022) and LMBCS.
@@ -1071,16 +1071,16 @@ ucnv_setFromUCallBack (UConverter * converter,
  * Converts an array of unicode characters to an array of codepage
  * characters. This function is optimized for converting a continuous
  * stream of data in buffer-sized chunks, where the entire source and
- * target does not fit in available buffers.
+ * APP_TYPE does not fit in available buffers.
  * 
  * The source pointer is an in/out parameter. It starts out pointing where the 
  * conversion is to begin, and ends up pointing after the last UChar consumed. 
  * 
- * Target similarly starts out pointer at the first available byte in the output
+ * APP_TYPE similarly starts out pointer at the first available byte in the output
  * buffer, and ends up pointing after the last byte written to the output.
  * 
  * The converter always attempts to consume the entire source buffer, unless 
- * (1.) the target buffer is full, or (2.) a failing error is returned from the
+ * (1.) the APP_TYPE buffer is full, or (2.) a failing error is returned from the
  * current callback function.  When a successful error status has been
  * returned, it means that all of the source buffer has been
  *  consumed. At that point, the caller should reset the source and
@@ -1094,21 +1094,21 @@ ucnv_setFromUCallBack (UConverter * converter,
  * 
  * This is a <I>stateful</I> conversion. Additionally, even when all source data has
  * been consumed, some data may be in the converters' internal state.
- * Call this function repeatedly, updating the target pointers with
- * the next empty chunk of target in case of a
+ * Call this function repeatedly, updating the APP_TYPE pointers with
+ * the next empty chunk of APP_TYPE in case of a
  * <TT>U_BUFFER_OVERFLOW_ERROR</TT>, and updating the source  pointers
  *  with the next chunk of source when a successful error status is
  * returned, until there are no more chunks of source data.
  * @param converter the Unicode converter
- * @param target I/O parameter. Input : Points to the beginning of the buffer to copy
+ * @param APP_TYPE I/O parameter. Input : Points to the beginning of the buffer to copy
  *  codepage characters to. Output : points to after the last codepage character copied
- *  to <TT>target</TT>.
- * @param targetLimit the pointer just after last of the <TT>target</TT> buffer
+ *  to <TT>APP_TYPE</TT>.
+ * @param APP_TYPELimit the pointer just after last of the <TT>APP_TYPE</TT> buffer
  * @param source I/O parameter, pointer to pointer to the source Unicode character buffer. 
  * @param sourceLimit the pointer just after the last of the source buffer
  * @param offsets if NULL is passed, nothing will happen to it, otherwise it needs to have the same number
- * of allocated cells as <TT>target</TT>. Will fill in offsets from target to source pointer
- * e.g: <TT>offsets[3]</TT> is equal to 6, it means that the <TT>target[3]</TT> was a result of transcoding <TT>source[6]</TT>
+ * of allocated cells as <TT>APP_TYPE</TT>. Will fill in offsets from APP_TYPE to source pointer
+ * e.g: <TT>offsets[3]</TT> is equal to 6, it means that the <TT>APP_TYPE[3]</TT> was a result of transcoding <TT>source[6]</TT>
  * For output data carried across calls, and other data without a specific source character
  * (such as from escape sequences or callbacks)  -1 will be placed for offsets. 
  * @param flush set to <TT>TRUE</TT> if the current source buffer is the last available
@@ -1117,8 +1117,8 @@ ucnv_setFromUCallBack (UConverter * converter,
  * the source buffer is consumed.
  * @param err the error status.  <TT>U_ILLEGAL_ARGUMENT_ERROR</TT> will be set if the
  * converter is <TT>NULL</TT>.
- * <code>U_BUFFER_OVERFLOW_ERROR</code> will be set if the target is full and there is 
- * still data to be written to the target.
+ * <code>U_BUFFER_OVERFLOW_ERROR</code> will be set if the APP_TYPE is full and there is 
+ * still data to be written to the APP_TYPE.
  * @see ucnv_fromUChars
  * @see ucnv_convert
  * @see ucnv_getMinCharSize
@@ -1127,8 +1127,8 @@ ucnv_setFromUCallBack (UConverter * converter,
  */
 U_STABLE void U_EXPORT2 
 ucnv_fromUnicode (UConverter * converter,
-                  char **target,
-                  const char *targetLimit,
+                  char **APP_TYPE,
+                  const char *APP_TYPELimit,
                   const UChar ** source,
                   const UChar * sourceLimit,
                   int32_t* offsets,
@@ -1139,17 +1139,17 @@ ucnv_fromUnicode (UConverter * converter,
  * Converts a buffer of codepage bytes into an array of unicode UChars
  * characters. This function is optimized for converting a continuous
  * stream of data in buffer-sized chunks, where the entire source and
- * target does not fit in available buffers.
+ * APP_TYPE does not fit in available buffers.
  * 
  * The source pointer is an in/out parameter. It starts out pointing where the 
  * conversion is to begin, and ends up pointing after the last byte of source consumed. 
  * 
- * Target similarly starts out pointer at the first available UChar in the output
+ * APP_TYPE similarly starts out pointer at the first available UChar in the output
  * buffer, and ends up pointing after the last UChar written to the output. 
  * It does NOT necessarily keep UChar sequences together.
  * 
  * The converter always attempts to consume the entire source buffer, unless 
- * (1.) the target buffer is full, or (2.) a failing error is returned from the
+ * (1.) the APP_TYPE buffer is full, or (2.) a failing error is returned from the
  * current callback function.  When a successful error status has been
  * returned, it means that all of the source buffer has been
  *  consumed. At that point, the caller should reset the source and
@@ -1163,20 +1163,20 @@ ucnv_fromUnicode (UConverter * converter,
  * 
  * This is a <I>stateful</I> conversion. Additionally, even when all source data has
  * been consumed, some data may be in the converters' internal state.
- * Call this function repeatedly, updating the target pointers with
- * the next empty chunk of target in case of a
+ * Call this function repeatedly, updating the APP_TYPE pointers with
+ * the next empty chunk of APP_TYPE in case of a
  * <TT>U_BUFFER_OVERFLOW_ERROR</TT>, and updating the source  pointers
  *  with the next chunk of source when a successful error status is
  * returned, until there are no more chunks of source data.
  * @param converter the Unicode converter
- * @param target I/O parameter. Input : Points to the beginning of the buffer to copy
+ * @param APP_TYPE I/O parameter. Input : Points to the beginning of the buffer to copy
  *  UChars into. Output : points to after the last UChar copied.
- * @param targetLimit the pointer just after the end of the <TT>target</TT> buffer
+ * @param APP_TYPELimit the pointer just after the end of the <TT>APP_TYPE</TT> buffer
  * @param source I/O parameter, pointer to pointer to the source codepage buffer. 
  * @param sourceLimit the pointer to the byte after the end of the source buffer
  * @param offsets if NULL is passed, nothing will happen to it, otherwise it needs to have the same number
- * of allocated cells as <TT>target</TT>. Will fill in offsets from target to source pointer
- * e.g: <TT>offsets[3]</TT> is equal to 6, it means that the <TT>target[3]</TT> was a result of transcoding <TT>source[6]</TT>
+ * of allocated cells as <TT>APP_TYPE</TT>. Will fill in offsets from APP_TYPE to source pointer
+ * e.g: <TT>offsets[3]</TT> is equal to 6, it means that the <TT>APP_TYPE[3]</TT> was a result of transcoding <TT>source[6]</TT>
  * For output data carried across calls, and other data without a specific source character
  * (such as from escape sequences or callbacks)  -1 will be placed for offsets. 
  * @param flush set to <TT>TRUE</TT> if the current source buffer is the last available
@@ -1185,8 +1185,8 @@ ucnv_fromUnicode (UConverter * converter,
  * the source buffer is consumed.
  * @param err the error status.  <TT>U_ILLEGAL_ARGUMENT_ERROR</TT> will be set if the
  * converter is <TT>NULL</TT>.
- * <code>U_BUFFER_OVERFLOW_ERROR</code> will be set if the target is full and there is 
- * still data to be written to the target. 
+ * <code>U_BUFFER_OVERFLOW_ERROR</code> will be set if the APP_TYPE is full and there is 
+ * still data to be written to the APP_TYPE. 
  * @see ucnv_fromUChars
  * @see ucnv_convert
  * @see ucnv_getMinCharSize
@@ -1196,8 +1196,8 @@ ucnv_fromUnicode (UConverter * converter,
  */
 U_STABLE void U_EXPORT2 
 ucnv_toUnicode(UConverter *converter,
-               UChar **target,
-               const UChar *targetLimit,
+               UChar **APP_TYPE,
+               const UChar *APP_TYPELimit,
                const char **source,
                const char *sourceLimit,
                int32_t *offsets,
@@ -1372,14 +1372,14 @@ ucnv_getNextUChar(UConverter * converter,
  * ucnv_convertEx() also provides further convenience:
  * - an option to reset the converters at the beginning
  *   (if reset==TRUE, see parameters;
- *    also sets *pivotTarget=*pivotSource=pivotStart)
+ *    also sets *pivotAPP_TYPE=*pivotSource=pivotStart)
  * - allow NUL-terminated input
  *   (only a single NUL byte, will not work for charsets with multi-byte NULs)
  *   (if sourceLimit==NULL, see parameters)
  * - terminate with a NUL on output
  *   (only a single NUL byte, not useful for charsets with multi-byte NULs),
  *   or set U_STRING_NOT_TERMINATED_WARNING if the output exactly fills
- *   the target buffer
+ *   the APP_TYPE buffer
  * - the pivot buffer can be provided internally;
  *   possible only for whole-string conversion, not streaming conversion;
  *   in this case, the caller will not be able to get details about where an
@@ -1387,8 +1387,8 @@ ucnv_getNextUChar(UConverter * converter,
  *   (if pivotStart==NULL, see below)
  *
  * The function returns when one of the following is true:
- * - the entire source text has been converted successfully to the target buffer
- * - a target buffer overflow occurred (U_BUFFER_OVERFLOW_ERROR)
+ * - the entire source text has been converted successfully to the APP_TYPE buffer
+ * - a APP_TYPE buffer overflow occurred (U_BUFFER_OVERFLOW_ERROR)
  * - a conversion error occurred
  *   (other U_FAILURE(), see description of pErrorCode)
  *
@@ -1409,7 +1409,7 @@ ucnv_getNextUChar(UConverter * converter,
  *          char *u8, int32_t capacity,
  *          UErrorCode *pErrorCode) {
  *     UConverter *utf8Cnv;
- *     char *target;
+ *     char *APP_TYPE;
  *
  *     if(U_FAILURE(*pErrorCode)) {
  *         return 0;
@@ -1423,9 +1423,9 @@ ucnv_getNextUChar(UConverter * converter,
  *     if(length<0) {
  *         length=strlen(s);
  *     }
- *     target=u8;
+ *     APP_TYPE=u8;
  *     ucnv_convertEx(utf8Cnv, cnv,
- *                    &target, u8+capacity,
+ *                    &APP_TYPE, u8+capacity,
  *                    &s, s+length,
  *                    NULL, NULL, NULL, NULL,
  *                    TRUE, TRUE,
@@ -1434,18 +1434,18 @@ ucnv_getNextUChar(UConverter * converter,
  *     myReleaseCachedUTF8Converter(utf8Cnv);
  *
  *     // return the output string length, but without preflighting
- *     return (int32_t)(target-u8);
+ *     return (int32_t)(APP_TYPE-u8);
  * }
  * \endcode
  *
- * @param targetCnv     Output converter, used to convert from the UTF-16 pivot
- *                      to the target using ucnv_fromUnicode().
+ * @param APP_TYPECnv     Output converter, used to convert from the UTF-16 pivot
+ *                      to the APP_TYPE using ucnv_fromUnicode().
  * @param sourceCnv     Input converter, used to convert from the source to
  *                      the UTF-16 pivot using ucnv_toUnicode().
- * @param target        I/O parameter, same as for ucnv_fromUChars().
- *                      Input: *target points to the beginning of the target buffer.
- *                      Output: *target points to the first unit after the last char written.
- * @param targetLimit   Pointer to the first unit after the target buffer.
+ * @param APP_TYPE        I/O parameter, same as for ucnv_fromUChars().
+ *                      Input: *APP_TYPE points to the beginning of the APP_TYPE buffer.
+ *                      Output: *APP_TYPE points to the first unit after the last char written.
+ * @param APP_TYPELimit   Pointer to the first unit after the APP_TYPE buffer.
  * @param source        I/O parameter, same as for ucnv_toUChars().
  *                      Input: *source points to the beginning of the source buffer.
  *                      Output: *source points to the first unit after the last char read.
@@ -1454,25 +1454,25 @@ ucnv_getNextUChar(UConverter * converter,
  *                      then an internal buffer is used and the other pivot
  *                      arguments are ignored and can be NULL as well.
  * @param pivotSource   I/O parameter, same as source in ucnv_fromUChars() for
- *                      conversion from the pivot buffer to the target buffer.
- * @param pivotTarget   I/O parameter, same as target in ucnv_toUChars() for
+ *                      conversion from the pivot buffer to the APP_TYPE buffer.
+ * @param pivotAPP_TYPE   I/O parameter, same as APP_TYPE in ucnv_toUChars() for
  *                      conversion from the source buffer to the pivot buffer.
- *                      It must be pivotStart<=*pivotSource<=*pivotTarget<=pivotLimit
+ *                      It must be pivotStart<=*pivotSource<=*pivotAPP_TYPE<=pivotLimit
  *                      and pivotStart<pivotLimit (unless pivotStart==NULL).
  * @param pivotLimit    Pointer to the first unit after the pivot buffer.
  * @param reset         If TRUE, then ucnv_resetToUnicode(sourceCnv) and
- *                      ucnv_resetFromUnicode(targetCnv) are called, and the
- *                      pivot pointers are reset (*pivotTarget=*pivotSource=pivotStart).
+ *                      ucnv_resetFromUnicode(APP_TYPECnv) are called, and the
+ *                      pivot pointers are reset (*pivotAPP_TYPE=*pivotSource=pivotStart).
  * @param flush         If true, indicates the end of the input.
  *                      Passed directly to ucnv_toUnicode(), and carried over to
  *                      ucnv_fromUnicode() when the source is empty as well.
  * @param pErrorCode    ICU error code in/out parameter.
  *                      Must fulfill U_SUCCESS before the function call.
- *                      U_BUFFER_OVERFLOW_ERROR always refers to the target buffer
+ *                      U_BUFFER_OVERFLOW_ERROR always refers to the APP_TYPE buffer
  *                      because overflows into the pivot buffer are handled internally.
  *                      Other conversion errors are from the source-to-pivot
  *                      conversion if *pivotSource==pivotStart, otherwise from
- *                      the pivot-to-target conversion.
+ *                      the pivot-to-APP_TYPE conversion.
  *
  * @see ucnv_convert
  * @see ucnv_fromAlgorithmic
@@ -1484,11 +1484,11 @@ ucnv_getNextUChar(UConverter * converter,
  * @stable ICU 2.6
  */
 U_STABLE void U_EXPORT2
-ucnv_convertEx(UConverter *targetCnv, UConverter *sourceCnv,
-               char **target, const char *targetLimit,
+ucnv_convertEx(UConverter *APP_TYPECnv, UConverter *sourceCnv,
+               char **APP_TYPE, const char *APP_TYPELimit,
                const char **source, const char *sourceLimit,
                UChar *pivotStart, UChar **pivotSource,
-               UChar **pivotTarget, const UChar *pivotLimit,
+               UChar **pivotAPP_TYPE, const UChar *pivotLimit,
                UBool reset, UBool flush,
                UErrorCode *pErrorCode);
 
@@ -1512,29 +1512,29 @@ ucnv_convertEx(UConverter *targetCnv, UConverter *sourceCnv,
  * - terminate with a NUL on output
  *   (only a single NUL byte, not useful for charsets with multi-byte NULs),
  *   or set U_STRING_NOT_TERMINATED_WARNING if the output exactly fills
- *   the target buffer
+ *   the APP_TYPE buffer
  * - a pivot buffer is provided internally
  *
  * The function returns when one of the following is true:
- * - the entire source text has been converted successfully to the target buffer
- *   and either the target buffer is terminated with a single NUL byte
+ * - the entire source text has been converted successfully to the APP_TYPE buffer
+ *   and either the APP_TYPE buffer is terminated with a single NUL byte
  *   or the error code is set to U_STRING_NOT_TERMINATED_WARNING
- * - a target buffer overflow occurred (U_BUFFER_OVERFLOW_ERROR)
+ * - a APP_TYPE buffer overflow occurred (U_BUFFER_OVERFLOW_ERROR)
  *   and the full output string length is returned ("preflighting")
  * - a conversion error occurred
  *   (other U_FAILURE(), see description of pErrorCode)
  *
  * @param toConverterName   The name of the converter that is used to convert
- *                          from the UTF-16 pivot buffer to the target.
+ *                          from the UTF-16 pivot buffer to the APP_TYPE.
  * @param fromConverterName The name of the converter that is used to convert
  *                          from the source to the UTF-16 pivot buffer.
- * @param target            Pointer to the output buffer.
- * @param targetCapacity    Capacity of the target, in bytes.
+ * @param APP_TYPE            Pointer to the output buffer.
+ * @param APP_TYPECapacity    Capacity of the APP_TYPE, in bytes.
  * @param source            Pointer to the input buffer.
  * @param sourceLength      Length of the input text, in bytes, or -1 for NUL-terminated input.
  * @param pErrorCode        ICU error code in/out parameter.
  *                          Must fulfill U_SUCCESS before the function call.
- * @return Length of the complete output text in bytes, even if it exceeds the targetCapacity
+ * @return Length of the complete output text in bytes, even if it exceeds the APP_TYPECapacity
  *         and a U_BUFFER_OVERFLOW_ERROR is set.
  *
  * @see ucnv_convertEx
@@ -1550,8 +1550,8 @@ ucnv_convertEx(UConverter *targetCnv, UConverter *sourceCnv,
 U_STABLE int32_t U_EXPORT2
 ucnv_convert(const char *toConverterName,
              const char *fromConverterName,
-             char *target,
-             int32_t targetCapacity,
+             char *APP_TYPE,
+             int32_t APP_TYPECapacity,
              const char *source,
              int32_t sourceLength,
              UErrorCode *pErrorCode);
@@ -1563,7 +1563,7 @@ ucnv_convert(const char *toConverterName,
  * except that the two converters need not be looked up and opened completely.
  *
  * The source-to-pivot conversion uses the cnv converter parameter.
- * The pivot-to-target conversion uses a purely algorithmic converter
+ * The pivot-to-APP_TYPE conversion uses a purely algorithmic converter
  * according to the specified type, e.g., UCNV_UTF8 for a UTF-8 converter.
  *
  * Internally, the algorithmic converter is opened and closed for each
@@ -1573,23 +1573,23 @@ ucnv_convert(const char *toConverterName,
  *
  * This function is more convenient than ucnv_convertEx() for single-string
  * conversions, especially when "preflighting" is desired (returning the length
- * of the complete output even if it does not fit into the target buffer;
+ * of the complete output even if it does not fit into the APP_TYPE buffer;
  * see the User Guide Strings chapter). See ucnv_convert() for details.
  *
- * @param algorithmicType   UConverterType constant identifying the desired target
+ * @param algorithmicType   UConverterType constant identifying the desired APP_TYPE
  *                          charset as a purely algorithmic converter.
  *                          Those are converters for Unicode charsets like
  *                          UTF-8, BOCU-1, SCSU, UTF-7, IMAP-mailbox-name, etc.,
  *                          as well as US-ASCII and ISO-8859-1.
  * @param cnv               The converter that is used to convert
  *                          from the source to the UTF-16 pivot buffer.
- * @param target            Pointer to the output buffer.
- * @param targetCapacity    Capacity of the target, in bytes.
+ * @param APP_TYPE            Pointer to the output buffer.
+ * @param APP_TYPECapacity    Capacity of the APP_TYPE, in bytes.
  * @param source            Pointer to the input buffer.
  * @param sourceLength      Length of the input text, in bytes
  * @param pErrorCode        ICU error code in/out parameter.
  *                          Must fulfill U_SUCCESS before the function call.
- * @return Length of the complete output text in bytes, even if it exceeds the targetCapacity
+ * @return Length of the complete output text in bytes, even if it exceeds the APP_TYPECapacity
  *         and a U_BUFFER_OVERFLOW_ERROR is set.
  *
  * @see ucnv_fromAlgorithmic
@@ -1604,7 +1604,7 @@ ucnv_convert(const char *toConverterName,
 U_STABLE int32_t U_EXPORT2
 ucnv_toAlgorithmic(UConverterType algorithmicType,
                    UConverter *cnv,
-                   char *target, int32_t targetCapacity,
+                   char *APP_TYPE, int32_t APP_TYPECapacity,
                    const char *source, int32_t sourceLength,
                    UErrorCode *pErrorCode);
 
@@ -1616,7 +1616,7 @@ ucnv_toAlgorithmic(UConverterType algorithmicType,
  *
  * The source-to-pivot conversion uses a purely algorithmic converter
  * according to the specified type, e.g., UCNV_UTF8 for a UTF-8 converter.
- * The pivot-to-target conversion uses the cnv converter parameter.
+ * The pivot-to-APP_TYPE conversion uses the cnv converter parameter.
  *
  * Internally, the algorithmic converter is opened and closed for each
  * function call, which is more efficient than using the public ucnv_open()
@@ -1625,23 +1625,23 @@ ucnv_toAlgorithmic(UConverterType algorithmicType,
  *
  * This function is more convenient than ucnv_convertEx() for single-string
  * conversions, especially when "preflighting" is desired (returning the length
- * of the complete output even if it does not fit into the target buffer;
+ * of the complete output even if it does not fit into the APP_TYPE buffer;
  * see the User Guide Strings chapter). See ucnv_convert() for details.
  *
  * @param cnv               The converter that is used to convert
- *                          from the UTF-16 pivot buffer to the target.
+ *                          from the UTF-16 pivot buffer to the APP_TYPE.
  * @param algorithmicType   UConverterType constant identifying the desired source
  *                          charset as a purely algorithmic converter.
  *                          Those are converters for Unicode charsets like
  *                          UTF-8, BOCU-1, SCSU, UTF-7, IMAP-mailbox-name, etc.,
  *                          as well as US-ASCII and ISO-8859-1.
- * @param target            Pointer to the output buffer.
- * @param targetCapacity    Capacity of the target, in bytes.
+ * @param APP_TYPE            Pointer to the output buffer.
+ * @param APP_TYPECapacity    Capacity of the APP_TYPE, in bytes.
  * @param source            Pointer to the input buffer.
  * @param sourceLength      Length of the input text, in bytes
  * @param pErrorCode        ICU error code in/out parameter.
  *                          Must fulfill U_SUCCESS before the function call.
- * @return Length of the complete output text in bytes, even if it exceeds the targetCapacity
+ * @return Length of the complete output text in bytes, even if it exceeds the APP_TYPECapacity
  *         and a U_BUFFER_OVERFLOW_ERROR is set.
  *
  * @see ucnv_fromAlgorithmic
@@ -1656,7 +1656,7 @@ ucnv_toAlgorithmic(UConverterType algorithmicType,
 U_STABLE int32_t U_EXPORT2
 ucnv_fromAlgorithmic(UConverter *cnv,
                      UConverterType algorithmicType,
-                     char *target, int32_t targetCapacity,
+                     char *APP_TYPE, int32_t APP_TYPECapacity,
                      const char *source, int32_t sourceLength,
                      UErrorCode *pErrorCode);
 
@@ -1891,7 +1891,7 @@ ucnv_setDefaultName(const char *name);
  * required.  You can sometimes avoid using this function by using the correct version
  * of Shift-JIS.
  *
- * @param cnv The converter representing the target codepage.
+ * @param cnv The converter representing the APP_TYPE codepage.
  * @param source the input buffer to be fixed
  * @param sourceLen the length of the input buffer
  * @see ucnv_isAmbiguous

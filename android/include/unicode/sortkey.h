@@ -185,26 +185,26 @@ public:
     /**
     * Convenience method which does a string(bit-wise) comparison of the
     * two collation keys.
-    * @param target target collation key to be compared with
-    * @return Returns Collator::LESS if sourceKey &lt; targetKey,
-    * Collator::GREATER if sourceKey > targetKey and Collator::EQUAL
+    * @param APP_TYPE APP_TYPE collation key to be compared with
+    * @return Returns Collator::LESS if sourceKey &lt; APP_TYPEKey,
+    * Collator::GREATER if sourceKey > APP_TYPEKey and Collator::EQUAL
     * otherwise.
     * @deprecated ICU 2.6 use the overload with error code
     */
-    Collator::EComparisonResult compareTo(const CollationKey& target) const;
+    Collator::EComparisonResult compareTo(const CollationKey& APP_TYPE) const;
 #endif  /* U_HIDE_DEPRECATED_API */
 
     /**
     * Convenience method which does a string(bit-wise) comparison of the
     * two collation keys.
-    * @param target target collation key to be compared with
+    * @param APP_TYPE APP_TYPE collation key to be compared with
     * @param status error code
-    * @return Returns UCOL_LESS if sourceKey &lt; targetKey,
-    * UCOL_GREATER if sourceKey > targetKey and UCOL_EQUAL
+    * @return Returns UCOL_LESS if sourceKey &lt; APP_TYPEKey,
+    * UCOL_GREATER if sourceKey > APP_TYPEKey and UCOL_EQUAL
     * otherwise.
     * @stable ICU 2.6
     */
-    UCollationResult compareTo(const CollationKey& target, UErrorCode &status) const;
+    UCollationResult compareTo(const CollationKey& APP_TYPE, UErrorCode &status) const;
 
     /**
     * Creates an integer that is unique to the collation key.  NOTE: this

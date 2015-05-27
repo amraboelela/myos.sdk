@@ -27,7 +27,7 @@ if [ ${BUILD_TYPE_X} = "x" ]; then
     BUILD_TYPE=Application
 fi
 if [ ${BUILD_TYPE} = "Library" ]; then
-    if [ ${TARGET} = "NativeApp" ]; then
+    if [ ${APP_TYPE} = "NativeApp" ]; then
         export LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
     else
         export LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
@@ -39,7 +39,7 @@ fi
 echo "===== Cleaning ${SOURCE_CODE_DIRECTORY} ================================="
 make clean
 
-if  [ ${BASE_OS} = "android" ] && [ ! ${BUILD_TYPE} = "Library" ] && [ ${TARGET} = "NativeApp" ] ; then
+if  [ ${BASE_OS} = "android" ] && [ ! ${BUILD_TYPE} = "Library" ] && [ ${APP_TYPE} = "NativeApp" ] ; then
     ndk-build clean
     ant clean
 fi

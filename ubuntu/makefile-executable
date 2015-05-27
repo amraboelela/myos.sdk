@@ -24,7 +24,7 @@ CFLAGS+=-MMD -MP -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BA
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
 endif
-ifeq ($(TARGET),NativeApp)
+ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
 endif
 
@@ -32,7 +32,7 @@ LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib
 LDLIBS+=-lobjc -lm -llcms -lX11 -lGL 
 
 all: $(OUTPUT)
-ifeq ($(TARGET),NativeApp)
+ifeq ($(APP_TYPE),NativeApp)
     ODIR=NAObj
 else
     ODIR=obj

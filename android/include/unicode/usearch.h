@@ -109,13 +109,13 @@
  * <pre><code>
  * char *tgtstr = "The quick brown fox jumped over the lazy fox";
  * char *patstr = "fox";
- * UChar target[64];
+ * UChar APP_TYPE[64];
  * UChar pattern[16];
  * UErrorCode status = U_ZERO_ERROR;
- * u_uastrcpy(target, tgtstr);
+ * u_uastrcpy(APP_TYPE, tgtstr);
  * u_uastrcpy(pattern, patstr);
  *
- * UStringSearch *search = usearch_open(pattern, -1, target, -1, "en_US", 
+ * UStringSearch *search = usearch_open(pattern, -1, APP_TYPE, -1, "en_US", 
  *                                  NULL, &status);
  * if (U_SUCCESS(status)) {
  *     for (int pos = usearch_first(search, &status); 
@@ -611,7 +611,7 @@ U_STABLE int32_t U_EXPORT2 usearch_following(UStringSearch *strsrch,
                                                UErrorCode    *status);
     
 /**
-* Returns the last index in the target text at which it matches the search 
+* Returns the last index in the APP_TYPE text at which it matches the search 
 * pattern. The iterator is adjusted so that its current 
 * index (as returned by <tt>usearch_getOffset</tt>) is the match position if 
 * one was found.

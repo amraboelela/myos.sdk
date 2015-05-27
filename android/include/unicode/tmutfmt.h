@@ -248,7 +248,7 @@ private:
     void deleteHash(Hashtable* htable);
 
     // copy hash table
-    void copyHash(const Hashtable* source, Hashtable* target, UErrorCode& status);
+    void copyHash(const Hashtable* source, Hashtable* APP_TYPE, UErrorCode& status);
     // get time unit name, such as "year", from time unit field enum, such as
     // UTIMEUNIT_YEAR.
     static const char* getTimeUnitName(TimeUnit::UTimeUnitFields field, UErrorCode& status);

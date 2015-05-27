@@ -41,7 +41,7 @@ U_NAMESPACE_BEGIN
  * <tt>SearchIterator</tt> is an abstract base class that provides 
  * methods to search for a pattern within a text string. Instances of
  * <tt>SearchIterator</tt> maintain a current position and scans over the 
- * target text, returning the indices the pattern is matched and the length 
+ * APP_TYPE text, returning the indices the pattern is matched and the length 
  * of each match.
  * <p>
  * <tt>SearchIterator</tt> defines a protocol for text searching. 
@@ -57,14 +57,14 @@ U_NAMESPACE_BEGIN
  * other text iteration classes such as <tt>BreakIterator</tt>. Using 
  * this class, it is easy to scan through text looking for all occurances of 
  * a given pattern. The following example uses a <tt>StringSearch</tt> 
- * object to find all instances of "fox" in the target string. Any other 
+ * object to find all instances of "fox" in the APP_TYPE string. Any other 
  * subclass of <tt>SearchIterator</tt> can be used in an identical 
  * manner.
  * <pre><code>
- * UnicodeString target("The quick brown fox jumped over the lazy fox");
+ * UnicodeString APP_TYPE("The quick brown fox jumped over the lazy fox");
  * UnicodeString pattern("fox");
  *
- * SearchIterator *iter  = new StringSearch(pattern, target);
+ * SearchIterator *iter  = new StringSearch(pattern, APP_TYPE);
  * UErrorCode      error = U_ZERO_ERROR;
  * for (int pos = iter->first(error); pos != USEARCH_DONE; 
  *                               pos = iter->next(error)) {
@@ -168,7 +168,7 @@ public:
      * to <tt>first</tt>, <tt>next</tt>, <tt>previous</tt>, or <tt>last</tt>.
      * Just after construction, or after a searching method returns 
      * <tt>USEARCH_DONE</tt>, this method will return 0.
-     * @return The length of the match in the target text, or 0 if there
+     * @return The length of the match in the APP_TYPE text, or 0 if there
      *         is no match currently.
      * @see #first
      * @see #next
@@ -325,7 +325,7 @@ public:
     int32_t following(int32_t position, UErrorCode &status);
     
     /**
-     * Returns the last index in the target text at which it matches the 
+     * Returns the last index in the APP_TYPE text at which it matches the 
      * search pattern. The iterator is adjusted so that its current index 
      * (as returned by <tt>getOffset</tt>) is the match position if one was 
      * found.
@@ -441,7 +441,7 @@ protected:
 
     /**
      * Constructor for use by subclasses.
-     * @param text The target text to be searched.
+     * @param text The APP_TYPE text to be searched.
      * @param breakiter A {@link BreakIterator} that is used to restrict the 
      *                points at which matches are detected. If 
      *                <tt>handleNext</tt> or <tt>handlePrev</tt> finds a 
@@ -463,7 +463,7 @@ protected:
      * Note: No parsing of the text within the <tt>CharacterIterator</tt> 
      * will be done during searching for this version. The block of text 
      * in <tt>CharacterIterator</tt> will be used as it is.
-     * @param text The target text to be searched.
+     * @param text The APP_TYPE text to be searched.
      * @param breakiter A {@link BreakIterator} that is used to restrict the 
      *                points at which matches are detected. If 
      *                <tt>handleNext</tt> or <tt>handlePrev</tt> finds a 
@@ -490,16 +490,16 @@ protected:
 
     /**
      * Abstract method which subclasses override to provide the mechanism
-     * for finding the next match in the target text. This allows different
+     * for finding the next match in the APP_TYPE text. This allows different
      * subclasses to provide different search algorithms.
      * <p>
      * If a match is found, the implementation should return the index at
      * which the match starts and should call 
      * <tt>setMatchLength</tt> with the number of characters 
-     * in the target text that make up the match. If no match is found, the 
+     * in the APP_TYPE text that make up the match. If no match is found, the 
      * method should return USEARCH_DONE.
      * <p>
-     * @param position The index in the target text at which the search 
+     * @param position The index in the APP_TYPE text at which the search 
      *                 should start.
      * @param status for error codes if it occurs.
      * @return index at which the match starts, else if match is not found 
@@ -512,16 +512,16 @@ protected:
 
     /**
      * Abstract method which subclasses override to provide the mechanism for
-     * finding the previous match in the target text. This allows different
+     * finding the previous match in the APP_TYPE text. This allows different
      * subclasses to provide different search algorithms.
      * <p>
      * If a match is found, the implementation should return the index at
      * which the match starts and should call 
      * <tt>setMatchLength</tt> with the number of characters 
-     * in the target text that make up the match. If no match is found, the 
+     * in the APP_TYPE text that make up the match. If no match is found, the 
      * method should return USEARCH_DONE.
      * <p>
-     * @param position The index in the target text at which the search 
+     * @param position The index in the APP_TYPE text at which the search 
      *                 should start.
      * @param status for error codes if it occurs.
      * @return index at which the match starts, else if match is not found 
@@ -536,7 +536,7 @@ protected:
      * Sets the length of the currently matched string in the text string to
      * be searched.
      * Subclasses' <tt>handleNext</tt> and <tt>handlePrev</tt>
-     * methods should call this when they find a match in the target text.
+     * methods should call this when they find a match in the APP_TYPE text.
      * @param length length of the matched text.
      * @see #handleNext
      * @see #handlePrev
@@ -548,7 +548,7 @@ protected:
      * Sets the offset of the currently matched string in the text string to
      * be searched.
      * Subclasses' <tt>handleNext</tt> and <tt>handlePrev</tt>
-     * methods should call this when they find a match in the target text.
+     * methods should call this when they find a match in the APP_TYPE text.
      * @param position start offset of the matched text.
      * @see #handleNext
      * @see #handlePrev

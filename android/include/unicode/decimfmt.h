@@ -2192,9 +2192,9 @@ private:
     void deleteHashForAffix(Hashtable*& table);
 
     void copyHashForAffixPattern(const Hashtable* source,
-                                 Hashtable* target, UErrorCode& status);
+                                 Hashtable* APP_TYPE, UErrorCode& status);
     void copyHashForAffix(const Hashtable* source,
-                          Hashtable* target, UErrorCode& status);
+                          Hashtable* APP_TYPE, UErrorCode& status);
 
     UnicodeString& _format(int64_t number,
                            UnicodeString& appendTo,

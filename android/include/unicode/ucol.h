@@ -63,12 +63,12 @@ typedef struct UCollator UCollator;
 
 
 /**
- * UCOL_LESS is returned if source string is compared to be less than target
+ * UCOL_LESS is returned if source string is compared to be less than APP_TYPE
  * string in the u_strcoll() method.
- * UCOL_EQUAL is returned if source string is compared to be equal to target
+ * UCOL_EQUAL is returned if source string is compared to be equal to APP_TYPE
  * string in the u_strcoll() method.
  * UCOL_GREATER is returned if source string is compared to be greater than
- * target string in the u_strcoll() method.
+ * APP_TYPE string in the u_strcoll() method.
  * @see u_strcoll()
  * <p>
  * Possible values for a comparison result 
@@ -517,8 +517,8 @@ U_NAMESPACE_END
  * @param coll The UCollator containing the comparison rules.
  * @param source The source string.
  * @param sourceLength The length of source, or -1 if null-terminated.
- * @param target The target string.
- * @param targetLength The length of target, or -1 if null-terminated.
+ * @param APP_TYPE The APP_TYPE string.
+ * @param APP_TYPELength The length of APP_TYPE, or -1 if null-terminated.
  * @return The result of comparing the strings; one of UCOL_EQUAL,
  * UCOL_GREATER, UCOL_LESS
  * @see ucol_greater
@@ -530,8 +530,8 @@ U_STABLE UCollationResult U_EXPORT2
 ucol_strcoll(    const    UCollator    *coll,
         const    UChar        *source,
         int32_t            sourceLength,
-        const    UChar        *target,
-        int32_t            targetLength);
+        const    UChar        *APP_TYPE,
+        int32_t            APP_TYPELength);
 
 #ifndef U_HIDE_DRAFT_API
 /** 
@@ -542,8 +542,8 @@ ucol_strcoll(    const    UCollator    *coll,
 * @param coll The UCollator containing the comparison rules. 
 * @param source The source UTF-8 string. 
 * @param sourceLength The length of source, or -1 if null-terminated. 
-* @param target The target UTF-8 string. 
-* @param targetLength The length of target, or -1 if null-terminated. 
+* @param APP_TYPE The APP_TYPE UTF-8 string. 
+* @param APP_TYPELength The length of APP_TYPE, or -1 if null-terminated. 
 * @param status A pointer to an UErrorCode to receive any errors 
 * @return The result of comparing the strings; one of UCOL_EQUAL, 
 * UCOL_GREATER, UCOL_LESS 
@@ -557,8 +557,8 @@ ucol_strcollUTF8(
         const UCollator *coll,
         const char      *source,
         int32_t         sourceLength,
-        const char      *target,
-        int32_t         targetLength,
+        const char      *APP_TYPE,
+        int32_t         APP_TYPELength,
         UErrorCode      *status);
 #endif /* U_HIDE_DRAFT_API */
 
@@ -568,9 +568,9 @@ ucol_strcollUTF8(
  * @param coll The UCollator containing the comparison rules.
  * @param source The source string.
  * @param sourceLength The length of source, or -1 if null-terminated.
- * @param target The target string.
- * @param targetLength The length of target, or -1 if null-terminated.
- * @return TRUE if source is greater than target, FALSE otherwise.
+ * @param APP_TYPE The APP_TYPE string.
+ * @param APP_TYPELength The length of APP_TYPE, or -1 if null-terminated.
+ * @return TRUE if source is greater than APP_TYPE, FALSE otherwise.
  * @see ucol_strcoll
  * @see ucol_greaterOrEqual
  * @see ucol_equal
@@ -579,7 +579,7 @@ ucol_strcollUTF8(
 U_STABLE UBool U_EXPORT2 
 ucol_greater(const UCollator *coll,
              const UChar     *source, int32_t sourceLength,
-             const UChar     *target, int32_t targetLength);
+             const UChar     *APP_TYPE, int32_t APP_TYPELength);
 
 /**
  * Determine if one string is greater than or equal to another.
@@ -587,9 +587,9 @@ ucol_greater(const UCollator *coll,
  * @param coll The UCollator containing the comparison rules.
  * @param source The source string.
  * @param sourceLength The length of source, or -1 if null-terminated.
- * @param target The target string.
- * @param targetLength The length of target, or -1 if null-terminated.
- * @return TRUE if source is greater than or equal to target, FALSE otherwise.
+ * @param APP_TYPE The APP_TYPE string.
+ * @param APP_TYPELength The length of APP_TYPE, or -1 if null-terminated.
+ * @return TRUE if source is greater than or equal to APP_TYPE, FALSE otherwise.
  * @see ucol_strcoll
  * @see ucol_greater
  * @see ucol_equal
@@ -598,7 +598,7 @@ ucol_greater(const UCollator *coll,
 U_STABLE UBool U_EXPORT2 
 ucol_greaterOrEqual(const UCollator *coll,
                     const UChar     *source, int32_t sourceLength,
-                    const UChar     *target, int32_t targetLength);
+                    const UChar     *APP_TYPE, int32_t APP_TYPELength);
 
 /**
  * Compare two strings for equality.
@@ -606,9 +606,9 @@ ucol_greaterOrEqual(const UCollator *coll,
  * @param coll The UCollator containing the comparison rules.
  * @param source The source string.
  * @param sourceLength The length of source, or -1 if null-terminated.
- * @param target The target string.
- * @param targetLength The length of target, or -1 if null-terminated.
- * @return TRUE if source is equal to target, FALSE otherwise
+ * @param APP_TYPE The APP_TYPE string.
+ * @param APP_TYPELength The length of APP_TYPE, or -1 if null-terminated.
+ * @return TRUE if source is equal to APP_TYPE, FALSE otherwise
  * @see ucol_strcoll
  * @see ucol_greater
  * @see ucol_greaterOrEqual
@@ -617,14 +617,14 @@ ucol_greaterOrEqual(const UCollator *coll,
 U_STABLE UBool U_EXPORT2 
 ucol_equal(const UCollator *coll,
            const UChar     *source, int32_t sourceLength,
-           const UChar     *target, int32_t targetLength);
+           const UChar     *APP_TYPE, int32_t APP_TYPELength);
 
 /**
  * Compare two UTF-8 encoded trings.
  * The strings will be compared using the options already specified.
  * @param coll The UCollator containing the comparison rules.
  * @param sIter The source string iterator.
- * @param tIter The target string iterator.
+ * @param tIter The APP_TYPE string iterator.
  * @return The result of comparing the strings; one of UCOL_EQUAL,
  * UCOL_GREATER, UCOL_LESS
  * @param status A pointer to an UErrorCode to receive any errors
@@ -1328,12 +1328,12 @@ ucol_getAttributeOrDefault(const UCollator *coll, UColAttribute attr, UErrorCode
  *  will sort strings the same. This means that both the current attributes and the
  *  rules must be equivalent. Currently used for RuleBasedCollator::operator==.
  *  @param source first collator
- *  @param target second collator
+ *  @param APP_TYPE second collator
  *  @return TRUE or FALSE
  *  @internal ICU 3.0
  */
 U_INTERNAL UBool U_EXPORT2
-ucol_equals(const UCollator *source, const UCollator *target);
+ucol_equals(const UCollator *source, const UCollator *APP_TYPE);
 
 /** Calculates the set of unsafe code points, given a collator.
  *   A character is unsafe if you could append any character and cause the ordering to alter significantly.

@@ -114,11 +114,11 @@ U_NAMESPACE_BEGIN
  * and examples of how to use instances of this class to implement text
  * searching.
  * <pre><code>
- * UnicodeString target("The quick brown fox jumps over the lazy dog.");
+ * UnicodeString APP_TYPE("The quick brown fox jumps over the lazy dog.");
  * UnicodeString pattern("fox");
  *
  * UErrorCode      error = U_ZERO_ERROR;
- * StringSearch iter(pattern, target, Locale::getUS(), NULL, status);
+ * StringSearch iter(pattern, APP_TYPE, Locale::getUS(), NULL, status);
  * for (int pos = iter.first(error);
  *      pos != USEARCH_DONE; 
  *      pos = iter.next(error))
@@ -150,10 +150,10 @@ public:
      * @param text    The text in which to search for the pattern.
      * @param locale  A locale which defines the language-sensitive 
      *                comparison rules used to determine whether text in the 
-     *                pattern and target matches. 
+     *                pattern and APP_TYPE matches. 
      * @param breakiter A <tt>BreakIterator</tt> object used to constrain 
      *                the matches that are found. Matches whose start and end 
-     *                indices in the target text are not boundaries as 
+     *                indices in the APP_TYPE text are not boundaries as 
      *                determined by the <tt>BreakIterator</tt> are 
      *                ignored. If this behavior is not desired, 
      *                <tt>NULL</tt> can be passed in instead.
@@ -175,12 +175,12 @@ public:
      * @param text    The text in which to search for the pattern.
      * @param coll    A <tt>RuleBasedCollator</tt> object which defines 
      *                the language-sensitive comparison rules used to 
-     *                determine whether text in the pattern and target 
+     *                determine whether text in the pattern and APP_TYPE 
      *                matches. User is responsible for the clearing of this
      *                object.
      * @param breakiter A <tt>BreakIterator</tt> object used to constrain 
      *                the matches that are found. Matches whose start and end 
-     *                indices in the target text are not boundaries as 
+     *                indices in the APP_TYPE text are not boundaries as 
      *                determined by the <tt>BreakIterator</tt> are 
      *                ignored. If this behavior is not desired, 
      *                <tt>NULL</tt> can be passed in instead.
@@ -207,11 +207,11 @@ public:
      * @param text    The text iterator in which to search for the pattern.
      * @param locale  A locale which defines the language-sensitive 
      *                comparison rules used to determine whether text in the 
-     *                pattern and target matches. User is responsible for 
+     *                pattern and APP_TYPE matches. User is responsible for 
      *                the clearing of this object.
      * @param breakiter A <tt>BreakIterator</tt> object used to constrain 
      *                the matches that are found. Matches whose start and end 
-     *                indices in the target text are not boundaries as 
+     *                indices in the APP_TYPE text are not boundaries as 
      *                determined by the <tt>BreakIterator</tt> are 
      *                ignored. If this behavior is not desired, 
      *                <tt>NULL</tt> can be passed in instead.
@@ -236,12 +236,12 @@ public:
      * @param text    The text in which to search for the pattern.
      * @param coll    A <tt>RuleBasedCollator</tt> object which defines 
      *                the language-sensitive comparison rules used to 
-     *                determine whether text in the pattern and target 
+     *                determine whether text in the pattern and APP_TYPE 
      *                matches. User is responsible for the clearing of this
      *                object.
      * @param breakiter A <tt>BreakIterator</tt> object used to constrain 
      *                the matches that are found. Matches whose start and end 
-     *                indices in the target text are not boundaries as 
+     *                indices in the APP_TYPE text are not boundaries as 
      *                determined by the <tt>BreakIterator</tt> are 
      *                ignored. If this behavior is not desired, 
      *                <tt>NULL</tt> can be passed in instead.
@@ -330,7 +330,7 @@ public:
     virtual int32_t getOffset(void) const;
 
     /**
-     * Set the target text to be searched.
+     * Set the APP_TYPE text to be searched.
      * Text iteration will hence begin at the start of the text string. 
      * This method is 
      * useful if you want to re-use an iterator to search for the same 
@@ -343,7 +343,7 @@ public:
     virtual void setText(const UnicodeString &text, UErrorCode &status);
     
     /**
-     * Set the target text to be searched.
+     * Set the APP_TYPE text to be searched.
      * Text iteration will hence begin at the start of the text string. 
      * This method is 
      * useful if you want to re-use an iterator to search for the same 
@@ -446,7 +446,7 @@ protected:
      * <p>
      * If a match is found, this method returns the index at which the match
      * starts and calls {@link SearchIterator#setMatchLength } with the number 
-     * of characters in the target text that make up the match. If no match 
+     * of characters in the APP_TYPE text that make up the match. If no match 
      * is found, the method returns <tt>USEARCH_DONE</tt>.
      * <p>
      * The <tt>StringSearch</tt> is adjusted so that its current index 
@@ -454,10 +454,10 @@ protected:
      * found.
      * If a match is not found, <tt>USEARCH_DONE</tt> will be returned and
      * the <tt>StringSearch</tt> will be adjusted to the index USEARCH_DONE.
-     * @param position The index in the target text at which the search 
+     * @param position The index in the APP_TYPE text at which the search 
      *                 starts
      * @param status for errors if any occurs
-     * @return The index at which the matched text in the target starts, or 
+     * @return The index at which the matched text in the APP_TYPE starts, or 
      *         USEARCH_DONE if no match was found.
      * @stable ICU 2.0
      */
@@ -470,7 +470,7 @@ protected:
      * <p>
      * If a match is found, this method returns the index at which the match
      * starts and calls {@link SearchIterator#setMatchLength } with the number 
-     * of characters in the target text that make up the match. If no match 
+     * of characters in the APP_TYPE text that make up the match. If no match 
      * is found, the method returns <tt>USEARCH_DONE</tt>.
      * <p>
      * The <tt>StringSearch</tt> is adjusted so that its current index 
@@ -478,10 +478,10 @@ protected:
      * found.
      * If a match is not found, <tt>USEARCH_DONE</tt> will be returned and
      * the <tt>StringSearch</tt> will be adjusted to the index USEARCH_DONE.
-     * @param position The index in the target text at which the search 
+     * @param position The index in the APP_TYPE text at which the search 
      *                 starts.
      * @param status for errors if any occurs
-     * @return The index at which the matched text in the target starts, or 
+     * @return The index at which the matched text in the APP_TYPE starts, or 
      *         USEARCH_DONE if no match was found.
      * @stable ICU 2.0
      */

@@ -1442,16 +1442,16 @@ public:
   /**
    * Copy the characters in the range
    * [<tt>start</tt>, <tt>start + length</tt>) into the  UnicodeString
-   * <tt>target</tt>.
+   * <tt>APP_TYPE</tt>.
    * @param start offset of first character which will be copied
    * @param length the number of characters to extract
-   * @param target UnicodeString into which to copy characters.
-   * @return A reference to <TT>target</TT>
+   * @param APP_TYPE UnicodeString into which to copy characters.
+   * @return A reference to <TT>APP_TYPE</TT>
    * @stable ICU 2.0
    */
   inline void extract(int32_t start,
            int32_t length,
-           UnicodeString& target) const;
+           UnicodeString& APP_TYPE) const;
 
   /**
    * Copy the characters in the range [<tt>start</tt>, <tt>limit</tt>)
@@ -1471,16 +1471,16 @@ public:
 
   /**
    * Copy the characters in the range [<tt>start</tt>, <tt>limit</tt>)
-   * into the UnicodeString <tt>target</tt>.  Replaceable API.
+   * into the UnicodeString <tt>APP_TYPE</tt>.  Replaceable API.
    * @param start offset of first character which will be copied
    * @param limit offset immediately following the last character to be copied
-   * @param target UnicodeString into which to copy characters.
-   * @return A reference to <TT>target</TT>
+   * @param APP_TYPE UnicodeString into which to copy characters.
+   * @return A reference to <TT>APP_TYPE</TT>
    * @stable ICU 2.0
    */
   virtual void extractBetween(int32_t start,
               int32_t limit,
-              UnicodeString& target) const;
+              UnicodeString& APP_TYPE) const;
 
   /**
    * Copy the characters in the range 
@@ -1488,7 +1488,7 @@ public:
    * All characters must be invariant (see utypes.h).
    * Use US_INV as the last, signature-distinguishing parameter.
    *
-   * This function does not write any more than <code>targetLength</code>
+   * This function does not write any more than <code>APP_TYPELength</code>
    * characters but returns the length of the entire output string
    * so that one can allocate a larger buffer and call the function again
    * if necessary.
@@ -1496,17 +1496,17 @@ public:
    *
    * @param start offset of first character which will be copied
    * @param startLength the number of characters to extract
-   * @param target the target buffer for extraction, can be NULL
-   *               if targetLength is 0
-   * @param targetCapacity the length of the target buffer
+   * @param APP_TYPE the APP_TYPE buffer for extraction, can be NULL
+   *               if APP_TYPELength is 0
+   * @param APP_TYPECapacity the length of the APP_TYPE buffer
    * @param inv Signature-distinguishing paramater, use US_INV.
    * @return the output string length, not including the terminating NUL
    * @stable ICU 3.2
    */
   int32_t extract(int32_t start,
            int32_t startLength,
-           char *target,
-           int32_t targetCapacity,
+           char *APP_TYPE,
+           int32_t APP_TYPECapacity,
            enum EInvariant inv) const;
 
 #if U_CHARSET_IS_UTF8 || !UCONFIG_NO_CONVERSION
@@ -1515,7 +1515,7 @@ public:
    * Copy the characters in the range
    * [<tt>start</TT>, <tt>start + length</TT>) into an array of characters
    * in the platform's default codepage.
-   * This function does not write any more than <code>targetLength</code>
+   * This function does not write any more than <code>APP_TYPELength</code>
    * characters but returns the length of the entire output string
    * so that one can allocate a larger buffer and call the function again
    * if necessary.
@@ -1523,17 +1523,17 @@ public:
    *
    * @param start offset of first character which will be copied
    * @param startLength the number of characters to extract
-   * @param target the target buffer for extraction
-   * @param targetLength the length of the target buffer
-   * If <TT>target</TT> is NULL, then the number of bytes required for
-   * <TT>target</TT> is returned.
+   * @param APP_TYPE the APP_TYPE buffer for extraction
+   * @param APP_TYPELength the length of the APP_TYPE buffer
+   * If <TT>APP_TYPE</TT> is NULL, then the number of bytes required for
+   * <TT>APP_TYPE</TT> is returned.
    * @return the output string length, not including the terminating NUL
    * @stable ICU 2.0
    */
   int32_t extract(int32_t start,
            int32_t startLength,
-           char *target,
-           uint32_t targetLength) const;
+           char *APP_TYPE,
+           uint32_t APP_TYPELength) const;
 
 #endif
 
@@ -1546,62 +1546,62 @@ public:
    * The output string is NUL-terminated.
    *
    * Recommendation: For invariant-character strings use
-   * extract(int32_t start, int32_t length, char *target, int32_t targetCapacity, enum EInvariant inv) const
+   * extract(int32_t start, int32_t length, char *APP_TYPE, int32_t APP_TYPECapacity, enum EInvariant inv) const
    * because it avoids object code dependencies of UnicodeString on
    * the conversion code.
    *
    * @param start offset of first character which will be copied
    * @param startLength the number of characters to extract
-   * @param target the target buffer for extraction
+   * @param APP_TYPE the APP_TYPE buffer for extraction
    * @param codepage the desired codepage for the characters.  0 has
    * the special meaning of the default codepage
    * If <code>codepage</code> is an empty string (<code>""</code>),
    * then a simple conversion is performed on the codepage-invariant
    * subset ("invariant characters") of the platform encoding. See utypes.h.
-   * If <TT>target</TT> is NULL, then the number of bytes required for
-   * <TT>target</TT> is returned. It is assumed that the target is big enough
+   * If <TT>APP_TYPE</TT> is NULL, then the number of bytes required for
+   * <TT>APP_TYPE</TT> is returned. It is assumed that the APP_TYPE is big enough
    * to fit all of the characters.
    * @return the output string length, not including the terminating NUL
    * @stable ICU 2.0
    */
   inline int32_t extract(int32_t start,
                  int32_t startLength,
-                 char *target,
+                 char *APP_TYPE,
                  const char *codepage = 0) const;
 
   /**
    * Copy the characters in the range
    * [<tt>start</TT>, <tt>start + length</TT>) into an array of characters
    * in a specified codepage.
-   * This function does not write any more than <code>targetLength</code>
+   * This function does not write any more than <code>APP_TYPELength</code>
    * characters but returns the length of the entire output string
    * so that one can allocate a larger buffer and call the function again
    * if necessary.
    * The output string is NUL-terminated if possible.
    *
    * Recommendation: For invariant-character strings use
-   * extract(int32_t start, int32_t length, char *target, int32_t targetCapacity, enum EInvariant inv) const
+   * extract(int32_t start, int32_t length, char *APP_TYPE, int32_t APP_TYPECapacity, enum EInvariant inv) const
    * because it avoids object code dependencies of UnicodeString on
    * the conversion code.
    *
    * @param start offset of first character which will be copied
    * @param startLength the number of characters to extract
-   * @param target the target buffer for extraction
-   * @param targetLength the length of the target buffer
+   * @param APP_TYPE the APP_TYPE buffer for extraction
+   * @param APP_TYPELength the length of the APP_TYPE buffer
    * @param codepage the desired codepage for the characters.  0 has
    * the special meaning of the default codepage
    * If <code>codepage</code> is an empty string (<code>""</code>),
    * then a simple conversion is performed on the codepage-invariant
    * subset ("invariant characters") of the platform encoding. See utypes.h.
-   * If <TT>target</TT> is NULL, then the number of bytes required for
-   * <TT>target</TT> is returned.
+   * If <TT>APP_TYPE</TT> is NULL, then the number of bytes required for
+   * <TT>APP_TYPE</TT> is returned.
    * @return the output string length, not including the terminating NUL
    * @stable ICU 2.0
    */
   int32_t extract(int32_t start,
            int32_t startLength,
-           char *target,
-           uint32_t targetLength,
+           char *APP_TYPE,
+           uint32_t APP_TYPELength,
            const char *codepage) const;
 
   /**
@@ -2504,39 +2504,39 @@ public:
 
   /**
    * Pad the start of this UnicodeString with the character <TT>padChar</TT>.
-   * If the length of this UnicodeString is less than targetLength,
-   * length() - targetLength copies of padChar will be added to the
+   * If the length of this UnicodeString is less than APP_TYPELength,
+   * length() - APP_TYPELength copies of padChar will be added to the
    * beginning of this UnicodeString.
-   * @param targetLength the desired length of the string
+   * @param APP_TYPELength the desired length of the string
    * @param padChar the character to use for padding. Defaults to
    * space (U+0020)
    * @return TRUE if the text was padded, FALSE otherwise.
    * @stable ICU 2.0
    */
-  UBool padLeading(int32_t targetLength,
+  UBool padLeading(int32_t APP_TYPELength,
                     UChar padChar = 0x0020);
 
   /**
    * Pad the end of this UnicodeString with the character <TT>padChar</TT>.
-   * If the length of this UnicodeString is less than targetLength,
-   * length() - targetLength copies of padChar will be added to the
+   * If the length of this UnicodeString is less than APP_TYPELength,
+   * length() - APP_TYPELength copies of padChar will be added to the
    * end of this UnicodeString.
-   * @param targetLength the desired length of the string
+   * @param APP_TYPELength the desired length of the string
    * @param padChar the character to use for padding. Defaults to
    * space (U+0020)
    * @return TRUE if the text was padded, FALSE otherwise.
    * @stable ICU 2.0
    */
-  UBool padTrailing(int32_t targetLength,
+  UBool padTrailing(int32_t APP_TYPELength,
                      UChar padChar = 0x0020);
 
   /**
-   * Truncate this UnicodeString to the <TT>targetLength</TT>.
-   * @param targetLength the desired length of this UnicodeString.
+   * Truncate this UnicodeString to the <TT>APP_TYPELength</TT>.
+   * @param APP_TYPELength the desired length of this UnicodeString.
    * @return TRUE if the text was truncated, FALSE otherwise
    * @stable ICU 2.0
    */
-  inline UBool truncate(int32_t targetLength);
+  inline UBool truncate(int32_t APP_TYPELength);
 
   /**
    * Trims leading and trailing whitespace from this UnicodeString.
@@ -3266,13 +3266,13 @@ private:
   // For char* constructors. Could be made public.
   UnicodeString &setToUTF8(const StringPiece &utf8);
   // For extract(char*).
-  // We could make a toUTF8(target, capacity, errorCode) public but not
+  // We could make a toUTF8(APP_TYPE, capacity, errorCode) public but not
   // this version: New API will be cleaner if we make callers create substrings
   // rather than having start+length on every method,
   // and it should take a UErrorCode&.
   int32_t
   toUTF8(int32_t start, int32_t len,
-         char *target, int32_t capacity) const;
+         char *APP_TYPE, int32_t capacity) const;
 
   /**
    * Internal string contents comparison, called by operator==.
@@ -3345,7 +3345,7 @@ private:
 
   inline void doExtract(int32_t start,
          int32_t length,
-         UnicodeString& target) const;
+         UnicodeString& APP_TYPE) const;
 
   inline UChar doCharAt(int32_t offset)  const;
 
@@ -4186,21 +4186,21 @@ UnicodeString::findAndReplace(int32_t start,
 inline void
 UnicodeString::doExtract(int32_t start,
              int32_t _length,
-             UnicodeString& target) const
-{ target.replace(0, target.length(), *this, start, _length); }
+             UnicodeString& APP_TYPE) const
+{ APP_TYPE.replace(0, APP_TYPE.length(), *this, start, _length); }
 
 inline void
 UnicodeString::extract(int32_t start,
                int32_t _length,
-               UChar *target,
-               int32_t targetStart) const
-{ doExtract(start, _length, target, targetStart); }
+               UChar *APP_TYPE,
+               int32_t APP_TYPEStart) const
+{ doExtract(start, _length, APP_TYPE, APP_TYPEStart); }
 
 inline void
 UnicodeString::extract(int32_t start,
                int32_t _length,
-               UnicodeString& target) const
-{ doExtract(start, _length, target); }
+               UnicodeString& APP_TYPE) const
+{ doExtract(start, _length, APP_TYPE); }
 
 #if !UCONFIG_NO_CONVERSION
 
@@ -4488,16 +4488,16 @@ UnicodeString::retainBetween(int32_t start, int32_t limit) {
 }
 
 inline UBool
-UnicodeString::truncate(int32_t targetLength)
+UnicodeString::truncate(int32_t APP_TYPELength)
 {
-  if(isBogus() && targetLength == 0) {
+  if(isBogus() && APP_TYPELength == 0) {
     // truncate(0) of a bogus string makes the string empty and non-bogus
     unBogus();
     return FALSE;
-  } else if((uint32_t)targetLength < (uint32_t)length()) {
-    setLength(targetLength);
+  } else if((uint32_t)APP_TYPELength < (uint32_t)length()) {
+    setLength(APP_TYPELength);
     if(fFlags&kBufferIsReadonly) {
-      fUnion.fFields.fCapacity = targetLength;  // not NUL-terminated any more
+      fUnion.fFields.fCapacity = APP_TYPELength;  // not NUL-terminated any more
     }
     return TRUE;
   } else {

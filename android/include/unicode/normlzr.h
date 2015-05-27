@@ -27,7 +27,7 @@
 U_NAMESPACE_BEGIN
 /**
  * The Normalizer class supports the standard normalization forms described in
- * <a href="http://www.unicode.org/unicode/reports/tr15/" target="unicode">
+ * <a href="http://www.unicode.org/unicode/reports/tr15/" APP_TYPE="unicode">
  * Unicode Standard Annex #15: Unicode Normalization Forms</a>.
  *
  * Note: This API has been replaced by the Normalizer2 class and is only available

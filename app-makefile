@@ -22,7 +22,7 @@ ifeq ($(BASE_OS),android)
     LDLIBS+=-llog
 endif
 
-ifeq ($(TARGET),NativeApp)
+ifeq ($(APP_TYPE),NativeApp)
     ifeq ($(BASE_OS),android)
         LIB_NAME=$(APPLICATION_NAME)
         LDLIBS+=-landroid

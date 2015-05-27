@@ -392,7 +392,7 @@ protected:
     /** @internal */
     virtual int32_t writeValueAndType(UBool hasValue, int32_t value, int32_t node) = 0;
     /** @internal */
-    virtual int32_t writeDeltaTo(int32_t jumpTarget) = 0;
+    virtual int32_t writeDeltaTo(int32_t jumpAPP_TYPE) = 0;
 };
 
 U_NAMESPACE_END

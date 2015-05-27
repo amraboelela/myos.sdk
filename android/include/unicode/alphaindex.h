@@ -97,8 +97,8 @@ class UVector;
  *
  * The class can generate a list of labels for use as a UI "index", that is, a list of
  * clickable characters (or character sequences) that allow the user to see a segment
- * (bucket) of a larger "target" list. That is, each label corresponds to a bucket in
- * the target list, where everything in the bucket is greater than or equal to the character
+ * (bucket) of a larger "APP_TYPE" list. That is, each label corresponds to a bucket in
+ * the APP_TYPE list, where everything in the bucket is greater than or equal to the character
  * (according to the locale's collation). Strings can be added to the index;
  * they will be in sorted order in the right bucket.
  * <p>

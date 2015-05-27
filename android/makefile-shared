@@ -26,7 +26,7 @@ ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
 endif
 
-ifeq ($(TARGET),NativeApp)
+ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
 endif
 
@@ -37,7 +37,7 @@ _SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
 
-ifeq ($(TARGET),NativeApp)
+ifeq ($(APP_TYPE),NativeApp)
     ODIR=NAObj
 else
     ODIR=obj

@@ -1,9 +1,9 @@
 /* -----------------------------------------------------------------*-C-*-
-   ffitarget.h - Copyright (c) 2012  Anthony Green
+   ffiAPP_TYPE.h - Copyright (c) 2012  Anthony Green
                  Copyright (c) 2010  CodeSourcery
                  Copyright (c) 1996-2003  Red Hat, Inc.
 
-   Target configuration macros for ARM.
+   APP_TYPE configuration macros for ARM.
 
    Permission is hereby granted, free of charge, to any person obtaining
    a copy of this software and associated documentation files (the
@@ -27,11 +27,11 @@
 
    ----------------------------------------------------------------------- */
 
-#ifndef LIBFFI_TARGET_H
-#define LIBFFI_TARGET_H
+#ifndef LIBFFI_APP_TYPE_H
+#define LIBFFI_APP_TYPE_H
 
 #ifndef LIBFFI_H
-#error "Please do not include ffitarget.h directly into your source.  Use ffi.h instead."
+#error "Please do not include ffiAPP_TYPE.h directly into your source.  Use ffi.h instead."
 #endif
 
 #ifndef LIBFFI_ASM
@@ -60,7 +60,7 @@ typedef enum ffi_abi {
 #define FFI_TYPE_STRUCT_VFP_FLOAT  (FFI_TYPE_LAST + 1)
 #define FFI_TYPE_STRUCT_VFP_DOUBLE (FFI_TYPE_LAST + 2)
 
-#define FFI_TARGET_SPECIFIC_VARIADIC
+#define FFI_APP_TYPE_SPECIFIC_VARIADIC
 
 /* ---- Definitions for closures ----------------------------------------- */
 
