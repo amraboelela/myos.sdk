@@ -32,7 +32,12 @@ LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib
 LDLIBS+=-lobjc -lm -llcms -lX11 -lGL 
 
 all: $(OUTPUT)
-ODIR=obj
+ifeq ($(TARGET),NativeApp)
+    ODIR=NAObj
+else
+    ODIR=obj
+endif
+
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 
 $(ODIR)/%.o: %.c
