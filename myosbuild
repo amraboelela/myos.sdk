@@ -23,7 +23,40 @@ export SOURCE_CODE_PATH=$(pwd)
 source ${SOURCE_CODE_PATH}/config.sh
 
 if [ ${BUILD_TYPE} = "Library" ]; then
-    source ${MYOS_PATH}/sdk/library-build.sh
+    if [ ${TARGET} = "All" ]; then
+        export TARGET=NativeApp
+        LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
+        echo "============================== Building ${LIBRARY_NAME} =============================="
+        make || exit
+        echo "============================== installing ${LIBRARY_NAME} =============================="
+        make copy
+
+        export TARGET=ChildApp
+        LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+        echo "============================== Building ${LIBRARY_NAME} =============================="
+        make || exit
+        echo "============================== installing ${LIBRARY_NAME} =============================="
+        make copy
+        export TARGET=All
+    else
+        export TARGET=${TARGET}
+        if [ ${TARGET} = "NativeApp" ]; then
+            LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
+        else
+            LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+        fi
+        echo "============================== Building ${LIBRARY_NAME} =============================="
+        make || exit
+        echo "============================== installing ${LIBRARY_NAME} =============================="
+        make copy
+    fi
 else
-    source ${MYOS_PATH}/sdk/app-build.sh
+    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
+
+    echo "============================== Building ${APPLICATION_NAME} =============================="
+    make || exit
+    if [ ${BASE_OS} = "android" ] && [ ${TARGET} = "NativeApp" ] ; then
+        echo "============================== NDK building ${APPLICATION_NAME} =============================="
+        ndk-build || exit
+    fi
 fi
