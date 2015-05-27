@@ -22,8 +22,8 @@ export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 export SOURCE_CODE_PATH=$(pwd)
 source ${SOURCE_CODE_PATH}/config.sh
 
-BUILD_TYPE=x${BUILD_TYPE}
-if [ ${BUILD_TYPE} = "x" ]; then
+BUILD_TYPE_X=x${BUILD_TYPE}
+if [ ${BUILD_TYPE_X} = "x" ]; then
     BUILD_TYPE=Application
 fi
 if [ ${BUILD_TYPE} = "Library" ]; then
