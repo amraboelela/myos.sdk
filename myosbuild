@@ -17,6 +17,11 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
+export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+
+export SOURCE_CODE_PATH=$(pwd)
+source ${SOURCE_CODE_PATH}/config.sh
+
 if [ ${BUILD_TYPE} = "Library" ]; then
     source ${MYOS_PATH}/sdk/library-build.sh
 else

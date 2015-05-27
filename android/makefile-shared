@@ -69,8 +69,6 @@ $(OUTPUT): $(OBJ) $(_SLIBS)
 	$(LD) -shared --sysroot $(SYSROOT) $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
-	@echo
-	@echo "=== Cleaning $(LIB_NAME) ==="
 	-rm obj/*.o
 	-rm NAObj/*.o
 	-rm $(OUTPUT)

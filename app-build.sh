@@ -15,10 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-export APPLICATION_NAME=$(pwd | awk -F'/' '{print $NF}')
-
-APPLICATION_PATH=$(pwd)
-source ${APPLICATION_PATH}/config.sh
+export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
 
 echo "============================== Building ${APPLICATION_NAME} =============================="
 make || exit

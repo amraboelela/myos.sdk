@@ -66,8 +66,6 @@ $(OUTPUT): $(OBJ)
 	$(LD) -shared $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
-	@echo
-	@echo "=== Cleaning $(LIB_NAME) ==="
 	-rm obj/*.o
 	-rm obj/*.d
 	-rm NAObj/*.o
