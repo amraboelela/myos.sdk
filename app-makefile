@@ -22,14 +22,22 @@ ifeq ($(BASE_OS),android)
     LDLIBS+=-llog
 endif
 
-ifeq ($(TARGET),NativeApp) && ($(BASE_OS),android)
-    LIB_NAME=$(APPLICATION_NAME)
-    LDLIBS+=-landroid
-    OBJECTS+= \
-        rd_app_glue.o \
-        rd_main.o \
+ifeq ($(TARGET),NativeApp)
+    ifeq ($(BASE_OS),android)
+        LIB_NAME=$(APPLICATION_NAME)
+        LDLIBS+=-landroid
+        OBJECTS+= \
+            rd_app_glue.o \
+            rd_main.o \
 
-    include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-shared
+        include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-shared
+    else
+        APP_NAME=$(APPLICATION_NAME)
+        OBJECTS+= \
+            main.o \
+    
+        include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-executable
+    endif
 else
     APP_NAME=$(APPLICATION_NAME)
     OBJECTS+= \
@@ -37,3 +45,4 @@ else
 
     include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-executable
 endif
+
