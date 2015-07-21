@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>8CFCFCBA-F3B8-4650-B867-6745EE1B1FF6</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>sdk</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>2E70FCDEDEA92B2C53D7BEB502B22E90128A4570</key>
 		<string>github.com:amraboelela/myos.sdk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>sdk.xcodeproj/project.xcworkspace</string>
+	<string>sdk.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2E70FCDEDEA92B2C53D7BEB502B22E90128A4570</key>

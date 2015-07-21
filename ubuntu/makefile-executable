@@ -64,7 +64,6 @@ clean:
 	-rm $(OUTPUT)
 
 copy:
-
-#	adb shell mkdir /data/data/com.myos.myapps/apps/$(OUTPUT).app
-#	adb push $(OUTPUT) /data/data/com.myos.myapps/apps/$(OUTPUT).app/
-#	ls *.png *.json | xargs -I {} adb push {} /data/data/com.myos.myapps/apps/$(OUTPUT).app/
+	mkdir ${MYOS_PATH}/myapps/apps/$(OUTPUT).app
+	cp $(OUTPUT) ${MYOS_PATH}/myapps/apps/$(OUTPUT).app/
+	ls *.png *.json | xargs -I {} cp {} ${MYOS_PATH}/myapps/apps/$(OUTPUT).app/
