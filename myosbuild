@@ -62,5 +62,7 @@ else
     if [ ${BASE_OS} = "android" ] && [ ${APP_TYPE} = "NativeApp" ] ; then
         echo "============================== NDK building ${APPLICATION_NAME} =============================="
         ndk-build || exit
+    else
+        make copy
     fi
 fi

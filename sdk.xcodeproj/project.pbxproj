@@ -11,7 +11,6 @@
 		F51FCC6F1B153A3200C182B0 /* myosbuild */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosbuild; sourceTree = "<group>"; };
 		F51FCC701B153A3200C182B0 /* myosrun */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosrun; sourceTree = "<group>"; };
 		F51FCC711B153A3200C182B0 /* myosclean */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosclean; sourceTree = "<group>"; };
-		F51FCC721B153A3200C182B0 /* myosinstall */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosinstall; sourceTree = "<group>"; };
 		F51FCC741B155A4C00C182B0 /* app-makefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = "app-makefile"; sourceTree = "<group>"; };
 		F51FCC751B1564A200C182B0 /* config.sh.android */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.android; sourceTree = "<group>"; };
 		F51FCC761B1564A200C182B0 /* config.sh.ubuntu */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.ubuntu; sourceTree = "<group>"; };
@@ -34,7 +33,6 @@
 				F51FCC6F1B153A3200C182B0 /* myosbuild */,
 				F51FCC711B153A3200C182B0 /* myosclean */,
 				F56BD64F1B15913500D6D5CD /* myosemulator */,
-				F51FCC721B153A3200C182B0 /* myosinstall */,
 				F51FCC701B153A3200C182B0 /* myosrun */,
 				C57AEBBD19C7E04D00072531 /* README.md */,
 			);
