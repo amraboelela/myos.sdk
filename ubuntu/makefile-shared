@@ -75,5 +75,3 @@ clean:
 
 copy:
 	sudo cp *.so /usr/local/lib/
-
-#	cp *.so ${MYOS_PATH}/frameworks/libs/

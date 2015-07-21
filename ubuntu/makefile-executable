@@ -63,7 +63,9 @@ clean:
 	-rm $(ODIR)/*.d
 	-rm $(OUTPUT)
 
+ifeq ($(APP_TYPE),ChildApp)
 copy:
 	mkdir ${MYOS_PATH}/myapps/apps/$(OUTPUT).app
 	cp $(OUTPUT) ${MYOS_PATH}/myapps/apps/$(OUTPUT).app/
 	ls *.png *.json | xargs -I {} cp {} ${MYOS_PATH}/myapps/apps/$(OUTPUT).app/
+endif
