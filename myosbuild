@@ -60,7 +60,7 @@ else
     echo "============================== Building ${APPLICATION_NAME} =============================="
     make || exit
     if [ ${APP_TYPE} = "NativeApp" ]; then
-        if [ ${BASE_OS} = "android" ] then
+        if [ ${BASE_OS} = "android" ]; then
             echo "============================== NDK building ${APPLICATION_NAME} =============================="
             ndk-build || exit
         fi
