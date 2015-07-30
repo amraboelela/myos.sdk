@@ -1,5 +1,5 @@
 #
-# Copyright © 2014-2015 myOS Group.
+# Copyright © 2015 myOS Group.
 #
 # This is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -30,17 +30,17 @@ if [ ${BUILD_TYPE} = "Library" ]; then
     if [ ${APP_TYPE} = "All" ]; then
         export APP_TYPE=NativeApp
         LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-        echo "============================== Building ${LIBRARY_NAME} =============================="
-        make || exit
-        #echo "============================== installing ${LIBRARY_NAME} =============================="
-        #make copy
+        #echo "============================== Building ${LIBRARY_NAME} =============================="
+        #make || exit
+        echo "============================== Installing ${LIBRARY_NAME} =============================="
+        make copy
 
         export APP_TYPE=ChildApp
         LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-        echo "============================== Building ${LIBRARY_NAME} =============================="
-        make || exit
-        #echo "============================== installing ${LIBRARY_NAME} =============================="
-        #make copy
+        #echo "============================== Building ${LIBRARY_NAME} =============================="
+        #make || exit
+        echo "============================== Installing ${LIBRARY_NAME} =============================="
+        make copy
         export APP_TYPE=All
     else
         export APP_TYPE=${APP_TYPE}
@@ -49,27 +49,23 @@ if [ ${BUILD_TYPE} = "Library" ]; then
         else
             LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
         fi
-        echo "============================== Building ${LIBRARY_NAME} =============================="
-        make || exit
-        #echo "============================== installing ${LIBRARY_NAME} =============================="
-        #make copy
+        #echo "============================== Building ${LIBRARY_NAME} =============================="
+        #make || exit
+        echo "============================== Installing ${LIBRARY_NAME} =============================="
+        make copy
     fi
 else
     export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
 
-    echo "============================== Building ${APPLICATION_NAME} =============================="
-    APP_TYPE=ChildApp
-    make || exit
+    echo "============================== Installing ${APPLICATION_NAME} =============================="
+    #make || exit
     #if [ ${APP_TYPE} = "NativeApp" ]; then
-    if [ ${BASE_OS} = "android" ]; then
-        echo "============================== NDK building ${APPLICATION_NAME} =============================="
-        ndk-build || exit
-    else
-        APP_TYPE=NativeApp
-        make || exit
-    fi
+    #if [ ${BASE_OS} = "android" ]; then
+    #    echo "============================== NDK building ${APPLICATION_NAME} =============================="
+    #    ndk-build || exit
+    #fi
     #else
-    #    make copy
+    make copy
     #fi
 fi
 

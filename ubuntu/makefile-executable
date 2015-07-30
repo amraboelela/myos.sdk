@@ -15,7 +15,17 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-OUTPUT=$(APP_NAME)
+ifeq ($(APP_TYPE),NativeApp)
+    ODIR=NAObj
+else
+    ODIR=obj
+endif
+
+ifeq ($(APP_TYPE),NativeApp)
+    OUTPUT=$(APP_NAME)
+else
+    OUTPUT=$(ODIR)/$(APP_NAME)
+endif
 CC=clang
 CXX=clang
 LD=clang
@@ -32,12 +42,6 @@ LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib
 LDLIBS+=-lobjc -lm -llcms -lX11 -lGL 
 
 all: $(OUTPUT)
-ifeq ($(APP_TYPE),NativeApp)
-    ODIR=NAObj
-else
-    ODIR=obj
-endif
-
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJECTS))
 
 $(ODIR)/%.o: %.c
@@ -61,6 +65,7 @@ $(OUTPUT): $(OBJ)
 clean:
 	-rm $(ODIR)/*.o
 	-rm $(ODIR)/*.d
+	-rm $(ODIR)/$(OUTPUT)
 	-rm $(OUTPUT)
 
 ifeq ($(APP_TYPE),ChildApp)

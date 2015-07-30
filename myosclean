@@ -27,11 +27,11 @@ if [ ${BUILD_TYPE_X} = "x" ]; then
     BUILD_TYPE=Application
 fi
 if [ ${BUILD_TYPE} = "Library" ]; then
-    if [ ${APP_TYPE} = "NativeApp" ]; then
-        export LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-    else
-        export LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-    fi
+    #if [ ${APP_TYPE} = "NativeApp" ]; then
+    #    export LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
+    #else
+    export LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+    #fi
 else
     export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
 fi
@@ -43,3 +43,4 @@ if  [ ${BASE_OS} = "android" ] && [ ! ${BUILD_TYPE} = "Library" ] && [ ${APP_TYP
     ndk-build clean
     ant clean
 fi
+
