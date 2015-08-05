@@ -58,15 +58,15 @@ else
     export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
 
     echo "============================== Building ${APPLICATION_NAME} =============================="
-    APP_TYPE=ChildApp
+    export APP_TYPE=NativeApp
     make || exit
     #if [ ${APP_TYPE} = "NativeApp" ]; then
     if [ ${BASE_OS} = "android" ]; then
         echo "============================== NDK building ${APPLICATION_NAME} =============================="
         ndk-build || exit
-    else
-        APP_TYPE=NativeApp
-        make || exit
+    #else
+    #    APP_TYPE=NativeApp
+    #    make || exit
     fi
     #else
     #    make copy

@@ -37,7 +37,10 @@ else
 fi
 
 echo "===== Cleaning ${SOURCE_CODE_DIRECTORY} ================================="
+#export APP_TYPE=NativeApp
 make clean
+#export APP_TYPE=ChildApp
+#make clean
 
 if  [ ${BASE_OS} = "android" ] && [ ! ${BUILD_TYPE} = "Library" ] && [ ${APP_TYPE} = "NativeApp" ] ; then
     ndk-build clean
