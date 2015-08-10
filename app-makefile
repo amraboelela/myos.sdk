@@ -1,5 +1,5 @@
 #
-# Copyright © 2014 myOS Group.
+# Copyright © 2014-2015 myOS Group.
 #
 # This is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -22,27 +22,27 @@ ifeq ($(BASE_OS),android)
     LDLIBS+=-llog
 endif
 
-ifeq ($(APP_TYPE),NativeApp)
-    ifeq ($(BASE_OS),android)
-        LIB_NAME=$(APPLICATION_NAME)
-        LDLIBS+=-landroid
-        OBJECTS+= \
-            rd_app_glue.o \
-            rd_main.o \
+#ifeq ($(APP_TYPE),NativeApp)
+ifeq ($(BASE_OS),android)
+    LIB_NAME=$(APPLICATION_NAME)
+    LDLIBS+=-landroid
+    OBJECTS+= \
+        rd_app_glue.o \
+        rd_main.o \
 
-        include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-shared
-    else
-        APP_NAME=$(APPLICATION_NAME)
-        OBJECTS+= \
-            main.o \
-    
-        include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-executable
-    endif
+    include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-shared
 else
     APP_NAME=$(APPLICATION_NAME)
     OBJECTS+= \
         main.o \
-
+    
     include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-executable
 endif
+#else
+#    APP_NAME=$(APPLICATION_NAME)
+#    OBJECTS+= \
+#        main.o \
+#
+#    include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-executable
+#endif
 

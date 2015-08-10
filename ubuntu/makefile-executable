@@ -65,7 +65,6 @@ $(OUTPUT): $(OBJ)
 clean:
 	-rm $(ODIR)/*.o
 	-rm $(ODIR)/*.d
-	-rm $(APP_NAME)
 	-rm $(OUTPUT)
 
 ifeq ($(APP_TYPE),ChildApp)
