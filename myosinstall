@@ -61,15 +61,9 @@ else
     echo "============================== Building ${APPLICATION_NAME} =============================="
     make || exit
  
-    echo "============================== Installing ${APPLICATION_NAME} =============================="
-    #make || exit
-    #if [ ${APP_TYPE} = "NativeApp" ]; then
-    #if [ ${BASE_OS} = "android" ]; then
-    #    echo "============================== NDK building ${APPLICATION_NAME} =============================="
-    #    ndk-build || exit
-    #fi
-    #else
-    make copy
-    #fi
+    if [ ${APPLICATION_NAME} != "myapps" ]; then
+        echo "============================== Installing ${APPLICATION_NAME} =============================="
+        make copy
+    fi
 fi
 
