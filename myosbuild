@@ -15,11 +15,20 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
+if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
+    cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
+fi
+
 source ${MYOS_PATH}/sdk/config.sh
 
 export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 
 export SOURCE_CODE_PATH=$(pwd)
+
+if [ ! -f ${SOURCE_CODE_PATH}/config.sh ]; then
+    cp ${SOURCE_CODE_PATH}/config.sh.debug ${SOURCE_CODE_PATH}/config.sh
+fi
+
 source ${SOURCE_CODE_PATH}/config.sh
 
 BUILD_TYPE_X=x${BUILD_TYPE}
@@ -32,15 +41,11 @@ if [ ${BUILD_TYPE} = "Library" ]; then
         LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
         echo "============================== Building ${LIBRARY_NAME} =============================="
         make || exit
-        #echo "============================== installing ${LIBRARY_NAME} =============================="
-        #make copy
 
         export APP_TYPE=ChildApp
         LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
         echo "============================== Building ${LIBRARY_NAME} =============================="
         make || exit
-        #echo "============================== installing ${LIBRARY_NAME} =============================="
-        #make copy
         export APP_TYPE=All
     else
         export APP_TYPE=${APP_TYPE}
@@ -51,8 +56,6 @@ if [ ${BUILD_TYPE} = "Library" ]; then
         fi
         echo "============================== Building ${LIBRARY_NAME} =============================="
         make || exit
-        #echo "============================== installing ${LIBRARY_NAME} =============================="
-        #make copy
     fi
 else
     export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
@@ -60,16 +63,8 @@ else
     echo "============================== Building ${APPLICATION_NAME} =============================="
     export APP_TYPE=NativeApp
     make || exit
-    #if [ ${APP_TYPE} = "NativeApp" ]; then
     if [ ${BASE_OS} = "android" ]; then
         echo "============================== NDK building ${APPLICATION_NAME} =============================="
         ndk-build || exit
-    #else
-    #    APP_TYPE=NativeApp
-    #    make || exit
     fi
-    #else
-    #    make copy
-    #fi
 fi
-
