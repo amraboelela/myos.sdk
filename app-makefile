@@ -22,7 +22,6 @@ ifeq ($(BASE_OS),android)
     LDLIBS+=-llog
 endif
 
-#ifeq ($(APP_TYPE),NativeApp)
 ifeq ($(BASE_OS),android)
     LIB_NAME=$(APPLICATION_NAME)
     LDLIBS+=-landroid
@@ -38,11 +37,3 @@ else
     
     include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-executable
 endif
-#else
-#    APP_NAME=$(APPLICATION_NAME)
-#    OBJECTS+= \
-#        main.o \
-#
-#    include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-executable
-#endif
-

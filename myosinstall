@@ -17,28 +17,15 @@
 
 source ${MYOS_PATH}/sdk/myosbuild
 
-#export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-
-#export SOURCE_CODE_PATH=$(pwd)
-#source ${SOURCE_CODE_PATH}/config.sh
-
-#BUILD_TYPE_X=x${BUILD_TYPE}
-#if [ ${BUILD_TYPE_X} = "x" ]; then
-#    BUILD_TYPE=Application
-#fi
 if [ ${BUILD_TYPE} = "Library" ]; then
     if [ ${APP_TYPE} = "All" ]; then
         export APP_TYPE=NativeApp
         LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-#        echo "============================== Building ${LIBRARY_NAME} =============================="
-#        make || exit
         echo "============================== Installing ${LIBRARY_NAME} =============================="
         make copy
 
         export APP_TYPE=ChildApp
         LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-#        echo "============================== Building ${LIBRARY_NAME} =============================="
-#        make || exit
         echo "============================== Installing ${LIBRARY_NAME} =============================="
         make copy
         export APP_TYPE=All
@@ -49,8 +36,6 @@ if [ ${BUILD_TYPE} = "Library" ]; then
         else
             LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
         fi
-#        echo "============================== Building ${LIBRARY_NAME} =============================="
-#        make || exit
         echo "============================== Installing ${LIBRARY_NAME} =============================="
         make copy
     fi
@@ -58,12 +43,9 @@ else
     export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
 
     export APP_TYPE=ChildApp
-#    echo "============================== Building ${APPLICATION_NAME} =============================="
-#    make || exit
  
     if [ ${APPLICATION_NAME} != "myapps" ]; then
         echo "============================== Installing ${APPLICATION_NAME} =============================="
         make copy
     fi
 fi
-
