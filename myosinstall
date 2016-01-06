@@ -43,9 +43,10 @@ else
     export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
 
     export APP_TYPE=ChildApp
- 
+    echo "============================== Building application ${APPLICATION_NAME} ===================="
+    make || exit 
     if [ ${APPLICATION_NAME} != "myapps" ]; then
-        echo "============================== Installing ${APPLICATION_NAME} =============================="
+        echo "============================== Installing application ${APPLICATION_NAME} ==================="
         make copy
     fi
 fi
