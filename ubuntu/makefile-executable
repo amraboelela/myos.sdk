@@ -15,17 +15,20 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-ifeq ($(APP_TYPE),NativeApp)
-    ODIR=NAObj
-else
-    ODIR=obj
-endif
+OUTPUT=$(TARGET)
 
-ifeq ($(APP_TYPE),NativeApp)
-    OUTPUT=$(APP_NAME)
-else
-    OUTPUT=$(ODIR)/$(APP_NAME)
-endif
+#ifeq ($(APP_TYPE),NativeApp)
+#    ODIR=NAObj
+#else
+#    ODIR=obj
+#endif
+ODIR=targets/${TARGET}/obj
+
+#ifeq ($(APP_TYPE),NativeApp)
+#    OUTPUT=$(APP_NAME)
+#else
+#    OUTPUT=$(ODIR)/$(APP_NAME)
+#endif
 CC=clang
 CXX=clang
 LD=clang
@@ -63,9 +66,9 @@ $(OUTPUT): $(OBJ)
 	$(LD) $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
-	-rm $(ODIR)/*.o
-	-rm $(ODIR)/*.d
-	-rm $(OUTPUT)
+	rm -f $(ODIR)/*.o
+	rm -f $(ODIR)/*.d
+	rm -f $(OUTPUT)
 
 ifeq ($(APP_TYPE),ChildApp)
 copy:

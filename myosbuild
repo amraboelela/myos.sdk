@@ -26,7 +26,7 @@ export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 export SOURCE_CODE_PATH=$(pwd)
 
 if [ ! -f ${SOURCE_CODE_PATH}/config.sh ]; then
-    cp ${SOURCE_CODE_PATH}/config.sh.debug ${SOURCE_CODE_PATH}/config.sh
+    cp ${SOURCE_CODE_PATH}/config.sh.in ${SOURCE_CODE_PATH}/config.sh
 fi
 
 source ${SOURCE_CODE_PATH}/config.sh
@@ -35,36 +35,60 @@ BUILD_TYPE_X=x${BUILD_TYPE}
 if [ ${BUILD_TYPE_X} = "x" ]; then
     export BUILD_TYPE=Application
 fi
-if [ ${BUILD_TYPE} = "Library" ]; then
-    if [ ${APP_TYPE} = "All" ]; then
-        export APP_TYPE=NativeApp
-        LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-        echo "============================== Building ${LIBRARY_NAME} =============================="
-        make || exit
-
-        export APP_TYPE=ChildApp
-        LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-        echo "============================== Building ${LIBRARY_NAME} =============================="
-        make || exit
-        export APP_TYPE=All
-    else
-        export APP_TYPE=${APP_TYPE}
-        if [ ${APP_TYPE} = "NativeApp" ]; then
-            LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-        else
-            LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+cd targets
+#if [ ${BUILD_TYPE} = "Library" ]; then
+    for target in * ; do
+        echo "============================== Building $target ================================"
+        cd $target
+        export TARGET=$target
+        if [ ! -f config.sh ]; then
+            if [ ! -f config.sh.in ]; then
+                echo "export CFLAGS=-DDEBUG" > config.sh
+            else
+                cp config.sh.in config.sh
+            fi
         fi
-        echo "============================== Building ${LIBRARY_NAME} =============================="
+        source ${SOURCE_CODE_PATH}/config.sh
+        mkdir -p obj
+        cd ../..
         make || exit
-    fi
-else
-    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
+        cd targets
+    done
+cd ..
+#    exit
 
-    echo "============================== Building ${APPLICATION_NAME} =============================="
-    export APP_TYPE=NativeApp
-    make || exit
+#    if [ ${APP_TYPE} = "All" ]; then
+#        export APP_TYPE=NativeApp
+#        LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
+#        echo "============================== Building ${LIBRARY_NAME} =============================="
+#        make || exit
+
+#        export APP_TYPE=ChildApp
+#        LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+#        echo "============================== Building ${LIBRARY_NAME} =============================="
+#        make || exit
+#        export APP_TYPE=All
+#    else
+#        export APP_TYPE=${APP_TYPE}
+#        if [ ${APP_TYPE} = "NativeApp" ]; then
+#            LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
+#        else
+#            LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+#        fi
+#        echo "============================== Building ${LIBRARY_NAME} =============================="
+#        make || exit
+#    fi
+#else
+#    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
+
+#    echo "============================== Building ${APPLICATION_NAME} =============================="
+#    export APP_TYPE=NativeApp
+#    make || exit
+
+if [ ${BUILD_TYPE} = "Application" ]; then
     if [ ${BASE_OS} = "android" ]; then
         echo "============================== NDK building ${APPLICATION_NAME} =============================="
         ndk-build || exit
     fi
 fi
+

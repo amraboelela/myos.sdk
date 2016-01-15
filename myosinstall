@@ -17,36 +17,51 @@
 
 source ${MYOS_PATH}/sdk/myosbuild
 
-if [ ${BUILD_TYPE} = "Library" ]; then
-    if [ ${APP_TYPE} = "All" ]; then
-        export APP_TYPE=NativeApp
-        LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-        echo "============================== Installing ${LIBRARY_NAME} =============================="
-        make copy
+cd targets
+for target in * ; do
+    echo "============================== Installing $target ================================"
+    export TARGET=$target
+    cd ..
+    make copy
+    cd targets
+    #rm ../${target}*
+    #if [ ${BUILD_TYPE} = "Library" ]; then
+    #    sudo rm /usr/local/lib/lib${target}.so
+    #fi
+done
+cd ..
 
-        export APP_TYPE=ChildApp
-        LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-        echo "============================== Installing ${LIBRARY_NAME} =============================="
-        make copy
-        export APP_TYPE=All
-    else
-        export APP_TYPE=${APP_TYPE}
-        if [ ${APP_TYPE} = "NativeApp" ]; then
-            LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-        else
-            LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-        fi
-        echo "============================== Installing ${LIBRARY_NAME} =============================="
-        make copy
-    fi
-else
-    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
+#if [ ${BUILD_TYPE} = "Library" ]; then
+#    if [ ${APP_TYPE} = "All" ]; then
+#        export APP_TYPE=NativeApp
+#        LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
+#        echo "============================== Installing ${LIBRARY_NAME} =============================="
+#        make copy
 
-    export APP_TYPE=ChildApp
-    echo "============================== Building application ${APPLICATION_NAME} ===================="
-    make || exit 
-    if [ ${APPLICATION_NAME} != "myapps" ]; then
-        echo "============================== Installing application ${APPLICATION_NAME} ==================="
-        make copy
-    fi
-fi
+#        export APP_TYPE=ChildApp
+#        LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+#        echo "============================== Installing ${LIBRARY_NAME} =============================="
+#        make copy
+#        export APP_TYPE=All
+#    else
+#        export APP_TYPE=${APP_TYPE}
+#        if [ ${APP_TYPE} = "NativeApp" ]; then
+#            LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
+#        else
+#            LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+#        fi
+#        echo "============================== Installing ${LIBRARY_NAME} =============================="
+#        make copy
+#    fi
+#else
+#    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
+#
+#    export APP_TYPE=ChildApp
+#    echo "============================== Building application ${APPLICATION_NAME} ===================="
+#    make || exit 
+#    if [ ${APPLICATION_NAME} != "myapps" ]; then
+#        echo "============================== Installing application ${APPLICATION_NAME} ==================="
+#        make copy
+#    fi
+#fi
+

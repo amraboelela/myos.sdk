@@ -15,15 +15,15 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-OUTPUT=lib$(LIB_NAME).so
+OUTPUT=lib$(TARGET).so
 CC=clang
 CXX=clang
 LD=clang
 CFLAGS+=-fPIC -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
 
-ifeq ($(DEBUG_MODE),YES)
-    CFLAGS+=-DDEBUG
-endif
+#ifeq ($(DEBUG_MODE),YES)
+#    CFLAGS+=-DDEBUG
+#endif
 
 ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
@@ -35,11 +35,12 @@ LDLIBS+=-lgcc -lc -lm -lrt -ldl
 #_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
-ifeq ($(APP_TYPE),NativeApp)
-    ODIR=NAObj
-else
-    ODIR=obj
-endif
+#ifeq ($(APP_TYPE),NativeApp)
+#    ODIR=NAObj
+#else
+#    ODIR=obj
+#endif
+ODIR=targets/${TARGET}/obj
 
 OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS))
 
@@ -66,12 +67,10 @@ $(OUTPUT): $(OBJ)
 	$(LD) -shared $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
-	-rm obj/*.o
-	-rm obj/*.d
-	-rm NAObj/*.o
-	-rm NAObj/*.d
-	-rm $(OUTPUT)
-	-rm libNA$(LIB_NAME).so
+	rm -f ${ODIR}/*.o
+	rm -f ${ODIR}/*.d
+	rm -f $(OUTPUT)
+	sudo rm -f /usr/local/lib/${OUTPUT}
 
 copy:
-	sudo cp *.so /usr/local/lib/
+	sudo cp ${OUTPUT} /usr/local/lib/

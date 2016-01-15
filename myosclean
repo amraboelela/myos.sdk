@@ -26,23 +26,38 @@ BUILD_TYPE_X=x${BUILD_TYPE}
 if [ ${BUILD_TYPE_X} = "x" ]; then
     BUILD_TYPE=Application
 fi
-if [ ${BUILD_TYPE} = "Library" ]; then
+#if [ ${BUILD_TYPE} = "Library" ]; then
     #if [ ${APP_TYPE} = "NativeApp" ]; then
     #    export LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
     #else
-    export LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
+#    export LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
     #fi
-else
-    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
-fi
+#else
+#    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
+#fi
 
-echo "================================ Cleaning ${SOURCE_CODE_DIRECTORY} ================================="
-export APP_TYPE=NativeApp
-make clean
-export APP_TYPE=ChildApp
-make clean
+cd targets
+for target in * ; do
+    echo "============================== Cleaning $target ================================"
+    export TARGET=$target
+    #rm obj/*.*
+    cd ..
+    make clean
+    cd targets
+    #rm ../${target}*
+    #if [ ${BUILD_TYPE} = "Library" ]; then
+    #    sudo rm /usr/local/lib/lib${target}.so
+    #fi
+done
+cd ..
 
-if  [ ${BASE_OS} = "android" ] && [ ! ${BUILD_TYPE} = "Library" ] && [ ${APP_TYPE} = "NativeApp" ] ; then
+#echo "================================ Cleaning ${SOURCE_CODE_DIRECTORY} ================================="
+#export APP_TYPE=NativeApp
+#make clean
+#export APP_TYPE=ChildApp
+#make clean
+
+if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
     ndk-build clean
     ant clean
 fi
