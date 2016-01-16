@@ -33,3 +33,4 @@ else
     echo "============================ Running ${APPLICATION_NAME} ================================="
     ./${APPLICATION_NAME}
 fi
+

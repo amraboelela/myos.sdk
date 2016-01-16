@@ -20,6 +20,11 @@ source ${MYOS_PATH}/sdk/config.sh
 export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 
 export SOURCE_CODE_PATH=$(pwd)
+
+if [ ! -f ${SOURCE_CODE_PATH}/config.sh ]; then
+    cp ${SOURCE_CODE_PATH}/config.sh.in ${SOURCE_CODE_PATH}/config.sh
+fi
+
 source ${SOURCE_CODE_PATH}/config.sh
 
 BUILD_TYPE_X=x${BUILD_TYPE}
