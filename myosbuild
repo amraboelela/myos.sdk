@@ -18,7 +18,6 @@
 if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
     cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
 fi
-
 source ${MYOS_PATH}/sdk/config.sh
 export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 export SOURCE_CODE_PATH=$(pwd)
@@ -27,25 +26,28 @@ if [ ! -f ${SOURCE_CODE_PATH}/config.sh ]; then
 fi
 source ${SOURCE_CODE_PATH}/config.sh
 
-BUILD_TYPE_X=x${BUILD_TYPE}
-if [ ${BUILD_TYPE_X} = "x" ]; then
-    export BUILD_TYPE=Application
-fi
+#BUILD_TYPE_X=x${BUILD_TYPE}
+#if [ ${BUILD_TYPE_X} = "x" ]; then
+#    export BUILD_TYPE=Application
+#fi
 cd targets
 for target in * ; do
     echo "============================== Building $target ================================"
-    cd $target
+    #cd $target
     export TARGET=$target
-    if [ ! -f config.sh ]; then
-        if [ ! -f config.sh.in ]; then
-            echo "export CFLAGS=-DDEBUG" > config.sh
-        else
-            cp config.sh.in config.sh
-        fi
+    #echo TARGET=$TARGET
+    if [ ! -f $target/config.sh ]; then
+        #if [ ! -f config.sh.in ]; then
+        #    echo "export CFLAGS=-DDEBUG" > config.sh
+        #else
+        cp $target/config.sh.in $target/config.sh
+        #fi
     fi
-    source ${SOURCE_CODE_PATH}/config.sh
-    mkdir -p obj
-    cd ../..
+    source $target/config.sh
+    #echo APP_TYPE=$APP_TYPE
+    #cat config.sh
+    mkdir -p $target/obj
+    cd ..
     make || exit
     cd targets
 done
