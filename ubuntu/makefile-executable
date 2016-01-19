@@ -15,9 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-OUTPUT=$(TARGET)
-
-ODIR=targets/${TARGET}/obj
+OUTPUT=targets/$(TARGET)/$(TARGET)
+ODIR=targets/$(TARGET)/obj
 
 CC=clang
 CXX=clang
@@ -63,7 +62,7 @@ clean:
 ifeq ($(APP_TYPE),ChildApp)
 copy:
 	mkdir -p ${MYOS_PATH}/myapps/apps/$(APP_NAME).app
-	cp $(OUTPUT) ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
+	cp $(TARGET) ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
 	ls *.png *.json | xargs -I {} cp {} ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
 endif
 

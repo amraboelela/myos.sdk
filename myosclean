@@ -17,50 +17,34 @@
 
 source ${MYOS_PATH}/sdk/config.sh
 
-export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
-
+export TARGET=$(pwd | awk -F'/' '{print $NF}')
+cd ../..
 export SOURCE_CODE_PATH=$(pwd)
 
-if [ ! -f ${SOURCE_CODE_PATH}/config.sh ]; then
-    cp ${SOURCE_CODE_PATH}/config.sh.in ${SOURCE_CODE_PATH}/config.sh
+if [ ! -f config.sh ]; then
+    cp config.sh.in config.sh
 fi
-
-source ${SOURCE_CODE_PATH}/config.sh
+source config.sh
 
 BUILD_TYPE_X=x${BUILD_TYPE}
 if [ ${BUILD_TYPE_X} = "x" ]; then
     BUILD_TYPE=Application
 fi
-#if [ ${BUILD_TYPE} = "Library" ]; then
-    #if [ ${APP_TYPE} = "NativeApp" ]; then
-    #    export LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-    #else
-#    export LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-    #fi
-#else
-#    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
-#fi
 
-cd targets
-for target in * ; do
+#cd targets
+#for target in * ; do
     echo "============================== Cleaning $target ================================"
-    export TARGET=$target
+    #export TARGET=$target
     #rm obj/*.*
-    cd ..
+    #cd ..
     make clean
-    cd targets
+    #cd targets
     #rm ../${target}*
     #if [ ${BUILD_TYPE} = "Library" ]; then
     #    sudo rm /usr/local/lib/lib${target}.so
     #fi
-done
-cd ..
-
-#echo "================================ Cleaning ${SOURCE_CODE_DIRECTORY} ================================="
-#export APP_TYPE=NativeApp
-#make clean
-#export APP_TYPE=ChildApp
-#make clean
+#done
+#cd ..
 
 if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
     ndk-build clean

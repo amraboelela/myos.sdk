@@ -19,28 +19,29 @@ if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
     cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
 fi
 source ${MYOS_PATH}/sdk/config.sh
-export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+export TARGET=$(pwd | awk -F'/' '{print $NF}')
+cd ../..
 export SOURCE_CODE_PATH=$(pwd)
-if [ ! -f ${SOURCE_CODE_PATH}/config.sh ]; then
-    cp ${SOURCE_CODE_PATH}/config.sh.in ${SOURCE_CODE_PATH}/config.sh
+if [ ! -f config.sh ]; then
+    cp config.sh.in config.sh
 fi
-source ${SOURCE_CODE_PATH}/config.sh
+source config.sh
 export DEBUG_MODE=NO
 
-cd targets
-for target in * ; do
+#cd targets
+#for target in * ; do
     echo "============================== Archiving $target ================================"
-    export TARGET=$target
-    if [ ! -f $target/config.sh ]; then
-        cp $target/config.sh.in $target/config.sh
+    #export TARGET=$target
+    if [ ! -f targets/$target/config.sh ]; then
+        cp targets/$target/config.sh.in targets/$target/config.sh
     fi
-    source $target/config.sh
-    mkdir -p $target/obj
-    cd ..
+    source targets/$target/config.sh
+    mkdir -p targets/$target/obj
+    #cd ..
     make || exit
-    cd targets
-done
-cd ..
+    #cd targets
+#done
+#cd ..
 
 if [ ${BUILD_TYPE} = "Application" ]; then
     export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}

@@ -19,71 +19,31 @@ if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
     cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
 fi
 source ${MYOS_PATH}/sdk/config.sh
-export SOURCE_CODE_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
+export TARGET=$(pwd | awk -F'/' '{print $NF}')
+cd ../..
 export SOURCE_CODE_PATH=$(pwd)
-if [ ! -f ${SOURCE_CODE_PATH}/config.sh ]; then
-    cp ${SOURCE_CODE_PATH}/config.sh.in ${SOURCE_CODE_PATH}/config.sh
+if [ ! -f config.sh ]; then
+    cp config.sh.in config.sh
 fi
-source ${SOURCE_CODE_PATH}/config.sh
+source config.sh
 
-#BUILD_TYPE_X=x${BUILD_TYPE}
-#if [ ${BUILD_TYPE_X} = "x" ]; then
-#    export BUILD_TYPE=Application
-#fi
-cd targets
-for target in * ; do
+#cd targets
+#for target in * ; do
     echo "============================== Building $target ================================"
-    #cd $target
-    export TARGET=$target
-    #echo TARGET=$TARGET
-    if [ ! -f $target/config.sh ]; then
-        #if [ ! -f config.sh.in ]; then
-        #    echo "export CFLAGS=-DDEBUG" > config.sh
-        #else
-        cp $target/config.sh.in $target/config.sh
-        #fi
+    #export TARGET=$target
+    if [ ! -f targets/$target/config.sh ]; then
+        cp targets/$target/config.sh.in targets/$target/config.sh
     fi
-    source $target/config.sh
-    #echo APP_TYPE=$APP_TYPE
-    #cat config.sh
-    mkdir -p $target/obj
-    cd ..
+    source targets/$target/config.sh
+    mkdir -p targets/$target/obj
+    #cd ..
     make || exit
-    cd targets
-done
-cd ..
-#    exit
-
-#    if [ ${APP_TYPE} = "All" ]; then
-#        export APP_TYPE=NativeApp
-#        LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-#        echo "============================== Building ${LIBRARY_NAME} =============================="
-#        make || exit
-
-#        export APP_TYPE=ChildApp
-#        LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-#        echo "============================== Building ${LIBRARY_NAME} =============================="
-#        make || exit
-#        export APP_TYPE=All
-#    else
-#        export APP_TYPE=${APP_TYPE}
-#        if [ ${APP_TYPE} = "NativeApp" ]; then
-#            LIBRARY_NAME=NA${SOURCE_CODE_DIRECTORY}
-#        else
-#            LIBRARY_NAME=${SOURCE_CODE_DIRECTORY}
-#        fi
-#        echo "============================== Building ${LIBRARY_NAME} =============================="
-#        make || exit
-#    fi
-#else
-#    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
-
-#    echo "============================== Building ${APPLICATION_NAME} =============================="
-#    export APP_TYPE=NativeApp
-#    make || exit
+    #cd targets
+#done
+#cd ..
 
 if [ ${BUILD_TYPE} = "Application" ]; then
-    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
+    #export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
     if [ ${BASE_OS} = "android" ]; then
         echo "============================== NDK building ${APPLICATION_NAME} =============================="
         ndk-build || exit

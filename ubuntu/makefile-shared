@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-OUTPUT=lib$(TARGET).so
+OUTPUT=targets/$(TARGET)/lib$(TARGET).so
 CC=clang
 CXX=clang
 LD=clang
@@ -35,11 +35,7 @@ LDLIBS+=-lgcc -lc -lm -lrt -ldl
 #_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
-#ifeq ($(APP_TYPE),NativeApp)
-#    ODIR=NAObj
-#else
-#    ODIR=obj
-#endif
+
 ODIR=targets/${TARGET}/obj
 
 OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS))
@@ -70,7 +66,7 @@ clean:
 	rm -f ${ODIR}/*.o
 	rm -f ${ODIR}/*.d
 	rm -f $(OUTPUT)
-	sudo rm -f /usr/local/lib/${OUTPUT}
+	sudo rm -f /usr/local/lib/lib$(TARGET).so
 
 copy:
-	sudo cp ${OUTPUT} /usr/local/lib/
+	sudo cp lib$(TARGET).so /usr/local/lib/
