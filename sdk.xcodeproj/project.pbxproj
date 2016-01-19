@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		637B21FE1C4E938300297AC6 /* myosarchive */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosarchive; sourceTree = "<group>"; };
 		C529C3381C1541F600F3D75B /* myosinstall */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosinstall; sourceTree = "<group>"; };
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		F51FCC6F1B153A3200C182B0 /* myosbuild */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosbuild; sourceTree = "<group>"; };
@@ -29,6 +30,7 @@
 				F51FCC751B1564A200C182B0 /* config.sh.android */,
 				F51FCC761B1564A200C182B0 /* config.sh.ubuntu */,
 				F51FCC741B155A4C00C182B0 /* app-makefile */,
+				637B21FE1C4E938300297AC6 /* myosarchive */,
 				F51FCC6F1B153A3200C182B0 /* myosbuild */,
 				F51FCC711B153A3200C182B0 /* myosclean */,
 				C529C3381C1541F600F3D75B /* myosinstall */,

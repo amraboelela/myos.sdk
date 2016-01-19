@@ -21,9 +21,9 @@ CXX=clang
 LD=clang
 CFLAGS+=-fPIC -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
 
-#ifeq ($(DEBUG_MODE),YES)
-#    CFLAGS+=-DDEBUG
-#endif
+ifeq ($(DEBUG_MODE),YES)
+    CFLAGS+=-DDEBUG
+endif
 
 ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP

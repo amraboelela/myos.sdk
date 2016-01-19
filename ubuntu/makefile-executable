@@ -17,18 +17,8 @@
 
 OUTPUT=$(TARGET)
 
-#ifeq ($(APP_TYPE),NativeApp)
-#    ODIR=NAObj
-#else
-#    ODIR=obj
-#endif
 ODIR=targets/${TARGET}/obj
 
-#ifeq ($(APP_TYPE),NativeApp)
-#    OUTPUT=$(APP_NAME)
-#else
-#    OUTPUT=$(ODIR)/$(APP_NAME)
-#endif
 CC=clang
 CXX=clang
 LD=clang
