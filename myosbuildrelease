@@ -1,5 +1,5 @@
 #
-# Copyright © 2014-2016 myOS Group.
+# Copyright © 2016 myOS Group.
 #
 # This is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,11 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
-    cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
-fi
-source ${MYOS_PATH}/sdk/config.sh
-export TARGET=$(pwd | awk -F'/' '{print $NF}')
+source ${MYOS_PATH}/sdk/myoscommon
 echo "============================== Building $target (release) ================================"
 cd ../..
 #export SOURCE_CODE_PATH=$(pwd)

@@ -13,6 +13,7 @@
 		637B22021C4F162A00297AC6 /* myosinstallrelease */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosinstallrelease; sourceTree = "<group>"; };
 		637B22031C4F181300297AC6 /* myosrundevelop */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosrundevelop; sourceTree = "<group>"; };
 		637B22041C4F181300297AC6 /* myosrunrelease */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosrunrelease; sourceTree = "<group>"; };
+		637B22051C4F257600297AC6 /* myoscommon */ = {isa = PBXFileReference; lastKnownFileType = text; path = myoscommon; sourceTree = "<group>"; };
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		F51FCC711B153A3200C182B0 /* myosclean */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosclean; sourceTree = "<group>"; };
 		F51FCC741B155A4C00C182B0 /* app-makefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = "app-makefile"; sourceTree = "<group>"; };
@@ -35,6 +36,7 @@
 				637B21FF1C4F126A00297AC6 /* myosbuilddevelop */,
 				637B22001C4F126A00297AC6 /* myosbuildrelease */,
 				F51FCC711B153A3200C182B0 /* myosclean */,
+				637B22051C4F257600297AC6 /* myoscommon */,
 				637B22011C4F162900297AC6 /* myosinstalldevelop */,
 				637B22021C4F162A00297AC6 /* myosinstallrelease */,
 				F56BD64F1B15913500D6D5CD /* myosemulator */,

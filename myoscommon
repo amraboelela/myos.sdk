@@ -1,5 +1,5 @@
 #
-# Copyright © 2014-2016 myOS Group.
+# Copyright © 2016 myOS Group.
 #
 # This is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,24 +15,13 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myoscommon
-echo "============================== Cleaning $target ================================"
-cd ../..
-#export SOURCE_CODE_PATH=$(pwd)
-
-#if [ ! -f config.sh ]; then
-#    cp config.sh.in config.sh
-#fi
-#source config.sh
-
-BUILD_TYPE_X=x${BUILD_TYPE}
-if [ ${BUILD_TYPE_X} = "x" ]; then
-    BUILD_TYPE=Application
+if [ ! -f ../../targets ]; then
+    echo Before running this command do "cd targets/<Target Name>"
+    exit;
 fi
 
-make clean
-
-if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
-    ndk-build clean
-    ant clean
+if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
+    cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
 fi
+source ${MYOS_PATH}/sdk/config.sh
+export TARGET=$(pwd | awk -F'/' '{print $NF}')
