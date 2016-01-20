@@ -22,7 +22,7 @@ source ${MYOS_PATH}/sdk/config.sh
 export TARGET=$(pwd | awk -F'/' '{print $NF}')
 echo "============================== Building $target (develop) ================================"
 cd ../..
-export SOURCE_CODE_PATH=$(pwd)
+#export SOURCE_CODE_PATH=$(pwd)
 if [ ! -f config.sh ]; then
     cp config.develop.sh.in config.develop.sh
 fi

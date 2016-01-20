@@ -15,8 +15,13 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myosclean
+if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
+    cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
+fi
+source ${MYOS_PATH}/sdk/config.sh
+export TARGET=$(pwd | awk -F'/' '{print $NF}')
 echo "============================== Building $target (release) ================================"
+cd ../..
 #export SOURCE_CODE_PATH=$(pwd)
 if [ ! -f config.sh ]; then
     cp config.release.sh.in config.release.sh
@@ -33,4 +38,3 @@ if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
     echo "============================== NDK building ${APPLICATION_NAME} (release) =============================="
     ndk-build || exit
 fi
-
