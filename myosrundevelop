@@ -15,22 +15,15 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myosbuild
+source ${MYOS_PATH}/sdk/myosbuilddevelop
+echo "============================ Running ${TARGET} (develop) ================================="
 
 if [ ${BASE_OS} = "android" ]; then
-    PARAM=x$1
-    if [ ${PARAM} = "xuninstall" ] ; then
-        echo "============================== uninstall ================================="
-        ant uninstall
-    fi
-
-    echo "============================ Running ${TARGET} ================================="
     adb shell input keyevent 3
     android update project -p . -s --target 1;
     ant debug install
     ant run
 else
-    echo "============================ Running ${TARGET} ================================="
     ./${TARGET}
 fi
 

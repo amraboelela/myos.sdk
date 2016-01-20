@@ -20,34 +20,21 @@ if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
 fi
 source ${MYOS_PATH}/sdk/config.sh
 export TARGET=$(pwd | awk -F'/' '{print $NF}')
+echo "============================== Building $target (develop) ================================"
 cd ../..
 export SOURCE_CODE_PATH=$(pwd)
 if [ ! -f config.sh ]; then
-    cp config.sh.in config.sh
+    cp config.develop.sh.in config.develop.sh
 fi
-source config.sh
-export DEBUG_MODE=NO
-
-#cd targets
-#for target in * ; do
-    echo "============================== Archiving $target ================================"
-    #export TARGET=$target
-    if [ ! -f targets/$target/config.sh ]; then
-        cp targets/$target/config.sh.in targets/$target/config.sh
-    fi
-    source targets/$target/config.sh
-    mkdir -p targets/$target/obj
-    #cd ..
-    make || exit
-    #cd targets
-#done
-#cd ..
-
-if [ ${BUILD_TYPE} = "Application" ]; then
-    export APPLICATION_NAME=${SOURCE_CODE_DIRECTORY}
-    if [ ${BASE_OS} = "android" ]; then
-        echo "============================== NDK archiving ${APPLICATION_NAME} =============================="
-        ndk-build || exit
-    fi
+source config.develop.sh
+if [ ! -f targets/$target/config.develop.sh ]; then
+    cp targets/$target/config.develop.sh.in targets/$target/config.develop.sh
 fi
+source targets/$target/config.develop.sh
+mkdir -p targets/$target/obj
+make || exit
 
+if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
+    echo "============================== NDK building ${APPLICATION_NAME} (develop) =============================="
+    ndk-build || exit
+fi
