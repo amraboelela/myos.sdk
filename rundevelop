@@ -15,8 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myosbuildrelease
-echo "============================ Running ${TARGET} (release) ================================="
+source ${MYOS_PATH}/sdk/builddevelop
+echo "============================ Running ${TARGET} (develop) ================================="
 
 if [ ${BASE_OS} = "android" ]; then
     adb shell input keyevent 3
@@ -24,7 +24,6 @@ if [ ${BASE_OS} = "android" ]; then
     ant debug install
     ant run
 else
-
     ./${TARGET}
 fi
 

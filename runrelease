@@ -15,7 +15,16 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myosbuilddevelop
+source ${MYOS_PATH}/sdk/buildrelease
+echo "============================ Running ${TARGET} (release) ================================="
 
-echo "============================== Installing $target (develop) ================================"
-make copy
+if [ ${BASE_OS} = "android" ]; then
+    adb shell input keyevent 3
+    android update project -p . -s --target 1;
+    ant debug install
+    ant run
+else
+
+    ./${TARGET}
+fi
+

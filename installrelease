@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myosbuildrelease
+source ${MYOS_PATH}/sdk/buildrelease
 
-echo "============================== Installing $target (release) ================================"
+echo "============================== Installing $TARGET (release) ================================"
 make copy

@@ -15,11 +15,10 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-if [ ! -f ../../targets ]; then
-    echo Before running this command do "cd targets/<Target Name>"
+if [ ! -d ../../targets ]; then
+    echo Before running this command you have to be in "targets/<target name>" directory
     exit;
 fi
-
 if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
     cp ${MYOS_PATH}/sdk/config.sh.ubuntu ${MYOS_PATH}/sdk/config.sh
 fi

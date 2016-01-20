@@ -15,22 +15,21 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myoscommon
-echo "============================== Building $target (release) ================================"
+source ${MYOS_PATH}/sdk/common
+echo "============================== Building $TARGET (release) ================================"
 cd ../..
-#export SOURCE_CODE_PATH=$(pwd)
 if [ ! -f config.sh ]; then
     cp config.release.sh.in config.release.sh
 fi
 source config.release.sh
-if [ ! -f targets/$target/config.release.sh ]; then
-    cp targets/$target/config.release.sh.in targets/$target/config.release.sh
+if [ ! -f targets/$TARGET/config.release.sh ]; then
+    cp targets/$TARGET/config.release.sh.in targets/$TARGET/config.release.sh
 fi
-source targets/$target/config.release.sh
-mkdir -p targets/$target/obj
+source targets/$TARGET/config.release.sh
+mkdir -p targets/$TARGET/obj
 make || exit
 
 if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
-    echo "============================== NDK building ${APPLICATION_NAME} (release) =============================="
+    echo "============================== NDK building $TARGET (release) =============================="
     ndk-build || exit
 fi

@@ -69,4 +69,4 @@ clean:
 	sudo rm -f /usr/local/lib/lib$(TARGET).so
 
 copy:
-	sudo cp lib$(TARGET).so /usr/local/lib/
+	sudo cp $(OUTPUT) /usr/local/lib/
