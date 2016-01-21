@@ -33,3 +33,4 @@ if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
     echo "============================== NDK building $TARGET (release) =============================="
     ndk-build || exit
 fi
+cd targets/$TARGET

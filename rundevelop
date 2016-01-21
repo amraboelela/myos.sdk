@@ -15,10 +15,11 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/builddevelop
+source ${MYOS_PATH}/sdk/installdevelop
 echo "============================ Running ${TARGET} (develop) ================================="
 
 if [ ${BASE_OS} = "android" ]; then
+    cd ../..
     adb shell input keyevent 3
     android update project -p . -s --target 1;
     ant debug install

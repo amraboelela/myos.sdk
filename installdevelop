@@ -17,5 +17,7 @@
 
 source ${MYOS_PATH}/sdk/builddevelop
 
+cd ../..
 echo "============================== Installing $TARGET (develop) ================================"
 make copy
+cd targets/$TARGET

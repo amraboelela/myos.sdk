@@ -17,5 +17,7 @@
 
 source ${MYOS_PATH}/sdk/buildrelease
 
+cd ../..
 echo "============================== Installing $TARGET (release) ================================"
 make copy
+cd targets/$TARGET
