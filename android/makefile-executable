@@ -24,8 +24,11 @@ CFLAGS+=-DANDROID -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
 endif
+
 ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
+elseif ($(APP_TYPE),ParentApp)
+    CFLAGS+=-DPARENT_APP
 endif
 
 LD=$(STANDALONE_PATH)/bin/clang++
