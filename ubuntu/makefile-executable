@@ -1,5 +1,5 @@
 #
-# Copyright © 2014-2015 myOS Group.
+# Copyright © 2014-2016 myOS Group.
 #
 # This is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -64,7 +64,10 @@ clean:
 ifeq ($(APP_TYPE),ChildApp)
 copy:
 	mkdir -p ${MYOS_PATH}/myapps/apps/$(APP_NAME).app
-	cp $(TARGET) ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
+	cp $(OUTPUT) ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
 	ls *.png *.json | xargs -I {} cp {} ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
+else
+copy:
+	ls *.png *.json | xargs -I {} cp -f {} targets/$(TARGET)/
 endif
 

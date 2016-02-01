@@ -15,8 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/myoscommon
-echo "============================== Cleaning $target ================================"
+source ${MYOS_PATH}/sdk/common
+echo "============================== Cleaning $TARGET ================================"
 cd ../..
 #export SOURCE_CODE_PATH=$(pwd)
 
