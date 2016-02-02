@@ -28,7 +28,7 @@ ifeq ($(DEBUG_MODE),YES)
 endif
 ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
-elseif ($(APP_TYPE),ParentApp)
+else ifeq ($(APP_TYPE),ParentApp)
     CFLAGS+=-DPARENT_APP
 endif
 
