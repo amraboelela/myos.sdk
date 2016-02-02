@@ -28,6 +28,8 @@ endif
 
 ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
+elseif ($(APP_TYPE),ParentApp)
+    CFLAGS+=-DPARENT_APP
 endif
 
 LDFLAGS+=-v -L${MYOS_PATH}/libraries/libs -L${MYOS_PATH}/libraries/libs/android -L${MYOS_PATH}/frameworks/libs -L${MYOS_PATH}/frameworks/libs/android -no-canonical-prefixes
@@ -37,11 +39,13 @@ _SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
 
-ifeq ($(APP_TYPE),NativeApp)
-    ODIR=NAObj
-else
-    ODIR=obj
-endif
+ODIR=targets/${TARGET}/obj
+
+#ifeq ($(APP_TYPE),NativeApp)
+#    ODIR=NAObj
+#else
+#    ODIR=obj
+#endif
 
 OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS))
 

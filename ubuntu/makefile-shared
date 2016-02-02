@@ -27,6 +27,8 @@ endif
 
 ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
+elseif ($(APP_TYPE),ParentApp)
+    CFLAGS+=-DPARENT_APP
 endif
 
 LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ 
