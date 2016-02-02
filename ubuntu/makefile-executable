@@ -63,9 +63,9 @@ ifeq ($(APP_TYPE),ChildApp)
 copy:
 	mkdir -p ${MYOS_PATH}/myapps/apps/$(APP_NAME).app
 	cp $(OUTPUT) ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
-	ls *.png *.json | xargs -I {} cp {} ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
+	ls *.png *.plist | xargs -I {} cp {} ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
 else
 copy:
-	ls *.png *.json | xargs -I {} cp -f {} targets/$(TARGET)/
+	ls *.png | xargs -I {} cp {} targets/$(TARGET)/
 endif
 
