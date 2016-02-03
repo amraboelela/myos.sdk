@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-OUTPUT=targets/$(TARGET)/$(TARGET)
+OUTPUT=targets/$(TARGET)/$(TARGET).app/$(TARGET)
 ODIR=targets/$(TARGET)/obj
 
 CC=clang
@@ -59,15 +59,11 @@ $(OUTPUT): $(OBJ)
 clean:
 	rm -f $(ODIR)/*.o
 	rm -f $(ODIR)/*.d
-	rm -f $(OUTPUT)
+	rm -rf targets/$(TARGET)/$(TARGET).app
 
 ifeq ($(APP_TYPE),ChildApp)
 copy:
 	mkdir -p ${MYOS_PATH}/myapps/apps/$(APP_NAME).app
-	cp $(OUTPUT) ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
-	ls *.png *.plist | xargs -I {} cp {} ${MYOS_PATH}/myapps/apps/$(APP_NAME).app/
-else
-copy:
-	ls *.png | xargs -I {} cp {} targets/$(TARGET)/
+	cp -rf targets/$(TARGET)/$(TARGET).app ${MYOS_PATH}/myapps/apps/
 endif
 

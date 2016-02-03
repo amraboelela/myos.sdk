@@ -15,9 +15,31 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/builddevelop
+source ${MYOS_PATH}/sdk/build_develop
 
 cd ../..
-echo "============================== Installing $TARGET (develop) ================================"
-make copy
+if [ -f pre-archive_develop.sh ]; then
+    source pre-archive_develop.sh
+fi
+cd targets/$TARGET
+
+if [ -f pre-archive_develop.sh ]; then
+    source pre-archive_develop.sh
+fi
+
+echo "============================== Archiving $TARGET (develop) ================================"
+
+if [ ${BUILD_TYPE} = "Application" ]; then
+    zip $TARGET.app
+fi
+
+cd targets/$TARGET
+if [ -f post-archive_develop.sh ]; then
+    source post-archive_develop.sh
+fi
+
+cd ../..
+if [ -f post-archive_develop.sh ]; then
+    source post-archive_develop.sh
+fi
 cd targets/$TARGET

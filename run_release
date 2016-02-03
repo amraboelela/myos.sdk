@@ -15,8 +15,18 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/installrelease
+source ${MYOS_PATH}/sdk/install_release
 echo "============================ Running ${TARGET} (release) ================================="
+
+cd ../..
+if [ -f pre-run_develop.sh ]; then
+    source pre-run_develop.sh
+fi
+cd targets/$TARGET
+
+if [ -f pre-run_release.sh ]; then
+    source pre-run_release.sh
+fi
 
 if [ ${BASE_OS} = "android" ]; then
     cd ../..
@@ -25,7 +35,17 @@ if [ ${BASE_OS} = "android" ]; then
     ant debug install
     ant run
 else
-
+    cd ${TARGET}.app
     ./${TARGET}
+    cd ..
 fi
 
+if [ -f post-run_release.sh ]; then
+    source post-run_release.sh
+fi
+
+cd ../..
+if [ -f post-run_release.sh ]; then
+    source post-run_release.sh
+fi
+cd targets/$TARGET

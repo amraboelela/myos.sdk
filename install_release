@@ -1,5 +1,5 @@
 #
-# Copyright © 2014-2016 myOS Group.
+# Copyright © 2016 myOS Group.
 #
 # This is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,41 +15,29 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/common
-echo "============================== Cleaning $TARGET ================================"
-
+source ${MYOS_PATH}/sdk/buildrelease
 
 cd ../..
-if [ -f pre-clean.sh ]; then
-    source pre-clean.sh
+if [ -f pre-install_release.sh ]; then
+    source pre-install_release.sh
 fi
 cd targets/$TARGET
 
-if [ -f pre-clean.sh ]; then
-    source pre-clean.sh
+if [ -f pre-install_release.sh ]; then
+    source pre-install_release.sh
 fi
 
 cd ../..
-
-BUILD_TYPE_X=x${BUILD_TYPE}
-if [ ${BUILD_TYPE_X} = "x" ]; then
-    BUILD_TYPE=Application
-fi
-
-make clean
-
-if  [ ${BASE_OS} = "android" ] && [ ${BUILD_TYPE} = "Application" ]; then
-    ndk-build clean
-    ant clean
-fi
+echo "============================== Installing $TARGET (release) ================================"
+make copy
 
 cd targets/$TARGET
-if [ -f post-clean.sh ]; then
-    source post-clean.sh
+if [ -f post-install_release.sh ]; then
+    source post-install_release.sh
 fi
 
 cd ../..
-if [ -f post-clean.sh ]; then
-    source post-clean.sh
+if [ -f post-install_release.sh ]; then
+    source post-install_release.sh
 fi
 cd targets/$TARGET

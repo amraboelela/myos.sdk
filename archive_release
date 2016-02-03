@@ -15,9 +15,31 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/buildrelease
+source ${MYOS_PATH}/sdk/build_release
 
 cd ../..
-echo "============================== Installing $TARGET (release) ================================"
-make copy
+if [ -f pre-archive_release.sh ]; then
+    source pre-archive_release.sh
+fi
+cd targets/$TARGET
+
+if [ -f pre-archive_release.sh ]; then
+    source pre-archive_release.sh
+fi
+
+echo "============================== Archiving $TARGET (release) ================================"
+
+if [ ${BUILD_TYPE} = "Application" ]; then
+    zip $TARGET.app
+fi
+
+cd targets/$TARGET
+if [ -f post-archive_release.sh ]; then
+    source post-archive_release.sh
+fi
+
+cd ../..
+if [ -f post-archive_release.sh ]; then
+    source post-archive_release.sh
+fi
 cd targets/$TARGET

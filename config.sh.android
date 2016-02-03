@@ -2,4 +2,3 @@
 # Copy this file to config.sh if this is for Android system
 
 export BASE_OS=android
-#export BASE_OS=ubuntu

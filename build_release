@@ -1,0 +1,55 @@
+#
+# Copyright © 2016 myOS Group.
+#
+# This is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
+#
+# Contributor(s):
+# Amr Aboelela <amraboelela@gmail.com>
+#
+
+source ${MYOS_PATH}/sdk/common
+echo "============================== Building $TARGET (release) ================================"
+
+cd ../..
+if [ ! -f pre-build_release.sh ]; then
+    cp pre-build_release.sh pre-build_release.sh
+fi
+source pre-build_release.sh
+
+cd targets/$TARGET
+if [ ! -f pre-build_release.sh ]; then
+    cp pre-build_release.sh.in pre-build_release.sh
+fi
+source pre-build_release.sh
+
+mkdir -p obj
+cd ../..
+make || exit
+
+if  [ ${BUILD_TYPE} = "Application" ]; then
+    ls *.png *.nib targets/$TARGET/*.plist | xargs -I {} cp {} targets/$TARGET/$TARGET.app/
+    if  [ ${BASE_OS} = "android" ]; then
+        echo "============================== NDK building $TARGET (develop) =============================="
+        ndk-build || exit
+    fi
+fi
+
+cd targets/$TARGET
+
+if [ -f post-build_release.sh ]; then
+    source post-build_release.sh
+fi
+
+cd ../..
+if [ -f post-build_release.sh ]; then
+    source post-build_release.sh
+fi
+cd targets/$TARGET
