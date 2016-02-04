@@ -15,37 +15,31 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/install_develop
-echo "============================ Running ${TARGET} (develop) ================================="
+source ${MYOS_PATH}/sdk/build_debug
 
 cd ../..
-if [ -f pre-run_develop.sh ]; then
-    source pre-run_develop.sh
+if [ -f pre-archive_debug.sh ]; then
+    source pre-archive_debug.sh
 fi
 cd targets/$TARGET
 
-if [ -f pre-run_develop.sh ]; then
-    source pre-run_develop.sh
+if [ -f pre-archive_debug.sh ]; then
+    source pre-archive_debug.sh
 fi
 
-if [ ${BASE_OS} = "android" ]; then
-    cd ../..
-    adb shell input keyevent 3
-    android update project -p . -s --target 1;
-    ant debug install
-    ant run
-else
-    cd ${TARGET}.app
-    ./${TARGET}
-    cd ..
+echo "============================== Archiving $TARGET (develop) ================================"
+
+if [ ${BUILD_TYPE} = "Application" ]; then
+    zip $TARGET.app
 fi
 
-if [ -f post-run_develop.sh ]; then
-    source post-run_develop.sh
+cd targets/$TARGET
+if [ -f post-archive_debug.sh ]; then
+    source post-archive_debug.sh
 fi
 
 cd ../..
-if [ -f post-run_develop.sh ]; then
-    source post-run_develop.sh
+if [ -f post-archive_debug.sh ]; then
+    source post-archive_debug.sh
 fi
 cd targets/$TARGET

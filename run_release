@@ -19,8 +19,8 @@ source ${MYOS_PATH}/sdk/install_release
 echo "============================ Running ${TARGET} (release) ================================="
 
 cd ../..
-if [ -f pre-run_develop.sh ]; then
-    source pre-run_develop.sh
+if [ -f pre-run_debug.sh ]; then
+    source pre-run_debug.sh
 fi
 cd targets/$TARGET
 

@@ -15,31 +15,29 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/build_develop
+source ${MYOS_PATH}/sdk/build_debug
 
 cd ../..
-if [ -f pre-archive_develop.sh ]; then
-    source pre-archive_develop.sh
+if [ -f pre-install_debug.sh ]; then
+    source pre-install_debug.sh
 fi
 cd targets/$TARGET
 
-if [ -f pre-archive_develop.sh ]; then
-    source pre-archive_develop.sh
-fi
-
-echo "============================== Archiving $TARGET (develop) ================================"
-
-if [ ${BUILD_TYPE} = "Application" ]; then
-    zip $TARGET.app
-fi
-
-cd targets/$TARGET
-if [ -f post-archive_develop.sh ]; then
-    source post-archive_develop.sh
+if [ -f pre-install_debug.sh ]; then
+    source pre-install_debug.sh
 fi
 
 cd ../..
-if [ -f post-archive_develop.sh ]; then
-    source post-archive_develop.sh
+echo "============================== Installing $TARGET (develop) ================================"
+make copy
+
+cd targets/$TARGET
+if [ -f post-install_debug.sh ]; then
+    source post-install_debug.sh
+fi
+
+cd ../..
+if [ -f post-install_debug.sh ]; then
+    source post-install_debug.sh
 fi
 cd targets/$TARGET

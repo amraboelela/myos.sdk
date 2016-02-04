@@ -10,13 +10,13 @@
 		6358AE8E1C61AB5A007B3828 /* common */ = {isa = PBXFileReference; lastKnownFileType = text; path = common; sourceTree = "<group>"; };
 		6358AE951C61AC63007B3828 /* config.sh.android */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.android; sourceTree = "<group>"; };
 		6358AE961C61AC63007B3828 /* config.sh.ubuntu */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.sh.ubuntu; sourceTree = "<group>"; };
-		6358AE971C624D42007B3828 /* archive_develop */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive_develop; sourceTree = "<group>"; };
+		6358AE971C624D42007B3828 /* archive_debug */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive_debug; sourceTree = "<group>"; };
 		6358AE981C624D42007B3828 /* archive_release */ = {isa = PBXFileReference; lastKnownFileType = text; path = archive_release; sourceTree = "<group>"; };
-		6358AE991C624D43007B3828 /* build_develop */ = {isa = PBXFileReference; lastKnownFileType = text; path = build_develop; sourceTree = "<group>"; };
+		6358AE991C624D43007B3828 /* build_debug */ = {isa = PBXFileReference; lastKnownFileType = text; path = build_debug; sourceTree = "<group>"; };
 		6358AE9A1C624D43007B3828 /* build_release */ = {isa = PBXFileReference; lastKnownFileType = text; path = build_release; sourceTree = "<group>"; };
-		6358AE9B1C624D50007B3828 /* install_develop */ = {isa = PBXFileReference; lastKnownFileType = text; path = install_develop; sourceTree = "<group>"; };
+		6358AE9B1C624D50007B3828 /* install_debug */ = {isa = PBXFileReference; lastKnownFileType = text; path = install_debug; sourceTree = "<group>"; };
 		6358AE9C1C624D50007B3828 /* install_release */ = {isa = PBXFileReference; lastKnownFileType = text; path = install_release; sourceTree = "<group>"; };
-		6358AE9D1C624D50007B3828 /* run_develop */ = {isa = PBXFileReference; lastKnownFileType = text; path = run_develop; sourceTree = "<group>"; };
+		6358AE9D1C624D50007B3828 /* run_debug */ = {isa = PBXFileReference; lastKnownFileType = text; path = run_debug; sourceTree = "<group>"; };
 		6358AE9E1C624D50007B3828 /* run_release */ = {isa = PBXFileReference; lastKnownFileType = text; path = run_release; sourceTree = "<group>"; };
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		F51FCC711B153A3200C182B0 /* myosclean */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosclean; sourceTree = "<group>"; };
@@ -32,16 +32,16 @@
 			children = (
 				F5E864761A783DB60058E642 /* android */,
 				F51FCC741B155A4C00C182B0 /* app-makefile */,
-				6358AE971C624D42007B3828 /* archive_develop */,
+				6358AE971C624D42007B3828 /* archive_debug */,
 				6358AE981C624D42007B3828 /* archive_release */,
-				6358AE991C624D43007B3828 /* build_develop */,
+				6358AE991C624D43007B3828 /* build_debug */,
 				6358AE9A1C624D43007B3828 /* build_release */,
 				6358AE8E1C61AB5A007B3828 /* common */,
 				6358AE951C61AC63007B3828 /* config.sh.android */,
 				6358AE961C61AC63007B3828 /* config.sh.ubuntu */,
-				6358AE9B1C624D50007B3828 /* install_develop */,
+				6358AE9B1C624D50007B3828 /* install_debug */,
 				6358AE9C1C624D50007B3828 /* install_release */,
-				6358AE9D1C624D50007B3828 /* run_develop */,
+				6358AE9D1C624D50007B3828 /* run_debug */,
 				6358AE9E1C624D50007B3828 /* run_release */,
 				F51FCC711B153A3200C182B0 /* myosclean */,
 				F56BD64F1B15913500D6D5CD /* myosemulator */,

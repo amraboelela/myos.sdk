@@ -15,29 +15,37 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/build_develop
+source ${MYOS_PATH}/sdk/install_debug
+echo "============================ Running ${TARGET} (develop) ================================="
 
 cd ../..
-if [ -f pre-install_develop.sh ]; then
-    source pre-install_develop.sh
+if [ -f pre-run_debug.sh ]; then
+    source pre-run_debug.sh
 fi
 cd targets/$TARGET
 
-if [ -f pre-install_develop.sh ]; then
-    source pre-install_develop.sh
+if [ -f pre-run_debug.sh ]; then
+    source pre-run_debug.sh
+fi
+
+if [ ${BASE_OS} = "android" ]; then
+    cd ../..
+    adb shell input keyevent 3
+    android update project -p . -s --target 1;
+    ant debug install
+    ant run
+else
+    cd ${TARGET}.app
+    ./${TARGET}
+    cd ..
+fi
+
+if [ -f post-run_debug.sh ]; then
+    source post-run_debug.sh
 fi
 
 cd ../..
-echo "============================== Installing $TARGET (develop) ================================"
-make copy
-
-cd targets/$TARGET
-if [ -f post-install_develop.sh ]; then
-    source post-install_develop.sh
-fi
-
-cd ../..
-if [ -f post-install_develop.sh ]; then
-    source post-install_develop.sh
+if [ -f post-run_debug.sh ]; then
+    source post-run_debug.sh
 fi
 cd targets/$TARGET

@@ -18,6 +18,8 @@
 source ${MYOS_PATH}/sdk/common
 echo "============================== Building $TARGET (release) ================================"
 
+export DEBUG_MODE=NO
+
 cd ../..
 if [ ! -f pre-build_release.sh ]; then
     cp pre-build_release.sh pre-build_release.sh
