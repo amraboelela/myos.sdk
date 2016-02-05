@@ -27,7 +27,7 @@ if [ -f pre-archive_debug.sh ]; then
     source pre-archive_debug.sh
 fi
 
-echo "============================== Archiving $TARGET (develop) ================================"
+echo "============================== Archiving $TARGET (debug) ================================"
 
 if [ ${BUILD_TYPE} = "Application" ]; then
     zip $TARGET.app

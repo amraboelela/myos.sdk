@@ -28,7 +28,7 @@ if [ -f pre-install_debug.sh ]; then
 fi
 
 cd ../..
-echo "============================== Installing $TARGET (develop) ================================"
+echo "============================== Installing $TARGET (debug) ================================"
 make copy
 
 cd targets/$TARGET

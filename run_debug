@@ -16,7 +16,7 @@
 #
 
 source ${MYOS_PATH}/sdk/install_debug
-echo "============================ Running ${TARGET} (develop) ================================="
+echo "============================ Running ${TARGET} (debug) ================================="
 
 cd ../..
 if [ -f pre-run_debug.sh ]; then

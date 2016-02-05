@@ -16,7 +16,7 @@
 #
 
 source ${MYOS_PATH}/sdk/common
-echo "============================== Building $TARGET (develop) ================================"
+echo "============================== Building $TARGET (debug) ================================"
 
 export DEBUG_MODE=YES
 
@@ -43,7 +43,7 @@ make || exit
 if  [ ${BUILD_TYPE} = "Application" ]; then
     ls *.png *.nib targets/$TARGET/*.plist | xargs -I {} cp {} targets/$TARGET/$TARGET.app/
     if  [ ${BASE_OS} = "android" ]; then
-        echo "============================== NDK building $TARGET (develop) =============================="
+        echo "============================== NDK building $TARGET (debug) =============================="
         ndk-build || exit
     fi
 fi
