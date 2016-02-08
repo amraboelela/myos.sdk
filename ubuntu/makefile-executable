@@ -65,5 +65,8 @@ ifeq ($(APP_TYPE),ChildApp)
 copy:
 	mkdir -p ${MYOS_PATH}/myapps/apps/$(APP_NAME).app
 	cp -rf targets/$(TARGET)/$(TARGET).app ${MYOS_PATH}/myapps/apps/
+else
+copy:
+	
 endif
 

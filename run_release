@@ -15,7 +15,7 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-source ${MYOS_PATH}/sdk/install_release
+source ${MYOS_PATH}/sdk/build_release
 echo "============================ Running ${TARGET} (release) ================================="
 
 cd ../..
