@@ -41,7 +41,7 @@ cd ../..
 make || exit
 
 if  [ ${BUILD_TYPE} = "Application" ]; then
-    ls *.png *.nib targets/$TARGET/*.plist | xargs -I {} cp {} targets/$TARGET/$TARGET.app/
+    ls assets/* *.png *.nib targets/$TARGET/*.plist | xargs -I {} cp {} targets/$TARGET/$TARGET.app/
     if  [ ${BASE_OS} = "android" ]; then
         echo "============================== NDK building $TARGET (debug) =============================="
         ndk-build || exit
