@@ -1,5 +1,5 @@
 #
-# Copyright © 2014-2015 myOS Group.
+# Copyright © 2014-2016 myOS Group.
 #
 # This is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,7 +15,8 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
-OUTPUT=lib$(LIB_NAME).a
+OUTPUT=targets/$(TARGET)/lib$(TARGET).a
+#OUTPUT=lib$(LIB_NAME).a
 CC=clang
 CXX=clang
 AR=clang
@@ -46,12 +47,12 @@ $(OUTPUT): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $^
 
 clean:
-	-rm $(ODIR)/*.o
-	-rm $(ODIR)/*.d
-	-rm $(OUTPUT)
+	rm $(ODIR)/*.o
+	rm $(ODIR)/*.d
+	rm $(OUTPUT)
+	sudo rm -f /usr/local/lib/lib$(TARGET).a
 
 copy:
-	sudo cp *.a /usr/local/lib/
+	sudo cp $(OUTPUT) /usr/local/lib/
 
 #	cp *.a ${MYOS_PATH}/libraries/libs/
-    
