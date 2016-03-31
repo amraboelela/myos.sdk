@@ -19,7 +19,9 @@ OUTPUT=targets/$(TARGET)/lib$(TARGET).so
 CC=clang
 CXX=clang
 LD=clang
-CFLAGS+=-fPIC -I/usr/local/include -I/usr/include/cairo -I/usr/include/freetype2 -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
+CFLAGS+=-Wdeclaration-after-statement -Wcast-align -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -fno-strict-aliasing -fexceptions -fobjc-exceptions -D_NATIVE_OBJC_EXCEPTIONS -pthread -DGSWARN -DGSDIAGNOSE -MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wno-import -g -O2 -fgnu-runtime -I${MYOS_PATH}/libraries -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
+
+#CFLAGS+=-fPIC -I/usr/include/cairo -I/usr/include/freetype2 -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
 
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
@@ -31,10 +33,8 @@ else ifeq ($(APP_TYPE),ParentApp)
     CFLAGS+=-DPARENT_APP
 endif
 
-LDFLAGS+=-v -shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ 
+LDFLAGS+=-shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ 
 LDLIBS+=-lgcc -lc -lm -lrt -ldl
-
-#_SLIBS=$(patsubst %,${MYOS_PATH}/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
 
@@ -62,7 +62,7 @@ $(ODIR)/%.o: %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(OUTPUT): $(OBJ)
-	$(LD) -shared $^ $(LDFLAGS) $(LDLIBS) -o $@
+	$(LD) $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
 	rm -f ${ODIR}/*.o

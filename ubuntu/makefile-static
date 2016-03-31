@@ -19,9 +19,9 @@ OUTPUT=targets/$(TARGET)/lib$(TARGET).a
 #OUTPUT=lib$(LIB_NAME).a
 CC=clang
 CXX=clang
-AR=clang
-CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wall -Wno-import -g -O2 -fgnu-runtime -fgnu-runtime -I/usr/local/include -I/usr/include/cairo -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries
-ARFLAGS=-shared
+AR=ar
+CFLAGS+=-MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wno-import -g -O2 -fgnu-runtime -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation -I${MYOS_PATH}/libraries
+ARFLAGS+=-rcs
 
 all: $(OUTPUT)
 ODIR=targets/${TARGET}/obj
@@ -55,3 +55,4 @@ copy:
 	sudo cp $(OUTPUT) /usr/local/lib/
 
 #	cp *.a ${MYOS_PATH}/libraries/libs/
+
