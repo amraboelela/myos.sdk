@@ -33,7 +33,7 @@ else ifeq ($(APP_TYPE),ParentApp)
 endif
 
 LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib 
-LDLIBS+=-lobjc -lm -llcms -lX11 -lGL 
+LDLIBS+=-lobjc -lm -llcms 
 
 all: $(OUTPUT)
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJECTS))
