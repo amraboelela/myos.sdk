@@ -1,3 +1,4 @@
 xcuserdata
 *.xccheckout
 config.sh
+.DS_Store
