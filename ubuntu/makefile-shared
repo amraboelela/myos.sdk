@@ -32,7 +32,7 @@ else ifeq ($(APP_TYPE),ParentApp)
 endif
 
 LDFLAGS+=-shared -Wl -rdynamic -pthread -fexceptions -L/usr/local/lib -L/usr/lib/ 
-LDLIBS+=-lgcc -lc -lm -lrt -ldl -lbsd
+LDLIBS+=-lgcc -lc -lm -lrt -ldl
 
 all: $(OUTPUT)
 
