@@ -39,7 +39,7 @@ all: $(OUTPUT)
 
 ODIR=targets/${TARGET}/obj
 
-OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS))
+OBJ=$(patsubst %,$(ODIR)/%.o,$(OBJECTS))
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -50,7 +50,6 @@ $(ODIR)/%.o: ${MYOS_PATH}/sdk/include/%.c
 $(ODIR)/%.o: %.m
 	$(CC) $(CFLAGS) -c $< -o $@
 
-
 $(ODIR)/%.o: %.mm
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -58,6 +57,9 @@ $(ODIR)/%.o: %.S
 	$(CC) $(CFLAGS) -c $< -o $@
     
 $(ODIR)/%.o: %.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(ODIR)/%.o: %.cc
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(OUTPUT): $(OBJ)
