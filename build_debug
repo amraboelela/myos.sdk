@@ -33,6 +33,7 @@ fi
 source pre-build_debug.sh
 
 mkdir -p obj
+
 if  [ ${BUILD_TYPE} = "Application" ]; then
     mkdir -p $TARGET.app
 fi
