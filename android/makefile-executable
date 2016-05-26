@@ -15,6 +15,17 @@
 # Amr Aboelela <amraboelela@gmail.com>
 #
 
+CFLAGS+=-fblocks
+
+LDLIBS+=-llog
+LIB_NAME=$(APPLICATION_NAME)
+LDLIBS+=-landroid
+OBJECTS+= \
+rd_app_glue.o \
+rd_main.o \
+
+include ${MYOS_PATH}/sdk/$(BASE_OS)/makefile-shared
+
 OUTPUT=$(APP_NAME)
 CC=$(STANDALONE_PATH)/bin/clang
 CXX=$(STANDALONE_PATH)/bin/clang++
