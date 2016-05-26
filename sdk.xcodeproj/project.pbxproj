@@ -20,7 +20,6 @@
 		6358AE9E1C624D50007B3828 /* run_release */ = {isa = PBXFileReference; lastKnownFileType = text; path = run_release; sourceTree = "<group>"; };
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		F51FCC711B153A3200C182B0 /* myosclean */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosclean; sourceTree = "<group>"; };
-		F51FCC741B155A4C00C182B0 /* app-makefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = "app-makefile"; sourceTree = "<group>"; };
 		F56BD64F1B15913500D6D5CD /* myosemulator */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosemulator; sourceTree = "<group>"; };
 		F5E864761A783DB60058E642 /* android */ = {isa = PBXFileReference; lastKnownFileType = folder; path = android; sourceTree = "<group>"; };
 		F5E864771A783DB60058E642 /* ubuntu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ubuntu; sourceTree = "<group>"; };
@@ -31,7 +30,6 @@
 			isa = PBXGroup;
 			children = (
 				F5E864761A783DB60058E642 /* android */,
-				F51FCC741B155A4C00C182B0 /* app-makefile */,
 				6358AE971C624D42007B3828 /* archive_debug */,
 				6358AE981C624D42007B3828 /* archive_release */,
 				6358AE991C624D43007B3828 /* build_debug */,
