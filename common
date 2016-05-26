@@ -24,3 +24,4 @@ if [ ! -f ${MYOS_PATH}/sdk/config.sh ]; then
 fi
 source ${MYOS_PATH}/sdk/config.sh
 export TARGET=$(pwd | awk -F'/' '{print $NF}')
+#echo $TARGET

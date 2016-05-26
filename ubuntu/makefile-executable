@@ -36,7 +36,7 @@ LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib
 LDLIBS+=-lobjc -lm -llcms 
 
 all: $(OUTPUT)
-OBJ = $(patsubst %,$(ODIR)/%,$(OBJECTS))
+OBJ = $(patsubst %,$(ODIR)/%.o,$(OBJECTS))
 
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -52,6 +52,12 @@ $(ODIR)/%.o: %.S
     
 $(ODIR)/%.o: %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(ODIR)/%.o: %.cc
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(ODIR)/%.o: %.swift
+	swiftc $(CFLAGS) -c $< -o $@
 
 $(OUTPUT): $(OBJ)
 	$(LD) $^ $(LDFLAGS) $(LDLIBS) -o $@
