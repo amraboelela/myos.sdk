@@ -15,17 +15,17 @@ int main(void)
     Class *classList = malloc(numberOfClasses * sizeof(Class));
     numberOfClasses = objc_getClassList(classList, numberOfClasses);
     
-    for (int idx = 0; idx < numberOfClasses; idx++)
-    {
+    for (int idx = 0; idx < numberOfClasses; idx++) {
         Class class = classList[idx];
         NSString *className = NSStringFromClass(class);
-        //NSLog(@"%@", className);
         if ([className rangeOfString:@"Tests"].length > 0) {
             id classInstance = [[[class alloc] init] autorelease];
             if ([classInstance isKindOfClass:[XCTestCase class]]) {
-                NSLog(@"[class isKindOfClass:XCTestCase]");
-
+                NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSLog(@"Tes suite '%@' started at %@", className, [dateFormatter stringFromDate:[NSDate date]]);
                 [classInstance runTest];
+                NSLog(@"Tes suite '%@' passed at %@", className, [dateFormatter stringFromDate:[NSDate date]]);
             }
         }
     }
