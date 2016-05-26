@@ -32,7 +32,11 @@ else ifeq ($(APP_TYPE),ParentApp)
     CFLAGS+=-DPARENT_APP
 endif
 
-LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib 
+ifeq ($(XCTest),YES)
+    OBJECTS+=main
+endif
+
+LDFLAGS+=-rdynamic -pthread -fexceptions -fgnu-runtime -L/usr/local/lib
 LDLIBS+=-lobjc -lm -llcms 
 
 all: $(OUTPUT)
