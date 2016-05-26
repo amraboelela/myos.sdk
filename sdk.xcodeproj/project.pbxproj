@@ -18,6 +18,7 @@
 		6358AE9C1C624D50007B3828 /* install_release */ = {isa = PBXFileReference; lastKnownFileType = text; path = install_release; sourceTree = "<group>"; };
 		6358AE9D1C624D50007B3828 /* run_debug */ = {isa = PBXFileReference; lastKnownFileType = text; path = run_debug; sourceTree = "<group>"; };
 		6358AE9E1C624D50007B3828 /* run_release */ = {isa = PBXFileReference; lastKnownFileType = text; path = run_release; sourceTree = "<group>"; };
+		637F7C931CF7AE8F00A1375C /* XCTestMain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XCTestMain.m; sourceTree = "<group>"; };
 		C57AEBBD19C7E04D00072531 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		F51FCC711B153A3200C182B0 /* myosclean */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosclean; sourceTree = "<group>"; };
 		F56BD64F1B15913500D6D5CD /* myosemulator */ = {isa = PBXFileReference; lastKnownFileType = text; path = myosemulator; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 				F56BD64F1B15913500D6D5CD /* myosemulator */,
 				C57AEBBD19C7E04D00072531 /* README.md */,
 				F5E864771A783DB60058E642 /* ubuntu */,
+				637F7C931CF7AE8F00A1375C /* XCTestMain.m */,
 			);
 			sourceTree = "<group>";
 		};
