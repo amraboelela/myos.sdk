@@ -21,11 +21,11 @@ int main(void)
         if ([className rangeOfString:@"Tests"].length > 0) {
             id classInstance = [[[class alloc] init] autorelease];
             if ([classInstance isKindOfClass:[XCTestCase class]]) {
-                NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                NSLog(@"Tes suite '%@' started at %@", className, [dateFormatter stringFromDate:[NSDate date]]);
+                //NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+                //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSLog(@"Test suite '%@' started", className);
                 [classInstance runTest];
-                NSLog(@"Tes suite '%@' passed at %@", className, [dateFormatter stringFromDate:[NSDate date]]);
+                NSLog(@"Test suite '%@' passed", className);
             }
         }
     }
