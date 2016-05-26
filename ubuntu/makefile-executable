@@ -21,7 +21,7 @@ ODIR=targets/$(TARGET)/obj
 CC=clang
 CXX=clang
 LD=clang
-CFLAGS+=-MMD -MP -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -pthread -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2 -I/usr/local/include -I/usr/include/cairo -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
+CFLAGS+=-MMD -MP -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -pthread -fobjc-exceptions -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2 -I/usr/local/include -I/usr/include/cairo -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation
 
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
@@ -65,6 +65,8 @@ $(ODIR)/%.o: %.swift
 
 $(OUTPUT): $(OBJ)
 	$(LD) $^ $(LDFLAGS) $(LDLIBS) -o $@
+	export OBJECTS
+	echo $(OBJECTS)
 
 clean:
 	rm -f $(ODIR)/*.o
