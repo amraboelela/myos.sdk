@@ -34,16 +34,19 @@ source pre-build_debug.sh
 
 mkdir -p obj
 
-if  [ ${BUILD_TYPE} = "Application" ] || [ ${BUILD_TYPE} = "XCTest" ]; then
-#if  [ ${BUILD_TYPE} = "XCTest" ]; then
+if  [ ${BUILD_TYPE} = "Application" ]; then
     mkdir -p $TARGET.app
 fi
 
 cd ../..
+
+if [ ${XCTest} = "YES" ]; then
+    cp ${MYOS_PATH}/sdk/XCTestMain.m main.m
+fi
+
 make || exit
 
-if  [ ${BUILD_TYPE} = "Application" ] || [ ${BUILD_TYPE} = "XCTest" ]; then
-#if  [ ${BUILD_TYPE} = "XCTest" ]; then
+if  [ ${BUILD_TYPE} = "Application" ]; then
     ls assets/* *.png *.nib targets/$TARGET/*.plist | xargs -I {} cp {} targets/$TARGET/$TARGET.app/
     if  [ ${BASE_OS} = "android" ]; then
         echo "============================== NDK building $TARGET (debug) =============================="
