@@ -23,11 +23,9 @@ int main(void)
         if ([className rangeOfString:@"Tests"].length > 0) {
             id classInstance = [[[class alloc] init] autorelease];
             if ([classInstance isKindOfClass:[XCTestCase class]]) {
-                NSLog(@"Test suite '%@' started", className);
+                //NSLog(@"Test Suite '%@' started.", className);
                 [classInstance runTest];
-                NSLog(@"Test suite '%@' passed", className);
-                failureCount += _failureCount;
-                testCount += _testCount;
+                //NSLog(@"Test Suite '%@' passed.", className);
             }
         }
     }
