@@ -16,16 +16,17 @@ int main(void)
     numberOfClasses = objc_getClassList(classList, numberOfClasses);
     int failureCount = 0;
     int testCount = 0;
-    NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
+    NSTimeInterval totalTime = 0;
     for (int idx = 0; idx < numberOfClasses; idx++) {
         Class class = classList[idx];
         NSString *className = NSStringFromClass(class);
         if ([className rangeOfString:@"Tests"].length > 0) {
             id classInstance = [[[class alloc] init] autorelease];
             if ([classInstance isKindOfClass:[XCTestCase class]]) {
-                //NSLog(@"Test Suite '%@' started.", className);
                 [classInstance runTest];
-                //NSLog(@"Test Suite '%@' passed.", className);
+                failureCount += _failureCount;
+                testCount += _testCount;
+                totalTime += _totalTime;
             }
         }
     }
@@ -34,7 +35,7 @@ int main(void)
     } else {
         NSLog(@"Test Suite 'All tests' passed.");
     }
-    NSLog(@"     Executed %d test%@, with %d failure%@ in %0.3f seconds", testCount, (testCount > 1) ? @"s" : @"",  failureCount, (failureCount > 1)?@"s":@"", [NSDate timeIntervalSinceReferenceDate] - currentTime);
+    NSLog(@"     Executed %d test%@, with %d failure%@ in %0.3f seconds", testCount, (testCount > 1) ? @"s" : @"",  failureCount, (failureCount > 1) ? @"s" : @"", totalTime);
     free(classList);
     [pool release];
     return 0;
