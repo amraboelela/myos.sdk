@@ -11,6 +11,7 @@ int main(void)
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
+    NSLog(@"Test Suite 'All tests' started.");
     int numberOfClasses = objc_getClassList(NULL, 0);
     Class *classList = malloc(numberOfClasses * sizeof(Class));
     numberOfClasses = objc_getClassList(classList, numberOfClasses);
