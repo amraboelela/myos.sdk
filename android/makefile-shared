@@ -22,9 +22,9 @@ SYSROOT=$(STANDALONE_PATH)/sysroot
 CFLAGS+=-DANDROID -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/libraries -I${MYOS_PATH}/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
 LD=$(STANDALONE_PATH)/bin/clang++
 
-ifeq ($(DEBUG_MODE),YES)
-    CFLAGS+=-DDEBUG
-endif
+#ifeq ($(DEBUG_MODE),YES)
+#    CFLAGS+=-DDEBUG
+#endif
 
 ifeq ($(APP_TYPE),NativeApp)
     CFLAGS+=-DNATIVE_APP
