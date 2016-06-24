@@ -20,7 +20,7 @@ CC=clang
 CXX=clang
 LD=clang
 
-CFLAGS+=-Wdeclaration-after-statement -fblocks -Wcast-align -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -fno-strict-aliasing -fexceptions -fobjc-exceptions -D_NATIVE_OBJC_EXCEPTIONS -DPF_INET6 -DAF_INET6 -DLINUX -pthread -DGSWARN -DGSDIAGNOSE -MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wno-import -g -O2 -fgnu-runtime -I/usr/include/cairo -I/usr/local/include -I/usr/include/freetype2 -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation -I${MYOS_PATH}/libraries
+CFLAGS+=-Wdeclaration-after-statement -DUBUNTU -fblocks -Wcast-align -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -fno-strict-aliasing -fexceptions -fobjc-exceptions -D_NATIVE_OBJC_EXCEPTIONS -DPF_INET6 -DAF_INET6 -DLINUX -pthread -DGSWARN -DGSDIAGNOSE -MMD -MP -Wall -Wcast-align -Wdeclaration-after-statement -fno-strict-aliasing -fPIC -Wno-import -g -O2 -fgnu-runtime -I/usr/include/cairo -I/usr/local/include -I/usr/include/freetype2 -I${MYOS_PATH}/frameworks -I${MYOS_PATH}/frameworks/Foundation -I${MYOS_PATH}/libraries
 
 ifeq ($(DEBUG_MODE),YES)
     CFLAGS+=-DDEBUG
