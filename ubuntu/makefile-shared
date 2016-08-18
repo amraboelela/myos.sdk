@@ -65,8 +65,8 @@ clean:
 	rm -f ${ODIR}/*.o
 	rm -f ${ODIR}/*.d
 	rm -f $(OUTPUT)
-	sudo rm -f /usr/local/lib/lib$(TARGET).so
+	sudo rm -f /usr/lib/lib$(TARGET).so
 
 copy:
-	sudo cp $(OUTPUT) /usr/local/lib/
+	sudo cp $(OUTPUT) /usr/lib/
 
